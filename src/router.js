@@ -1,9 +1,9 @@
 // 导入页面组件
-import Home from "./pages/Home";
-import NotFound from './pages/Home/NotFound';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 const routerList = [
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   // {
@@ -17,7 +17,7 @@ const routerList = [
   //   ],
   // },
   {
-    path: "*",
+    path: '*',
     element: <NotFound />,
   },
 ];
