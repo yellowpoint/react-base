@@ -2,7 +2,6 @@
 module.exports = {
   env: {
     es6: true,
-    "NODE_ENV": "development"
   },
   extends: ['plugin:prettier/recommended'],
   parser: '@babel/eslint-parser',
