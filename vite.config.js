@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import postCssPxToRem from 'postcss-pxtorem';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,18 +22,20 @@ export default defineConfig({
       ],
     },
     preprocessorOptions: {
-      // key + config key代表预处理器的名
       less: {
         // 整个的配置对象都会最终给到less的执行参数（全局参数）中去
-        // 在webpack里就给less-loader去配置就好了
-        math: 'always',
-        globalVars: {},
+        javascriptEnabled: true,
+        // 每个less文件都注入
+        // additionalData: `@import "${path.resolve(
+        //   __dirname,
+        //   'src/theme.less',
+        // )}";`,
       },
     },
   },
   resolve: {
     alias: {
-      '@': '/src',
+      '@': resolve('src'),
     },
   },
 });

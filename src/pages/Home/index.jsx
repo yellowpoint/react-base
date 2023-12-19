@@ -1,7 +1,13 @@
 import styles from './index.module.less';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  return <div className={styles.home}>home</div>;
+  const navigate = useNavigate();
+  return (
+    <div className={styles.home} onClick={() => navigate('/home')}>
+      home
+    </div>
+  );
 };
 
 export default Home;

@@ -1,28 +1,32 @@
-// 导入页面组件
+// 页面路由
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+
 const routerList = [
   {
     path: '/',
-    element: <Home />,
+    title: '首页',
+    component: Home,
   },
   {
     path: '/home',
-    element: <Home />,
+    title: 'home',
+    component: Home,
   },
   // {
   //   path: "/",
-  //   element: <Layout />,
+  //   component : <Layout />,
   //   children: [
   //     {
   //       path: "/",
-  //       element: <Home />,
+  //       component : <Home />,
   //     },
   //   ],
   // },
   {
     path: '*',
-    element: <NotFound />,
+    title: '404',
+    component: NotFound,
   },
 ];
 

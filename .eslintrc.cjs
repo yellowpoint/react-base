@@ -18,7 +18,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   parserOptions: {
-    requireConfigFile: false, // 是否需要 babel 配置文件
+    ecmaVersion: 'latest',
     sourceType: 'module', // script 或者 module
     allowImportExportEverywhere: false, // 设置为 true，import 和 export 声明 可以出现在文件的任务位置，否则只能出现在顶部
     ecmaFeatures: {
@@ -36,5 +36,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'react/prop-types': 'off',
   },
 };
