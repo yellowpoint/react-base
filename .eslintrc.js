@@ -3,6 +3,11 @@ module.exports = {
   env: {
     es6: true,
   },
+  ignorePatterns: ["**/coverage",
+  "**/dist",
+  "**/build",
+  "**/node_modules",
+  "!.stylelintrc.js"],
   extends: ['plugin:prettier/recommended'],
   parser: '@babel/eslint-parser',
   parserOptions: {
