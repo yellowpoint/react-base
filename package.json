@@ -61,8 +61,9 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js"
+    "reinstall": "rimraf node_modules && npm install",
+    "start": "set NODE_ENV=development && node scripts/start.js",
+    "build": "set NODE_ENV=production &&node scripts/build.js"
   },
   "husky": {
     "hooks": {

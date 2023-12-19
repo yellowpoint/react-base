@@ -11,18 +11,10 @@ body {
     "Microsoft YaHei",
     "WenQuanYi Micro Hei",
     sans-serif;
-
-  /* font-size: 0.14rem; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    "Courier New",
-    monospace;
-}
+/* #root {
+  font-size: 24px;
+} */

@@ -147,6 +147,12 @@ module.exports = function (webpackEnv) {
                   // so that it honors browserslist config in package.json
                   // which in turn let's users customize the target behavior as per their needs.
                   'postcss-normalize',
+                  require('postcss-pxtorem')({
+                    rootValue: 70,
+                    selectorBlackList: [], //过滤
+                    propList: ['*'],
+                    exclude: /node_modules/i  // 过滤掉node_modules 文件夹下面的样式
+                  }),
                 ]
               : [
                   'tailwindcss',
@@ -541,6 +547,21 @@ module.exports = function (webpackEnv) {
                   },
                 },
                 'sass-loader'
+              ),
+            },
+            {
+              test: /\.(less)$/,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 3,
+                  sourceMap: isEnvProduction
+                    ? shouldUseSourceMap
+                    : isEnvDevelopment,
+                  modules: {
+                    localIdentName: '[name]_[local]_[hash:base64:5]'
+                  },
+                },
+                'less-loader'
               ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
