@@ -1,4 +1,4 @@
-import styles from './index.less';
+import styles from './index.module.less';
 
 const Home = () => {
   return <div className={styles.home}>home</div>;
