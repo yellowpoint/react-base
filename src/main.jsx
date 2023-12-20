@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import RoutesComport from './router'; // 路由组件
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'amfe-flexible';
-import './index.css';
+import './assets/index.css';
 
 // 修改title
 const DomTitle = ({ item }) => {
