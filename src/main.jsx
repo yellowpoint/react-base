@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import RoutesComport from './router'; // 路由组件
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import RoutesComport from './router'; // 路由组件
 import 'amfe-flexible';
 import './assets/index.css';
 

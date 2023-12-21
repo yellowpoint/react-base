@@ -20,12 +20,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module', // script 或者 module
-    allowImportExportEverywhere: false, // 设置为 true，import 和 export 声明 可以出现在文件的任务位置，否则只能出现在顶部
+    // allowImportExportEverywhere: false, // 设置为 true，import 和 export 声明 可以出现在文件的任务位置，否则只能出现在顶部
     ecmaFeatures: {
       globalReturn: false, // 设置为 true，当 sourceType 为 script 时，允许全局 return
     },
   },
-  plugins: ['react', 'react-hooks'],
+  plugins: ['import', 'react', 'react-hooks'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -37,5 +37,19 @@ module.exports = {
       },
     ],
     'react/prop-types': 'off',
+    'import/newline-after-import': ['error', { count: 1 }],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['parent', 'sibling', 'index'],
+        ],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
   },
 };

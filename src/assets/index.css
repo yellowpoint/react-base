@@ -11,8 +11,13 @@ body {
     "Microsoft YaHei",
     "WenQuanYi Micro Hei",
     sans-serif;
+
+  /* 字体更平顺 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* 提高触摸响应速度 */
+  touch-action: manipulation;
 }
 
 /* #root {

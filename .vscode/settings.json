@@ -17,4 +17,8 @@
     "source.fixAll.stylelint": "explicit"
   },
   "eslint.nodeEnv": "development",
+  "[nginx]": {
+    "editor.defaultFormatter": "raynigon.nginx-formatter",
+    "editor.formatOnSave": true
+  }
 }
