@@ -1,8 +1,9 @@
-import { defineConfig } from 'vite';
+import { resolve } from 'path';
+
+import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import postCssPxToRem from 'postcss-pxtorem';
-import legacy from '@vitejs/plugin-legacy';
-import { resolve } from 'path';
+import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode, command }) => {
   const isBuild = command === 'build'; // 是否是打包环境的判断
@@ -41,6 +42,10 @@ export default defineConfig(({ mode, command }) => {
       alias: {
         '@': resolve('src'),
       },
+    },
+    server: {
+      host: '0.0.0.0',
+      port: 8888,
     },
   };
 });
