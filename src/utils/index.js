@@ -20,3 +20,7 @@ export const isIDCard = (value) =>
   );
 // 校验手机号
 export const isPhoneNumber = (value) => /^1\d{10}$/.test(value);
+export const getParam = (key) => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key);
+};

@@ -1,5 +1,7 @@
 import { SpinLoading } from 'antd-mobile';
 
+import { cookie } from '@/utils';
+
 export const PageLoading = () => {
   return (
     <div
@@ -12,3 +14,5 @@ export const PageLoading = () => {
     </div>
   );
 };
+
+export const getIsLogin = () => (cookie.getItem('token') ? true : false);

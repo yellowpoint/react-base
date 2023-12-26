@@ -9,6 +9,7 @@ const routerList = [
   {
     path: '/',
     title: '首页',
+    notNeedLogin: true,
     component: lazyLoad('Home'),
   },
   {
