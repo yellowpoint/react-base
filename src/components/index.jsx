@@ -15,4 +15,4 @@ export const PageLoading = () => {
   );
 };
 
-export const getIsLogin = () => (cookie.getItem('token') ? true : false);
+export const getIsLogin = () => !cookie.getItem('token');

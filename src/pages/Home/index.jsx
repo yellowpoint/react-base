@@ -22,20 +22,23 @@ const Home = () => {
   }, []);
 
   return (
-    <Space wrap>
-      <Button color="primary" onClick={() => navigate('/summon')}>
-        立即召唤
-      </Button>
-      <Button color="primary" onClick={() => navigate('/exchange')}>
-        星动兑
-      </Button>
-      <Button color="primary" onClick={() => navigate('/my')}>
-        我的保护力藏品
-      </Button>
-      <Button color="primary" onClick={() => navigate('/summon?a=1')}>
-        会员尊享
-      </Button>
-    </Space>
+    <div className={styles.page}>
+      <div className={styles.toMy} onClick={() => navigate('/my')}>
+        我的藏品&gt;&gt;
+      </div>
+      <div className={styles.bottom}>
+        <div
+          className={styles.toSummon}
+          onClick={() => navigate('/summon?a=1')}
+        >
+          会员尊享
+        </div>
+        <div className={styles.btns}>
+          <div onClick={() => navigate('/summon')}>立即召唤</div>
+          <div onClick={() => navigate('/exchange')}>星动兑</div>
+        </div>
+      </div>
+    </div>
   );
 };
 

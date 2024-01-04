@@ -1,8 +1,6 @@
 // 页面路由
 import { lazy } from 'react';
 
-import NotFound from '@/pages/NotFound';
-
 const lazyLoad = (page) => lazy(() => import(`@/pages/${page}/index.jsx`));
 
 const routerList = [
@@ -45,7 +43,8 @@ const routerList = [
   {
     path: '*',
     title: '404',
-    component: NotFound,
+    notNeedLogin: true,
+    component: lazyLoad('NotFound'),
   },
 ];
 

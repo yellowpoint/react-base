@@ -1,0 +1,36 @@
+.page {
+  position: relative;
+  min-height: 100%;
+  padding-top: 30px;
+  background: rgb(118, 200, 227);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 36px;
+
+  .toMy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 178px;
+    height: 50px;
+    background: #fff;
+    border-radius: 25px;
+  }
+}
+
+.main {
+  // transform-style: preserve-3d;
+
+  .box {
+    display: flex;
+    justify-content: center;
+    animation: animation-box infinite 2s ease-in-out;
+  }
+}
+
+@keyframes animation-box {
+  50% { transform: translateY(30px); }
+}

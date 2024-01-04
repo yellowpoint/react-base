@@ -1,5 +1,43 @@
-.home {
-  width: 375px;
-  height: 100px;
-  background: yellowgreen;
+.page {
+  position: relative;
+  min-height: 100%;
+}
+
+.toMy {
+  position: absolute;
+  top: 114px;
+  left: 46px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 136px;
+  width: 100%;
+  padding: 0 64px;
+
+  .toSummon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 16px;
+    background: yellowgreen;
+    border-radius: 100%;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 410px;
+      height: 100px;
+      background: yellowgreen;
+      border-radius: 50px;
+    }
+  }
 }

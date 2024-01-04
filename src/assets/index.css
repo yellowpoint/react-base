@@ -1,7 +1,12 @@
 @import "./reset.css";
 
+html {
+  height: 100%;
+}
+
 body {
-  padding: 20px;
+  height: 100%;
+  overflow-x: hidden;
   font-family:
     "Helvetica Neue",
     Helvetica,
@@ -12,6 +17,7 @@ body {
     "Microsoft YaHei",
     "WenQuanYi Micro Hei",
     sans-serif;
+  color: #f4f4f4;
 
   /* 提高触摸响应速度 */
   touch-action: manipulation;
@@ -21,6 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* #root {
-  font-size: 24px;
-} */
+#root {
+  height: 100%;
+  font-size: 32px;
+}

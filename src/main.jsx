@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import 'amfe-flexible';
+import './assets/flexible.js';
 import './assets/index.css';
 import RoutesComport from './router'; // 路由组件
 
