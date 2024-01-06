@@ -18,6 +18,7 @@ const routerList = [
   {
     path: '/summon',
     title: 'Summon',
+    notNeedLogin: true,
     component: lazyLoad('Summon'),
   },
   {
