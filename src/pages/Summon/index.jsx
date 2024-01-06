@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
 
-import img_box from '@/assets/summon/box.png';
-
 const Summon = () => {
   const navigate = useNavigate();
   return (
@@ -17,14 +15,16 @@ const Summon = () => {
         </div>
       </div>
       <div className={styles.main}>
-        <div className={styles.box}>
-          <img src={img_box} alt="box" />
-        </div>
+        <div className={styles.arrowLeft}></div>
+        <div className={styles.box}></div>
+        <div className={styles.arrowRight}></div>
       </div>
+      <div className={styles.tips}>这是一个充满魅力的星座</div>
+      <div className={styles.list}>娃娃列表</div>
       <div className={styles.bottom}>
-        <div>立即召唤</div>
-        <div>消耗168积分</div>
-        <div>
+        <div className={styles.btn}></div>
+        <div className={styles.expend}>消耗168积分</div>
+        <div className={styles.surplus}>
           当前剩余积分：2000 <span>如何获取积分</span>
         </div>
       </div>

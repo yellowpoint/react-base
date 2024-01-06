@@ -1,14 +1,20 @@
 .page {
   position: relative;
   min-height: 100%;
-  padding-top: 30px;
-  background: rgb(118, 200, 227);
+  padding: 33px 0 90px;
+  background: url("@/assets/img/summon/bg.png") no-repeat center -250px; // 切图里包含了微信头部高度先减去
+  background-color: #2072b6;
+  background-size: 100% auto;
 }
 
 .top {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 36px;
+  width: 100%;
+  height: 52px;
+  padding: 0 38px;
+  color: #000;
 
   .toMy {
     display: flex;
@@ -22,15 +28,88 @@
 }
 
 .main {
+  position: relative;
+  width: 100%;
+  margin-top: 80px;
   // transform-style: preserve-3d;
+  .arrowLeft,
+  .arrowRight {
+    position: absolute;
+    top: 204px;
+    width: 84px;
+    height: 84px;
+    background: url("@/assets/img/summon/arrow.png") no-repeat;
+    background-size: 100% auto;
+    border-radius: 50%;
+  }
+
+  .arrowLeft {
+    left: 68px;
+    transform: rotate(180deg);
+  }
+
+  .arrowRight {
+    right: 68px;
+  }
 
   .box {
     display: flex;
     justify-content: center;
+    width: 708px;
+    height: 690px;
+    margin: 0 auto;
+    background: url("@/assets/img/summon/box.png") no-repeat;
+    background-size: 100% auto;
     animation: animation-box infinite 2s ease-in-out;
   }
 }
 
 @keyframes animation-box {
   50% { transform: translateY(30px); }
+}
+
+.tips {
+  margin-top: 390px;
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+}
+
+.list {
+  height: 340px;
+  margin-top: 66px;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 28px;
+
+  .btn {
+    width: 936px;
+    height: 121px;
+    margin: 0 auto;
+    background: url("@/assets/img/summon/btn.png") no-repeat;
+    background-size: 100% auto;
+  }
+
+  .expend {
+    height: 37px;
+    margin-top: 17px;
+    font-size: 37px;
+    color: #163d88;
+  }
+
+  .surplus {
+    height: 32px;
+    margin-top: 35px;
+    font-size: 32px;
+    color: #595757;
+
+    span {
+      margin-left: 36px;
+      color: #163d88;
+    }
+  }
 }
