@@ -27,6 +27,14 @@ module.exports = {
   },
   plugins: ['import', 'react', 'react-hooks'],
   rules: {
+    'react/self-closing-comp': [
+      //自闭合标签
+      'error',
+      {
+        component: true,
+        html: false,
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': [
@@ -51,5 +59,6 @@ module.exports = {
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
+    'import/no-duplicates': 'error',
   },
 };

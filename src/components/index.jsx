@@ -10,9 +10,7 @@ export const PageLoading = () => {
         justifyContent: 'center',
       }}
     >
-      <SpinLoading></SpinLoading>
+      <SpinLoading />
     </div>
   );
 };
-
-export const getIsLogin = () => !cookie.getItem('token');

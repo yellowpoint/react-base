@@ -2,8 +2,28 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
 
+import { useUser } from '@/components/UserContext';
+
+const UserPoints = () => {
+  const { userInfo } = useUser();
+  if (!userInfo) return null;
+  return (
+    <>
+      <div className={styles.expend}>消耗168积分</div>
+      <div className={styles.surplus}>
+        当前剩余积分：{userInfo.points} <span>如何获取积分</span>
+      </div>
+    </>
+  );
+};
+
 const Summon = () => {
   const navigate = useNavigate();
+  const { userInfo, login } = useUser();
+
+  const handleSummon = () => {
+    if (!userInfo) return login();
+  };
   return (
     <div className={styles.page}>
       <div className={styles.top}>
@@ -22,11 +42,8 @@ const Summon = () => {
       <div className={styles.tips}>这是一个充满魅力的星座</div>
       <div className={styles.list}>娃娃列表</div>
       <div className={styles.bottom}>
-        <div className={styles.btn}></div>
-        <div className={styles.expend}>消耗168积分</div>
-        <div className={styles.surplus}>
-          当前剩余积分：2000 <span>如何获取积分</span>
-        </div>
+        <div className={styles.btn} onClick={handleSummon}></div>
+        <UserPoints />
       </div>
     </div>
   );

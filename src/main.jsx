@@ -6,14 +6,16 @@ import './assets/flexible.js';
 import './assets/index.css';
 import RoutesComport from './router'; // 路由组件
 
-import { PageLoading, getIsLogin } from '@/components';
+import { PageLoading } from '@/components';
+import { UserProvider, useUser } from '@/components/UserContext';
 
 // 修改title
 const DomTitle = ({ item }) => {
-  const isLogin = getIsLogin();
+  const { userInfo } = useUser();
+
   // 在鉴权检查后手动导航
-  if (!isLogin && !item.notNeedLogin) {
-    return <Navigate to="/?login=true" replace />;
+  if (!userInfo && !item.notNeedLogin) {
+    return <Navigate to="/" replace />;
   }
   document.title = item.title;
   return <item.component />;
@@ -24,18 +26,20 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Suspense fallback={<PageLoading />}>
-        <Routes>
-          {RoutesComport.map((item, index) => {
-            return (
-              <Route
-                key={`routers${index}`}
-                exact
-                path={item.path}
-                element={<DomTitle item={item} />}
-              />
-            );
-          })}
-        </Routes>
+        <UserProvider>
+          <Routes>
+            {RoutesComport.map((item, index) => {
+              return (
+                <Route
+                  key={`routers${index}`}
+                  exact
+                  path={item.path}
+                  element={<DomTitle item={item} />}
+                />
+              );
+            })}
+          </Routes>
+        </UserProvider>
       </Suspense>
     </BrowserRouter>
   </React.StrictMode>,

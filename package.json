@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "antd-mobile": "^5.33.1",
+    "axios": "^1.6.5",
     "clipboard-copy": "^4.0.1",
     "dayjs": "^1.11.10",
     "lodash-es": "^4.17.21",
