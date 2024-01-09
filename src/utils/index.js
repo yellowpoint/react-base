@@ -1,4 +1,3 @@
-export { default as cookie } from './cookie';
 // localStorage
 export const storage = {
   get: (key) => {

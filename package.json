@@ -19,6 +19,8 @@
     "axios": "^1.6.5",
     "clipboard-copy": "^4.0.1",
     "dayjs": "^1.11.10",
+    "html2canvas": "^1.4.1",
+    "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

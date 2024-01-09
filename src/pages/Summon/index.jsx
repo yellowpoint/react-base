@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
+import Poster from './Poster';
 
 import { useUser } from '@/components/UserContext';
 
@@ -20,9 +22,13 @@ const UserPoints = () => {
 const Summon = () => {
   const navigate = useNavigate();
   const { userInfo, login } = useUser();
+  const [posterShow, setPosterShow] = useState(false);
 
   const handleSummon = () => {
     if (!userInfo) return login();
+  };
+  const handleShare = () => {
+    setPosterShow(true);
   };
   return (
     <div className={styles.page}>
@@ -41,7 +47,9 @@ const Summon = () => {
       </div>
       <div className={styles.tips}>这是一个充满魅力的星座</div>
       <div className={styles.list}>娃娃列表</div>
+      <Poster show={posterShow} afterClose={() => setPosterShow(false)} />
       <div className={styles.bottom}>
+        <button onClick={handleShare}>分享</button>
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
       </div>

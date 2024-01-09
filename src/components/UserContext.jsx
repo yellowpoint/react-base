@@ -1,7 +1,7 @@
+import Cookies from 'js-cookie';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 import { getAuthUrl } from '@/api';
-import { cookie } from '@/utils';
 
 const COOKIE_KEY = 'userInfo_nft_2024'; // 防止和其他页面搞混
 
@@ -10,7 +10,7 @@ const UserContext = createContext();
 
 // 提供者组件
 export const UserProvider = ({ children }) => {
-  const defaultUser = cookie.getItem(COOKIE_KEY);
+  const defaultUser = Cookies.getJSON(COOKIE_KEY);
   const [userInfo, setUserInfo] = useState(defaultUser);
 
   const setUser = (newUserInfo) => {
@@ -29,12 +29,12 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     // 没有该项目的用户信息，且有mama100的token
-    if (!defaultUser && cookie.getItem('token')) {
+    if (!defaultUser && Cookies.get('token')) {
       alert('调用自己的登录接口');
-      const userInfo = { points: 1000 };
+      const data = { points: 1000 };
 
-      cookie.setItem(COOKIE_KEY, cookie, 30 * 24 * 60 * 60);
-      setUser(userInfo);
+      Cookies.set(COOKIE_KEY, data, { expires: 30 });
+      setUser(data);
     }
   }, []);
   return (

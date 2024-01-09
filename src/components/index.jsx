@@ -1,7 +1,5 @@
 import { SpinLoading } from 'antd-mobile';
 
-import { cookie } from '@/utils';
-
 export const PageLoading = () => {
   return (
     <div
@@ -14,3 +12,5 @@ export const PageLoading = () => {
     </div>
   );
 };
+
+export { default as Mask } from './Mask';

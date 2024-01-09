@@ -27,6 +27,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  display: block;
+  width: 100%;
+}
+
 #root {
   height: 100%;
   font-size: 32px;
