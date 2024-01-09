@@ -33,9 +33,11 @@ const Summon = () => {
   return (
     <div className={styles.page}>
       <div className={styles.top}>
-        <div className={styles.toMy} onClick={() => navigate('/my')}>
-          我的藏品
-        </div>
+        {!!userInfo && (
+          <div className={styles.toMy} onClick={() => navigate('/collection')}>
+            我的藏品
+          </div>
+        )}
         <div className={styles.toRule} onClick={() => navigate('/my')}>
           规则&gt;&gt;
         </div>

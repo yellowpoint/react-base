@@ -12,35 +12,25 @@ const routerList = [
   },
   {
     path: '/my',
-    title: 'my',
+    title: '我的星座保护力',
     component: lazyLoad('My'),
   },
   {
     path: '/summon',
-    title: 'Summon',
+    title: '十二星座限量数字藏品',
     notNeedLogin: true,
     component: lazyLoad('Summon'),
   },
   {
     path: '/collection',
-    title: 'Collection',
+    title: '我的藏品',
     component: lazyLoad('Collection'),
   },
   {
     path: '/exchange',
-    title: 'Exchange',
+    title: '会员尊享',
     component: lazyLoad('Exchange'),
   },
-  // {
-  //   path: "/",
-  //   component : <Layout />,
-  //   children: [
-  //     {
-  //       path: "/",
-  //       component : <Home />,
-  //     },
-  //   ],
-  // },
   {
     path: '*',
     title: '404',
