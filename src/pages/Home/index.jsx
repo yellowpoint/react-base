@@ -2,19 +2,14 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
 
+import TopBtns from '@/components/TopBtns';
+
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <div className={styles.page}>
-      <div className={styles.top}>
-        <div className={styles.toMy} onClick={() => navigate('/my')}>
-          我的藏品
-        </div>
-        <div className={styles.toRule} onClick={() => navigate('/my')}>
-          规则&gt;&gt;
-        </div>
-      </div>
+      <TopBtns />
 
       <div className={styles.bottom}>
         <div

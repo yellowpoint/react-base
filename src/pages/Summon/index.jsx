@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './index.module.less';
 import Poster from './Poster';
 
+import TopBtns from '@/components/TopBtns';
 import { useUser } from '@/components/UserContext';
 
 const UserPoints = () => {
@@ -32,16 +33,7 @@ const Summon = () => {
   };
   return (
     <div className={styles.page}>
-      <div className={styles.top}>
-        {!!userInfo && (
-          <div className={styles.toMy} onClick={() => navigate('/collection')}>
-            我的藏品
-          </div>
-        )}
-        <div className={styles.toRule} onClick={() => navigate('/my')}>
-          规则&gt;&gt;
-        </div>
-      </div>
+      <TopBtns black />
       <div className={styles.main}>
         <div className={styles.arrowLeft}></div>
         <div className={styles.box}></div>

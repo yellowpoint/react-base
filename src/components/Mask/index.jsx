@@ -12,9 +12,7 @@ const Mask = ({ open = false, children, ...rest }) => {
   return (
     <AntdMask visible={visible} destroyOnClose {...rest}>
       <div className={styles.mask}>
-        <div className={styles.close} onClick={handleClose}>
-          关闭
-        </div>
+        <div className={styles.close} onClick={handleClose}></div>
         <div className={styles.content}>{children}</div>
       </div>
     </AntdMask>
