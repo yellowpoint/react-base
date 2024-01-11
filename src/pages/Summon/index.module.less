@@ -3,7 +3,7 @@
   min-height: 100%;
   padding: 33px 0 90px;
   background: url("@/assets/img/summon/bg.png") no-repeat center -250px; // 切图里包含了微信头部高度先减去
-  background-color: #2072b6;
+  background-color: #afd4ef;
   background-size: 100% auto;
 }
 
@@ -59,7 +59,7 @@
 .list {
   position: relative;
   height: 340px;
-  margin: 66px 32px 0;
+  margin: 0 32px;
 
   &::after {
     position: absolute;
@@ -91,10 +91,11 @@
 .cards {
   color: #fff;
 
-  p {
+  h1 {
     padding-left: 45px;
     margin-bottom: 70px;
     font-size: 61px;
+    font-weight: normal;
   }
 
   .cardList {
@@ -146,12 +147,20 @@
   align-items: center;
   margin-top: 28px;
 
+  &.mask {
+    margin-top: 300px;
+
+    .expend {
+      color: #fff;
+    }
+
+    .surplus {
+      display: none;
+    }
+  }
+
   .btn {
-    width: 936px;
-    height: 121px;
     margin: 0 auto;
-    background: url("@/assets/img/summon/btn.png") no-repeat;
-    background-size: 100% auto;
   }
 
   .expend {

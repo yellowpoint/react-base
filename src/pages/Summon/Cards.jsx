@@ -3,7 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import BScroll from '@better-scroll/core';
 import ScrollBar from '@better-scroll/scroll-bar';
 
+import { Btn } from '@/components';
+
 import { nameList } from './List';
+import SummonBtn from './SummonBtn';
 
 import styles from './index.module.less';
 
@@ -31,7 +34,7 @@ const Cards = ({ index }) => {
 
   return (
     <div className={styles.cards}>
-      <p>款式预览</p>
+      <h1>款式预览</h1>
       <div className={styles.cardList} ref={ref}>
         <div className={styles.cardImgs}>
           {nameList.map((i, index) => (
@@ -48,6 +51,7 @@ const Cards = ({ index }) => {
           <div className={styles.indicator}></div>
         </div>
       </div>
+      <SummonBtn inMask />
     </div>
   );
 };
