@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import styles from './index.module.less';
-
 import TopBtns from '@/components/TopBtns';
+
+import styles from './index.module.less';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,6 +12,10 @@ const Home = () => {
       <TopBtns />
 
       <div className={styles.bottom}>
+        <div
+          className={styles.toMember}
+          onClick={() => navigate('/summon')}
+        ></div>
         <div
           className={styles.toSummon}
           onClick={() => navigate('/summon')}

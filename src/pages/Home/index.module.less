@@ -11,18 +11,24 @@
 .bottom {
   position: absolute;
   bottom: 136px;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 0 65px;
 
-  .toSummon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  > div {
     width: 410px;
     height: 100px;
-    margin: 0 auto;
-    background: url("@/assets/img/home/summon.png") no-repeat;
+    background-repeat: no-repeat;
     background-size: 100% auto;
     border-radius: 50px;
+  }
+
+  .toMember {
+    background-image: url("@/assets/img/home/member.png");
+  }
+
+  .toSummon {
+    background-image: url("@/assets/img/home/summon.png");
   }
 }

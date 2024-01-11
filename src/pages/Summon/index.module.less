@@ -16,6 +16,7 @@
   .arrowRight {
     position: absolute;
     top: 204px;
+    z-index: 2;
     width: 84px;
     height: 84px;
     background: url("@/assets/img/summon/arrow.png") no-repeat;
@@ -37,7 +38,7 @@
     justify-content: center;
     width: 708px;
     height: 690px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     background: url("@/assets/img/summon/box.png") no-repeat;
     background-size: 100% auto;
     animation: animation-box infinite 2s ease-in-out;
@@ -56,8 +57,87 @@
 }
 
 .list {
+  position: relative;
   height: 340px;
-  margin-top: 66px;
+  margin: 66px 32px 0;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 162px;
+    content: "";
+    background: #fff;
+    border-radius: 48px;
+  }
+
+  .imgs {
+    position: relative;
+    bottom: -40px;
+    z-index: 1;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .item {
+    flex: none;
+    width: 250px;
+    font-size: 29px;
+    text-align: center;
+  }
+}
+
+.cards {
+  color: #fff;
+
+  p {
+    padding-left: 45px;
+    margin-bottom: 70px;
+    font-size: 61px;
+  }
+
+  .cardList {
+    width: 100vw;
+    height: 800px;
+    white-space: nowrap;
+  }
+
+  .cardImgs {
+    display: inline-block;
+  }
+
+  .scrollbar {
+    position: relative;
+    bottom: -40px;
+    width: 950px;
+    height: 35px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 18px;
+  }
+
+  .indicator {
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(90deg, #195ce6, #8cd4ff);
+    border-radius: 18px;
+  }
+
+  .cardItem {
+    display: inline-block;
+    font-size: 29px;
+    text-align: center;
+
+    .cardBox {
+      flex: none;
+      width: 418px;
+      height: 618px;
+      padding: 100px 35px 0;
+      background: url("@/assets/img/cardBg.png") no-repeat;
+      background-size: 100% auto;
+    }
+  }
 }
 
 .bottom {

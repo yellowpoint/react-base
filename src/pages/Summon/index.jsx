@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './index.module.less';
-import Poster from './Poster';
-
 import TopBtns from '@/components/TopBtns';
 import { useUser } from '@/components/UserContext';
+
+import BoxSwiper from './BoxSwiper';
+import List from './List';
+import Poster from './Poster';
+
+import styles from './index.module.less';
 
 const UserPoints = () => {
   const { userInfo } = useUser();
@@ -34,13 +37,9 @@ const Summon = () => {
   return (
     <div className={styles.page}>
       <TopBtns black />
-      <div className={styles.main}>
-        <div className={styles.arrowLeft}></div>
-        <div className={styles.box}></div>
-        <div className={styles.arrowRight}></div>
-      </div>
+      <BoxSwiper />
       <div className={styles.tips}>这是一个充满魅力的星座</div>
-      <div className={styles.list}>娃娃列表</div>
+      <List />
       <Poster show={posterShow} afterClose={() => setPosterShow(false)} />
       <div className={styles.bottom}>
         <button onClick={handleShare}>分享</button>

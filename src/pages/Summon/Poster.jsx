@@ -1,10 +1,12 @@
-import html2canvas from 'html2canvas';
 import React, { useRef, useEffect, useState } from 'react';
 
-import styles from './index.module.less';
+import html2canvas from 'html2canvas';
 
-import img_1 from '@/assets/img/card/1.jpg';
 import { Mask } from '@/components';
+
+import img_1 from '/cards/1.jpg?url';
+
+import styles from './index.module.less';
 
 const PosterComponent = ({ img, show, ...rest }) => {
   const posterRef = useRef(null);
