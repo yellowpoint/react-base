@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import BScroll from '@better-scroll/core';
 import ScrollBar from '@better-scroll/scroll-bar';
 
-import { Btn } from '@/components';
+import { NftCard } from '@/components';
 
 import { nameList } from './List';
 import SummonBtn from './SummonBtn';
@@ -39,9 +39,7 @@ const Cards = ({ index }) => {
         <div className={styles.cardImgs}>
           {nameList.map((i, index) => (
             <div className={styles.cardItem} key={index} ref={getRef}>
-              <div className={styles.cardBox}>
-                <img src={`/cards/${index + 1}.jpg`} alt={nameList[index]} />
-              </div>
+              <NftCard index={index} />
               <div>{nameList[index]}</div>
             </div>
           ))}

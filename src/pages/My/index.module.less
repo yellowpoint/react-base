@@ -1,0 +1,95 @@
+.page {
+  position: relative;
+  min-height: 100%;
+  background: url("@/assets/img/my/bg.png") no-repeat;
+  background-color: #fff;
+  background-size: 100% auto;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  height: 723px;
+  padding-top: 50px;
+  overflow: hidden;
+
+  .progressBar {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 215px;
+
+    .tips {
+      font-size: 30px;
+      color: #163d88;
+    }
+  }
+
+  .textContainer {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: center;
+    height: 215px;
+
+    p {
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 45px;
+      color: #2753a8;
+      -webkit-text-stroke: 1px #fff;
+      // text-stroke: 3px #fff;
+    }
+
+    div {
+      margin-top: 20px;
+      font-size: 35px;
+      color: #fff;
+    }
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 20%;
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.main {
+  margin-top: -60px;
+  background: #fff;
+  border-radius: 48px 48px 0 0;
+
+  p {
+    padding: 80px 60px 55px;
+    font-size: 37px;
+    color: #595757;
+  }
+
+  .cards {
+    :global {
+      .adm-swiper-slide {
+        transition: all 0.3s ease-in-out;
+        transform: scale(0.9);
+      }
+
+      .adm-swiper-slide-active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 660px;
+    user-select: none;
+  }
+}

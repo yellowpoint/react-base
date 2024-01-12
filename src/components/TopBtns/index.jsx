@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import styles from './index.module.less';
-
 import Rule from '@/components/Rule';
 import { useUser } from '@/components/UserContext';
+
+import styles from './index.module.less';
 
 const TopBtns = ({ black = false }) => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const TopBtns = ({ black = false }) => {
   return (
     <div className={`${styles.top} ${black ? styles.black : ''}`}>
       {!!userInfo && (
-        <div className={styles.toMy} onClick={() => navigate('/collection')}>
+        <div className={styles.toMy} onClick={() => navigate('/my')}>
           我的藏品
         </div>
       )}

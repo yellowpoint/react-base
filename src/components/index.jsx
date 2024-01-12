@@ -24,3 +24,4 @@ export const Btn = ({ children, className, ...rest }) => {
 };
 
 export { default as Mask } from './Mask';
+export { default as NftCard } from './NftCard';
