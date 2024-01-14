@@ -22,9 +22,9 @@ const routerList = [
     component: lazyLoad('Summon'),
   },
   {
-    path: '/collection',
-    title: '我的藏品',
-    component: lazyLoad('Collection'),
+    path: '/detail',
+    title: '藏品详情',
+    component: lazyLoad('Detail'),
   },
   {
     path: '/exchange',
