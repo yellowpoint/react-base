@@ -1,7 +1,7 @@
 export const getAuthUrl = () => {
   const isPro = location.host === 'www.mama100.com'; // todo 可否用域名来判断开发环境？
 
-  const mock = 'http://localhost:5500/src/mock/auth.html';
+  const mock = location.origin + '/mock';
   // 默认为测试环境
   let authEndpoint =
     'https://weixin.mama100.cn/mama100-wechat/auth2/mama100wechat/unSilence/auth2';

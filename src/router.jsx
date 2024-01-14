@@ -32,6 +32,12 @@ const routerList = [
     component: lazyLoad('Exchange'),
   },
   {
+    path: '/mock',
+    title: '模拟登录',
+    notNeedLogin: true,
+    component: lazyLoad('Mock'),
+  },
+  {
     path: '*',
     title: '404',
     notNeedLogin: true,
