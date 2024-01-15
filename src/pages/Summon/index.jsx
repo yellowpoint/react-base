@@ -27,6 +27,8 @@ const Summon = () => {
       <List />
       <Poster show={posterShow} afterClose={() => setPosterShow(false)} />
       <button onClick={handleShare}>分享</button>
+      <button onClick={() => navigate('/exchange')}>直接兑换</button>
+
       <SummonBtn />
     </div>
   );

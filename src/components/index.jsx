@@ -15,13 +15,16 @@ export const PageLoading = () => {
   );
 };
 
-export const Btn = ({ children, className, ...rest }) => {
+export const Btn = ({ children, className, fill, ...rest }) => {
   return (
-    <div className={styles.btn} {...rest}>
-      {children}
+    <div className={`${styles.btn} ${fill && styles.fill}`} {...rest}>
+      <div className={styles.btnEle}>
+        <div className={styles.btnText}>{children}</div>
+      </div>
     </div>
   );
 };
 
 export { default as Mask } from './Mask';
 export { default as NftCard } from './NftCard';
+export { default as Prize } from './Prize';

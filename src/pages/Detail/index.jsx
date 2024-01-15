@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { Button, Space } from 'antd-mobile';
 
@@ -6,7 +6,8 @@ import { cfx_accounts } from '@/assets/anyweb.js';
 
 import styles from './index.module.less';
 
-const Detail = () => {
+const Detail = ({ match }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
   return (
     <div className={styles.page}>
@@ -31,7 +32,7 @@ const Detail = () => {
           <h1>十二星座藏品-白羊座</h1>
           <div className={styles.row}>
             <p>编号:</p>
-            <p>3</p>
+            <p>{id}</p>
           </div>
           <div className={styles.row}>
             <span>描述:</span>

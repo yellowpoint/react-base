@@ -22,7 +22,7 @@ const routerList = [
     component: lazyLoad('Summon'),
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     title: '藏品详情',
     component: lazyLoad('Detail'),
   },

@@ -1,5 +1,6 @@
-import { Mask as AntdMask } from 'antd-mobile';
 import React, { useEffect, useState } from 'react';
+
+import { Mask as AntdMask } from 'antd-mobile';
 
 import styles from './index.module.less';
 

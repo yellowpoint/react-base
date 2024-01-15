@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import { Dialog } from 'antd-mobile';
 
+import { Mask, Prize } from '@/components';
 import { useUser } from '@/components/UserContext';
 
 import styles from './index.module.less';
@@ -18,11 +21,12 @@ const UserPoints = () => {
 };
 
 const Exchange = () => {
+  const [open, setOpen] = useState(false);
   const { userInfo, login } = useUser();
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
-      content: '是否确认消耗xxx积分进行抽取',
+      content: '是否确认消耗xxx积分召唤',
       closeOnAction: true,
       actions: [
         [
@@ -40,6 +44,7 @@ const Exchange = () => {
       onAction: (action) => {
         if (action.key !== 'ok') return;
         console.log('actionaa');
+        setOpen(true);
       },
     });
   };
@@ -48,6 +53,9 @@ const Exchange = () => {
       <div className={styles.bottom}>
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
+        <Mask open={open} afterClose={() => setOpen(false)}>
+          <Prize />
+        </Mask>
       </div>
     </div>
   );
