@@ -2,21 +2,22 @@ import React, { useRef, useEffect, useState } from 'react';
 
 import html2canvas from 'html2canvas';
 
-import { Mask } from '@/components';
+import { NftCard } from '@/components';
 
 import img_1 from '/cards/1.jpg?url';
 
 import styles from './index.module.less';
 
-const PosterComponent = ({ img, show, ...rest }) => {
+const PosterComponent = ({ img }) => {
   const posterRef = useRef(null);
   const imageContainerRef = useRef(null);
-
   const generatePoster = async () => {
     if (!posterRef.current) return;
 
     try {
-      const canvas = await html2canvas(posterRef.current);
+      const canvas = await html2canvas(posterRef.current, {
+        backgroundColor: null,
+      });
       // 获取图像的data URL
       const dataUrl = canvas.toDataURL();
       // 创建一个新的图片元素
@@ -32,15 +33,26 @@ const PosterComponent = ({ img, show, ...rest }) => {
     }
   };
 
+  useEffect(() => {
+    // todo 测试是否会由于动画导致dom还没出现就执行了，还要判断内部星座图片加载完了
+    setTimeout(() => {
+      generatePoster();
+    }, 100);
+  }, []);
   return (
-    <Mask open={show} afterShow={generatePoster} {...rest}>
-      <div className={styles.posterBox} ref={imageContainerRef}>
-        <div ref={posterRef} className={styles.poster}>
-          <img className={styles.card} src={img_1} alt="星座卡片" />
-          <img className={styles.qrCode} src={img_1} alt="二维码" />
+    <div className={styles.posterBox} ref={imageContainerRef}>
+      <div ref={posterRef} className={styles.poster}>
+        <NftCard index={0} />
+        <div className={styles.qrCode}>
+          <p>
+            扫码查看详情
+            <br />
+            加人丁丁12星座藏品之旅
+          </p>
+          <img src={img_1} alt="二维码" />
         </div>
       </div>
-    </Mask>
+    </div>
   );
 };
 

@@ -1,18 +1,22 @@
 .cardBox {
   position: relative;
   width: 100%;
-  padding-top: 147.27%; // 图片 宽660 高972
-  background: url("@/assets/img/cardBg.png") center no-repeat;
+  // padding-top: 147.27%; // 图片 宽660 高972
+  padding-top: 150.625%; // 图片 宽800 高1205
+  background: url("@/assets/img/cardBg2.png") center no-repeat;
   background-size: 100% auto;
 
   .main {
     position: absolute;
-    top: 16%;
-    left: 50%;
+    top: 14%;
+    left: 0;
     z-index: 1;
-    width: 85%;
+    width: 100%;
+    padding: 0 20px;
     overflow: hidden;
-    border-radius: 20px;
-    transform: translate(-50%);
+
+    img {
+      border-radius: 20px;
+    }
   }
 }

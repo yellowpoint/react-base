@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Dialog } from 'antd-mobile';
 
-import { Btn } from '@/components';
+import { Btn, Mask, Prize } from '@/components';
 import { useUser } from '@/components/UserContext';
 
 import styles from './index.module.less';
@@ -23,6 +23,8 @@ const UserPoints = () => {
 
 const SummonBtn = ({ inMask }) => {
   const { userInfo, login } = useUser();
+  const [open, setOpen] = useState(false);
+
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
@@ -44,6 +46,7 @@ const SummonBtn = ({ inMask }) => {
       onAction: (action) => {
         if (action.key !== 'ok') return;
         console.log('actionaa');
+        setOpen(true);
       },
     });
   };
@@ -53,6 +56,15 @@ const SummonBtn = ({ inMask }) => {
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
       <UserPoints />
+      <Mask
+        open={open}
+        afterClose={() => setOpen(false)}
+        afterShow={() => {
+          console.log('afterShow');
+        }}
+      >
+        <Prize isShare />
+      </Mask>
     </div>
   );
 };

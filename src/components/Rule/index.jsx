@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import styles from './index.module.less';
-
 import Mask from '@/components/Mask';
+
+import styles from './index.module.less';
 
 const Rule = () => {
   const [isOpen, setIsOpen] = useState(false);
