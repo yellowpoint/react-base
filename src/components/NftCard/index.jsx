@@ -4,7 +4,7 @@ const NftCard = ({ index }) => {
   return (
     <div className={styles.cardBox}>
       <div className={styles.main}>
-        <img src={`/cards/${index + 1}.jpg`} />
+        <img src={`/imgs/cards/${index + 1}.jpg`} />
       </div>
     </div>
   );

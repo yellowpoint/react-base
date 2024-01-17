@@ -3,9 +3,22 @@
   height: 100%;
   // height: 2304px;
   padding-top: 82px;
-  background: url("@/assets/img/home/bg.jpg") no-repeat;
+  background: url("imgs/home/bg.jpg") no-repeat;
   background-color: #2072b6;
   background-size: 100% auto;
+}
+
+.title {
+  width: 938px;
+  margin: 0 auto;
+}
+
+.ding {
+  position: absolute;
+  top: 700px;
+  right: 0;
+  width: 869px;
+  animation: floatAnimation 2s infinite ease-in-out;
 }
 
 .bottom {
@@ -25,10 +38,14 @@
   }
 
   .toMember {
-    background-image: url("@/assets/img/home/member.png");
+    background-image: url("imgs/home/member.png");
   }
 
   .toSummon {
-    background-image: url("@/assets/img/home/summon.png");
+    background-image: url("imgs/home/summon.png");
   }
+}
+
+@keyframes floatAnimation {
+  50% { transform: translate(30px, 30px); }
 }

@@ -44,7 +44,7 @@ const List = () => {
               key={index}
               onClick={() => handleClick(index)}
             >
-              <img src={`/dolls/${index + 1}.png`} alt={nameList[index]} />
+              <img src={`/imgs/dolls/${index + 1}.png`} alt={nameList[index]} />
               <p>{nameList[index]}</p>
             </div>
           ))}

@@ -4,8 +4,6 @@ import html2canvas from 'html2canvas';
 
 import { NftCard } from '@/components';
 
-import img_1 from '/cards/1.jpg?url';
-
 import styles from './index.module.less';
 
 const PosterComponent = ({ img }) => {
@@ -49,7 +47,7 @@ const PosterComponent = ({ img }) => {
             <br />
             加人丁丁12星座藏品之旅
           </p>
-          <img src={img_1} alt="二维码" />
+          <img src="/imgs/cards/1.jpg" alt="二维码" />
         </div>
       </div>
     </div>

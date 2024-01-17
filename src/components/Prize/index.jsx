@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import img_bg from '@/assets/img/prize/bg.png';
-import img_star from '@/assets/img/prize/star.png';
 import { NftCard, Btn } from '@/components';
 
 import Poster from './Poster';
@@ -21,12 +19,12 @@ const Prize = ({ isShare }) => {
   return (
     <div className={styles.prize}>
       <div className={styles.animation}>
-        <img className={styles.bg} src={img_bg} />
+        <img className={styles.bg} src="imgs/prize/bg.png" />
         <div>
-          <img className={styles.star} src={img_star} />
-          <img className={styles.star} src={img_star} />
-          <img className={styles.star} src={img_star} />
-          <img className={styles.star} src={img_star} />
+          <img className={styles.star} src="imgs/prize/star.png" alt="星星" />
+          <img className={styles.star} src="imgs/prize/star.png" alt="星星" />
+          <img className={styles.star} src="imgs/prize/star.png" alt="星星" />
+          <img className={styles.star} src="imgs/prize/star.png" alt="星星" />
         </div>
       </div>
       <div className={styles.main}>

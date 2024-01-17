@@ -10,7 +10,8 @@ const Home = () => {
   return (
     <div className={styles.page}>
       <TopBtns />
-
+      <img className={styles.title} src="/imgs/home/title.png" alt="标题" />
+      <img className={styles.ding} src="/imgs/home/dingding.png" alt="丁丁" />
       <div className={styles.bottom}>
         <div
           className={styles.toMember}

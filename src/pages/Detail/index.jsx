@@ -13,7 +13,7 @@ const Detail = ({ match }) => {
     <div className={styles.page}>
       <div className={styles.imgBox}>
         <div className={styles.img}>
-          <img src="/cards/1.jpg" />
+          <img src="/imgs/cards/1.jpg" />
         </div>
       </div>
       <div className={styles.main}>
