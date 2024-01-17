@@ -19,6 +19,7 @@ export const nameList = [
   '摩羯座',
   '水瓶座',
   '双鱼座',
+  '隐藏款',
 ];
 
 const List = () => {

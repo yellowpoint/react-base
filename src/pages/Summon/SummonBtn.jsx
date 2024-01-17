@@ -7,10 +7,14 @@ import * as API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
 import { useUser } from '@/components/UserContext';
 
+import { useSummonContext } from './SummonContext';
+
 import styles from './index.module.less';
 
-const UserPoints = ({ summonData }) => {
+const UserPoints = () => {
   const { userInfo } = useUser();
+  const { summonData, setSummonData } = useSummonContext();
+
   if (!userInfo) return null;
   return (
     <>
@@ -22,8 +26,9 @@ const UserPoints = ({ summonData }) => {
   );
 };
 
-const SummonBtn = ({ inMask, summonData, setSummonData }) => {
+const SummonBtn = ({ inMask }) => {
   const { userInfo, login } = useUser();
+  const { summonData, setSummonData } = useSummonContext();
   const [open, setOpen] = useState(false);
   console.log('userInfo', userInfo);
 

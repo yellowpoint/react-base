@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100%;
   padding: 33px 0 90px;
-  background: url("imgs/summon/bg.png") no-repeat center -250px; // 切图里包含了微信头部高度先减去
+  background: url("/imgs/summon/bg.png") no-repeat center -250px; // 切图里包含了微信头部高度先减去
   background-color: #afd4ef;
   background-size: 100% auto;
 }
@@ -11,7 +11,7 @@
   position: relative;
   width: 100%;
   margin-top: 80px;
-  // transform-style: preserve-3d;
+
   .arrowLeft,
   .arrowRight {
     position: absolute;
@@ -19,7 +19,7 @@
     z-index: 2;
     width: 84px;
     height: 84px;
-    background: url("imgs/summon/arrow.png") no-repeat;
+    background: url("/imgs/summon/arrow.png") no-repeat;
     background-size: 100% auto;
     border-radius: 50%;
   }
@@ -71,10 +71,13 @@
   }
 
   .imgs {
-    position: relative;
-    bottom: -40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     z-index: 1;
     display: flex;
+    width: 100%;
+    padding-bottom: 20px;
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -127,6 +130,7 @@
   .cardItem {
     display: inline-block;
     width: 418px;
+    margin: 0 20px;
     font-size: 29px;
     text-align: center;
   }

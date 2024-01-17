@@ -8,13 +8,15 @@ import { useUser } from '@/components/UserContext';
 import BoxSwiper from './BoxSwiper';
 import List from './List';
 import SummonBtn from './SummonBtn';
+import { SummonProvider, useSummonContext } from './SummonContext';
 
 import styles from './index.module.less';
 
-const Summon = () => {
+const SummonCom = () => {
   const navigate = useNavigate();
   const { userInfo, login } = useUser();
-  const [summonData, setSummonData] = useState({});
+  const { summonData, setSummonData } = useSummonContext();
+
   useEffect(() => {
     if (!userInfo) return;
     const init = async () => {
@@ -25,6 +27,7 @@ const Summon = () => {
     };
     init();
   }, [userInfo]);
+
   return (
     <div className={styles.page}>
       <TopBtns black />
@@ -40,9 +43,16 @@ const Summon = () => {
       <div className={styles.exchange} onClick={() => navigate('/exchange')}>
         {`直抽隐藏款>>`}
       </div>
-      <SummonBtn summonData={summonData} setSummonData={setSummonData} />
+      <SummonBtn />
     </div>
   );
 };
 
+const Summon = () => {
+  return (
+    <SummonProvider>
+      <SummonCom />
+    </SummonProvider>
+  );
+};
 export default Summon;
