@@ -31,10 +31,7 @@ export default defineConfig(({ mode, command }) => {
           // 整个的配置对象都会最终给到less的执行参数（全局参数）中去
           javascriptEnabled: true,
           // 每个less文件都注入
-          // additionalData: `@import "${path.resolve(
-          //   __dirname,
-          //   'src/theme.less',
-          // )}";`,
+          additionalData: '@import "@/assets/var.less";',
         },
       },
     },

@@ -1,34 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Dialog } from 'antd-mobile';
 
+import * as API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
 import { useUser } from '@/components/UserContext';
 
 import styles from './index.module.less';
 
-const UserPoints = () => {
+const UserPoints = ({ summonData }) => {
   const { userInfo } = useUser();
   if (!userInfo) return null;
   return (
     <>
-      <div className={styles.expend}>消耗168积分</div>
+      <div className={styles.expend}>消耗{summonData.cost_score}积分</div>
       <div className={styles.surplus}>
-        当前剩余积分：{userInfo.points} <span>如何获取积分</span>
+        当前剩余积分：{summonData.left_score} <span>如何获取积分</span>
       </div>
     </>
   );
 };
 
-const SummonBtn = ({ inMask }) => {
+const SummonBtn = ({ inMask, summonData, setSummonData }) => {
   const { userInfo, login } = useUser();
   const [open, setOpen] = useState(false);
+  console.log('userInfo', userInfo);
 
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
-      content: '是否确认消耗xxx积分进行抽取',
+      content: `是否确认消耗${summonData.cost_score}积分进行抽取`,
       closeOnAction: true,
       actions: [
         [
@@ -43,19 +45,21 @@ const SummonBtn = ({ inMask }) => {
           },
         ],
       ],
-      onAction: (action) => {
+      onAction: async (action) => {
         if (action.key !== 'ok') return;
-        console.log('actionaa');
+        const data = await API.summon({ openid: userInfo.openid, is_free: 0 });
         setOpen(true);
+        setSummonData(data);
       },
     });
   };
+
   return (
     <div className={`${styles.bottom} ${inMask && styles.mask}`}>
       <Btn className={styles.btn} onClick={handleSummon}>
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
-      <UserPoints />
+      <UserPoints summonData={summonData} />
       <Mask
         open={open}
         afterClose={() => setOpen(false)}

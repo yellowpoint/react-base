@@ -1,7 +1,8 @@
-import Cookies from 'js-cookie';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import { getAuthUrl } from '@/api';
+import Cookies from 'js-cookie';
+
+import * as API from '@/api';
 
 const COOKIE_KEY = 'userInfo_nft_2024'; // 防止和其他页面搞混
 
@@ -12,34 +13,55 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const defaultUser = Cookies.getJSON(COOKIE_KEY);
   const [userInfo, setUserInfo] = useState(defaultUser);
-
+  const [isReady, setIsReady] = useState(false);
   const setUser = (newUserInfo) => {
     setUserInfo(newUserInfo);
   };
 
   // 登录
   const login = () => {
-    location.href = getAuthUrl();
+    location.href = API.getAuthUrl();
   };
 
   // 登出
   const logout = () => {
     setUser(null);
   };
+  const getUserInfo = async (openid) => {
+    const data = await API.memberInfo({ openid });
+    const newData = { ...data, openid };
 
-  useEffect(() => {
-    // 没有该项目的用户信息，且有mama100的token
-    if (!defaultUser && Cookies.get('token')) {
-      alert('调用自己的登录接口');
-      const data = { points: 1000 };
-
-      Cookies.set(COOKIE_KEY, data, { expires: 30 });
-      setUser(data);
+    Cookies.set(COOKIE_KEY, newData, { expires: 30 });
+    setUser(newData);
+    setIsReady(true);
+  };
+  const init = async () => {
+    // 不需要登录信息的情况
+    if (!defaultUser && !Cookies.get('token')) {
+      setIsReady(true);
     }
+    // 没有该项目的用户信息，且有mama100的token时调用内部登录
+    if (!defaultUser && Cookies.get('token')) {
+      const openid = Cookies.get('openId');
+      await API.sessionSave({
+        openid,
+        token: Cookies.get('token'),
+        customer_id: Cookies.get('customerId'),
+        union_id: Cookies.get('unionId'),
+      });
+      getUserInfo(openid);
+    }
+    // 有登录则更新数据
+    if (defaultUser?.openid) {
+      getUserInfo(defaultUser.openid);
+    }
+  };
+  useEffect(() => {
+    init();
   }, []);
   return (
     <UserContext.Provider value={{ userInfo, setUser, login, logout }}>
-      {children}
+      {isReady && children}
     </UserContext.Provider>
   );
 };

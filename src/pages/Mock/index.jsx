@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 
+import Cookies from 'js-cookie';
+
 const MockAuth = () => {
   // 获取 URL 中的 redirectUrl 参数
   const urlParams = new URLSearchParams(window.location.search);
   const redirectUrl = urlParams.get('redirectUrl');
   // 添加点击事件监听器
   const handleRedirectClick = () => {
-    // 模拟获取 token（可以根据实际情况进行修改）
-    const token = 'your_token_value';
-
-    // 设置 token 到 Cookie
-    document.cookie = `token=${token}; path=/;`;
+    Cookies.set('hhId', '1080669374');
+    Cookies.set('token', '75e7ac658951e4c1cacad6d4d0b674ee');
+    Cookies.set('customerId', '80669374');
+    Cookies.set('unionId', 'oZyc1uLjhxoP2m-jt-vtjAAje3X0');
+    Cookies.set('openId', 'o-3qn0aotYbf05zXXC82pLM2bYBk');
 
     if (redirectUrl) {
       window.location.href = redirectUrl;
