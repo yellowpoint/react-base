@@ -4,7 +4,7 @@ import { Mask as AntdMask } from 'antd-mobile';
 
 import styles from './index.module.less';
 
-const Mask = ({ open = false, children, ...rest }) => {
+const Mask = ({ open = false, children, noClose, ...rest }) => {
   const [visible, setVisible] = useState(open);
   const handleClose = () => setVisible(false);
   useEffect(() => {
@@ -13,7 +13,7 @@ const Mask = ({ open = false, children, ...rest }) => {
   return (
     <AntdMask visible={visible} destroyOnClose {...rest}>
       <div className={styles.mask}>
-        <div className={styles.close} onClick={handleClose}></div>
+        {!noClose && <div className={styles.close} onClick={handleClose}></div>}
         <div className={styles.content}>{children}</div>
       </div>
     </AntdMask>

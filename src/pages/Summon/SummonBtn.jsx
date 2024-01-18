@@ -11,13 +11,13 @@ import { useSummonContext } from './SummonContext';
 
 import styles from './index.module.less';
 
-const UserPoints = () => {
+const UserPoints = ({ hasFree }) => {
   const { userInfo } = useUser();
   const { summonData, setSummonData } = useSummonContext();
 
   if (!userInfo) return null;
   if (summonData.disabled) return null;
-
+  if (hasFree) return null;
   return (
     <>
       <div className={styles.expend}>消耗{summonData.cost_score}积分</div>
@@ -32,11 +32,15 @@ const SummonBtn = ({ inMask }) => {
   const { userInfo, login } = useUser();
   const { summonData, setSummonData } = useSummonContext();
   const [open, setOpen] = useState(false);
-
+  const hasFree = summonData.free_times > 0;
+  const getTips = () => {
+    if (hasFree) return '一次免费次数';
+    return `${summonData.cost_score}积分`;
+  };
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
-      content: `是否确认消耗${summonData.cost_score}积分进行抽取`,
+      content: `是否确认消耗${getTips()}进行抽取`,
       closeOnAction: true,
       actions: [
         [
@@ -53,8 +57,9 @@ const SummonBtn = ({ inMask }) => {
       ],
       onAction: async (action) => {
         if (action.key !== 'ok') return;
-        // const data = await API.summon({  is_free: 0 });
-        // setSummonData(data);
+        // 0,不免费;1,免费;默认;
+        const data = await API.summon({ is_free: hasFree ? 1 : 0 });
+        setSummonData(data);
         setOpen(true);
       },
     });
@@ -69,7 +74,7 @@ const SummonBtn = ({ inMask }) => {
       >
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
-      <UserPoints summonData={summonData} />
+      <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask
         open={open}
         afterClose={() => setOpen(false)}

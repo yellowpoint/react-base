@@ -1,20 +1,22 @@
+import axios from './axios';
+
+const isPro = location.host === 'www.mama100.com'; // todo 可否用域名来判断开发环境？
+
+const isDev = location.host === 'localhost:8888';
+const mock = location.origin + '/mock';
+
+// 默认为测试环境
+const host_test = 'https://weixin.mama100.cn';
+// 生产环境
+const host_pro = 'https://www.mama100.com';
+const host = isPro ? host_pro : host_test;
+
 export const getAuthUrl = () => {
-  const isPro = location.host === 'www.mama100.com'; // todo 可否用域名来判断开发环境？
+  let authEndpoint = `${host}/mama100-wechat/auth2/mama100wechat/unSilence/auth2`;
 
-  const isDev = location.host === 'localhost:8888';
-  const mock = location.origin + '/mock';
-
-  // 默认为测试环境
-  let authEndpoint =
-    'https://weixin.mama100.cn/mama100-wechat/auth2/mama100wechat/unSilence/auth2';
-
-  // 生产环境
-  if (isPro) {
-    authEndpoint =
-      'https://www.mama100.com/mama100-wechat/auth2/mama100wechat/unSilence/auth2';
-  }
-
+  // 开发时mock
   if (isDev) authEndpoint = mock;
+
   // 回调地址，在cookie塞入token、customerld、unionld、openld，限定域名mama100.com
   const redirectUrl = encodeURIComponent(window.location.href);
   // 1表示要求绑定了微信(注册会员)，如果没有绑定会去注册界面，0:不要求
@@ -27,6 +29,6 @@ export const getAuthUrl = () => {
 // 传入openId，更新token
 export const updateCookies = (params) =>
   axios.get(
-    `https://weixin.mama100.cn/mama100-wechat/cookie/mama100wechat/updateCookies`,
+    `${host}/mama100-wechat/cookie/mama100wechat/updateCookies`,
     params,
   );

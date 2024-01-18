@@ -33,6 +33,12 @@ export const nameList = [
   '双鱼座',
   '隐藏款',
 ];
+// 是否是红包封面
 export const getIsRedpacket = (id) => [201, 202].includes(id);
+// 是否已经有龙卡了
+export const getHasLong = (list) => list.find((i) => [101].includes(i.card_id));
 
 export const getCardName = (id) => idMap[id]?.name;
+
+// 直接兑换所需积分
+export const EXPEND = 399;

@@ -14,6 +14,8 @@ import { SummonProvider, useSummonContext } from './SummonContext';
 import styles from './index.module.less';
 
 const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
+  if (!userInfo) return null;
+
   // 会员不管是否来自会员入口，都显示
   if (isMember) {
     return (

@@ -1,8 +1,9 @@
+import { Toast } from 'antd-mobile';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import { COOKIE_KEY } from '@/components/const';
-import { logout } from '@/components/UserContext';
+import { reLogin } from '@/components/UserContext';
 
 const api = axios.create({
   // baseURL: '//120.46.191.217:8000/api',
@@ -42,19 +43,24 @@ api.interceptors.response.use(
   (response) => {
     const responseData = response.data;
 
+    // 601 token过期
     if (responseData.code === 601) {
-      return responseData.data;
-      console.log('601');
-      logout();
+      Toast.show({
+        icon: 'loading',
+        content: '登录过期，正在为您重新登录',
+        afterClose: () => {
+          reLogin();
+        },
+      });
       return Promise.reject(responseData.code);
     }
 
     // 检查 code 是否为 0
     if (responseData.code !== 0) {
-      // 弹窗或其他处理
-      alert(
-        `错误代码：${responseData.code}\n错误消息：${responseData.message}`,
-      );
+      Toast.show({
+        icon: 'fail',
+        content: responseData.message,
+      });
       return Promise.reject(responseData.code);
     }
 

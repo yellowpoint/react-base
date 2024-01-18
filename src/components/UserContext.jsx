@@ -7,7 +7,9 @@ import { COOKIE_KEY } from '@/components/const';
 
 // 创建上下文
 const UserContext = createContext();
-
+const login = () => {
+  location.href = API.getAuthUrl();
+};
 // 提供者组件
 export const UserProvider = ({ children }) => {
   const defaultUser = Cookies.getJSON(COOKIE_KEY);
@@ -16,13 +18,6 @@ export const UserProvider = ({ children }) => {
   const setUser = (newUserInfo) => {
     setUserInfo(newUserInfo);
   };
-
-  // 登录
-  const login = () => {
-    location.href = API.getAuthUrl();
-  };
-
-  // 登出
 
   const getUserInfo = async (openid) => {
     const data = await API.memberInfo({ openid });
@@ -72,8 +67,9 @@ export const useUser = () => {
   return context;
 };
 
-export const logout = () => {
+export const reLogin = () => {
+  API.updateCookies();
   Cookies.remove(COOKIE_KEY);
   Cookies.remove('token');
-  // location.reload();
+  login();
 };

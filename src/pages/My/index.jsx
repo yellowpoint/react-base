@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import API from '@/api';
+import { getHasLong } from '@/components/const';
 
 import Main from './Main';
 import Top from './Top';
@@ -12,7 +13,7 @@ const My = () => {
   const navigate = useNavigate();
 
   const [myData, setMyData] = useState([]);
-
+  const hasLong = getHasLong(myData);
   useEffect(() => {
     const init = async () => {
       const data = await API.collectDetail();
@@ -22,7 +23,7 @@ const My = () => {
   }, []);
   return (
     <div className={styles.page}>
-      <Top num={myData.length} />
+      <Top num={myData.length} hasLong={hasLong} />
       <Main myData={myData} />
     </div>
   );

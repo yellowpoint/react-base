@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import { Dialog } from 'antd-mobile';
 
+import API from '@/api';
 import { Mask, Prize } from '@/components';
+import { EXPEND } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
 import styles from './index.module.less';
@@ -12,9 +14,9 @@ const UserPoints = () => {
   if (!userInfo) return null;
   return (
     <>
-      <div className={styles.expend}>消耗168积分</div>
+      <div className={styles.expend}>消耗{EXPEND}积分</div>
       <div className={styles.surplus}>
-        当前剩余积分：{userInfo.points} <span>如何获取积分</span>
+        当前剩余积分：{userInfo.score} <span>如何获取积分</span>
       </div>
     </>
   );
@@ -26,7 +28,7 @@ const Exchange = () => {
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
-      content: '是否确认消耗xxx积分召唤',
+      content: `是否确认消耗${EXPEND}积分召唤`,
       closeOnAction: true,
       actions: [
         [
@@ -41,9 +43,9 @@ const Exchange = () => {
           },
         ],
       ],
-      onAction: (action) => {
+      onAction: async (action) => {
         if (action.key !== 'ok') return;
-        console.log('actionaa');
+        await API.score();
         setOpen(true);
       },
     });
@@ -53,7 +55,7 @@ const Exchange = () => {
       <div className={styles.bottom}>
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
-        <Mask open={open} afterClose={() => setOpen(false)}>
+        <Mask open={open} noClose afterClose={() => setOpen(false)}>
           <Prize id={101} />
         </Mask>
       </div>
