@@ -4,8 +4,8 @@ import BScroll from '@better-scroll/core';
 import ScrollBar from '@better-scroll/scroll-bar';
 
 import { NftCard } from '@/components';
+import { nameList } from '@/components/const';
 
-import { nameList } from './List';
 import SummonBtn from './SummonBtn';
 
 import styles from './index.module.less';
@@ -39,8 +39,8 @@ const Cards = ({ index }) => {
         <div className={styles.cardImgs}>
           {nameList.map((i, index) => (
             <div className={styles.cardItem} key={index} ref={getRef}>
-              <NftCard index={index} />
-              <div>{nameList[index]}</div>
+              <NftCard id={index} />
+              <p>{nameList[index]}</p>
             </div>
           ))}
         </div>

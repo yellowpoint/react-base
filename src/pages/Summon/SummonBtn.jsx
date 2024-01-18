@@ -77,7 +77,7 @@ const SummonBtn = ({ inMask }) => {
           console.log('afterShow');
         }}
       >
-        <Prize isShare />
+        <Prize isShare id={3} />
       </Mask>
     </div>
   );

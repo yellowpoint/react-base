@@ -6,7 +6,7 @@ import { NftCard } from '@/components';
 
 import styles from './index.module.less';
 
-const PosterComponent = ({ img }) => {
+const PosterComponent = ({ id }) => {
   const posterRef = useRef(null);
   const imageContainerRef = useRef(null);
   const generatePoster = async () => {
@@ -40,7 +40,7 @@ const PosterComponent = ({ img }) => {
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>
       <div ref={posterRef} className={styles.poster}>
-        <NftCard index={0} />
+        <NftCard id={id} />
         <div className={styles.qrCode}>
           <p>
             扫码查看详情

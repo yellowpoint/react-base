@@ -16,12 +16,6 @@
     background-size: 100% auto;
   }
 
-  &.disabled {
-    .btnEle {
-      background-image: url("/imgs/btnBg_disabled.png");
-    }
-  }
-
   .btnText {
     position: absolute;
     top: 0;
@@ -31,5 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &.disabled {
+    .btnEle {
+      cursor: not-allowed;
+      background-image: url("/imgs/btnBg_disabled.png");
+    }
   }
 }

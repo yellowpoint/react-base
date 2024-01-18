@@ -25,9 +25,9 @@ export const Btn = ({
 }) => {
   return (
     <div
-      className={`${styles.btn} ${fill && styles.fill} ${
-        disabled && styles.disabled
-      }`}
+      className={`${styles.btn} ${className ? className : ''} ${
+        fill ? styles.fill : ''
+      } ${disabled ? styles.disabled : ''}`}
       onClick={disabled ? null : onClick}
       {...rest}
     >

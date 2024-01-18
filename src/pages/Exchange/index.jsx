@@ -54,7 +54,7 @@ const Exchange = () => {
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
         <Mask open={open} afterClose={() => setOpen(false)}>
-          <Prize />
+          <Prize id={101} />
         </Mask>
       </div>
     </div>

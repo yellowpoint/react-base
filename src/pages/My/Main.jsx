@@ -30,7 +30,7 @@ const Main = () => {
                   navigate('/detail/' + (+index + 1));
                 }}
               >
-                <NftCard index={2} />
+                <NftCard id={2} />
               </div>
             </Swiper.Item>
           ))}
