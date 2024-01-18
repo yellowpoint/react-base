@@ -14,3 +14,10 @@ export const summonIndex = (params) => axios.post(`/summon/index`, params);
 
 // 召唤(api/summons)
 export const summon = (params) => axios.post(`/summon`, params);
+
+// 传入openId，更新token
+export const updateCookies = (params) =>
+  axios.get(
+    `https://weixin.mama100.cn/mama100-wechat/cookie/mama100wechat/updateCookies`,
+    params,
+  );

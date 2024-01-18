@@ -16,6 +16,8 @@ const UserPoints = () => {
   const { summonData, setSummonData } = useSummonContext();
 
   if (!userInfo) return null;
+  if (summonData.disabled) return null;
+
   return (
     <>
       <div className={styles.expend}>消耗{summonData.cost_score}积分</div>
@@ -30,7 +32,6 @@ const SummonBtn = ({ inMask }) => {
   const { userInfo, login } = useUser();
   const { summonData, setSummonData } = useSummonContext();
   const [open, setOpen] = useState(false);
-  console.log('userInfo', userInfo);
 
   const handleSummon = () => {
     if (!userInfo) return login();
@@ -52,16 +53,20 @@ const SummonBtn = ({ inMask }) => {
       ],
       onAction: async (action) => {
         if (action.key !== 'ok') return;
-        const data = await API.summon({ openid: userInfo.openid, is_free: 0 });
+        // const data = await API.summon({ openid: userInfo.openid, is_free: 0 });
+        // setSummonData(data);
         setOpen(true);
-        setSummonData(data);
       },
     });
   };
 
   return (
     <div className={`${styles.bottom} ${inMask && styles.mask}`}>
-      <Btn className={styles.btn} onClick={handleSummon}>
+      <Btn
+        className={styles.btn}
+        onClick={handleSummon}
+        disabled={summonData.disabled}
+      >
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
       <UserPoints summonData={summonData} />

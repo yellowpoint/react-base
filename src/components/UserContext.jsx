@@ -24,9 +24,7 @@ export const UserProvider = ({ children }) => {
   };
 
   // 登出
-  const logout = () => {
-    setUser(null);
-  };
+
   const getUserInfo = async (openid) => {
     const data = await API.memberInfo({ openid });
     const newData = { ...data, openid };
@@ -60,7 +58,7 @@ export const UserProvider = ({ children }) => {
     init();
   }, []);
   return (
-    <UserContext.Provider value={{ userInfo, setUser, login, logout }}>
+    <UserContext.Provider value={{ userInfo, setUser, login }}>
       {isReady && children}
     </UserContext.Provider>
   );
@@ -73,4 +71,10 @@ export const useUser = () => {
     throw new Error('useUser 必须在 UserProvider 内使用');
   }
   return context;
+};
+
+export const logout = () => {
+  Cookies.remove(COOKIE_KEY);
+  Cookies.remove('token');
+  // location.reload();
 };

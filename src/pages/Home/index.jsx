@@ -15,7 +15,7 @@ const Home = () => {
       <div className={styles.bottom}>
         <div
           className={styles.toMember}
-          onClick={() => navigate('/summon')}
+          onClick={() => navigate('/summon?fromMember=true')}
         ></div>
         <div
           className={styles.toSummon}

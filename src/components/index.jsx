@@ -15,9 +15,22 @@ export const PageLoading = () => {
   );
 };
 
-export const Btn = ({ children, className, fill, ...rest }) => {
+export const Btn = ({
+  children,
+  className,
+  fill,
+  disabled = false,
+  onClick,
+  ...rest
+}) => {
   return (
-    <div className={`${styles.btn} ${fill && styles.fill}`} {...rest}>
+    <div
+      className={`${styles.btn} ${fill && styles.fill} ${
+        disabled && styles.disabled
+      }`}
+      onClick={disabled ? null : onClick}
+      {...rest}
+    >
       <div className={styles.btnEle}>
         <div className={styles.btnText}>{children}</div>
       </div>
