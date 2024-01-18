@@ -1,3 +1,5 @@
+export const COOKIE_KEY = 'userInfo_nft_2024'; // 防止和其他页面搞混
+
 export const idMap = {
   0: { name: '白羊座' },
   1: { name: '金牛座' },
@@ -32,3 +34,5 @@ export const nameList = [
   '隐藏款',
 ];
 export const getIsRedpacket = (id) => [201, 202].includes(id);
+
+export const getCardName = (id) => idMap[id]?.name;

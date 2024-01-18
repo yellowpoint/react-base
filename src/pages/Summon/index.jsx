@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as API from '@/api';
+import API from '@/api';
 import TopBtns from '@/components/TopBtns';
 import { useUser } from '@/components/UserContext';
 import { getParam } from '@/utils';
@@ -52,9 +52,7 @@ const SummonCom = () => {
       return setSummonData({ disabled });
     }
     const init = async () => {
-      const data = await API.summonIndex({
-        openid: userInfo.openid,
-      });
+      const data = await API.summonIndex();
       setSummonData(data);
     };
     init();

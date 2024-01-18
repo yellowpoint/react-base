@@ -1,5 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
+import { COOKIE_KEY } from '@/components/const';
 import { logout } from '@/components/UserContext';
 
 const api = axios.create({
@@ -12,6 +14,21 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // 在发送请求之前做一些事情
+    // 添加openid参数到请求中
+    const openid = Cookies.getJSON(COOKIE_KEY)?.openid;
+    if (config.method === 'get') {
+      config.params = {
+        openid,
+        ...config.params,
+      };
+    }
+
+    if (config.method === 'post' || config.method === 'put') {
+      config.data = {
+        openid,
+        ...config.data,
+      };
+    }
     return config;
   },
   (error) => {

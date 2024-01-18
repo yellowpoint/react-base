@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Dialog } from 'antd-mobile';
 
-import * as API from '@/api';
+import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
 import { useUser } from '@/components/UserContext';
 
@@ -53,7 +53,7 @@ const SummonBtn = ({ inMask }) => {
       ],
       onAction: async (action) => {
         if (action.key !== 'ok') return;
-        // const data = await API.summon({ openid: userInfo.openid, is_free: 0 });
+        // const data = await API.summon({  is_free: 0 });
         // setSummonData(data);
         setOpen(true);
       },

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { NftCard, Btn } from '@/components';
-import { idMap, getIsRedpacket } from '@/components/const';
+import { idMap, getIsRedpacket, getCardName } from '@/components/const';
 
 import Poster from './Poster';
 
@@ -15,11 +15,11 @@ const Title = ({ id }) => {
     return (
       <>
         <h1>恭喜获得</h1>
-        <h2>{idMap[id]?.name}</h2>
+        <h2>{getCardName(id)}</h2>
       </>
     );
   }
-  return <h1>恭喜获得{idMap[id]?.name || '默认星座'}</h1>;
+  return <h1>恭喜获得{getCardName(id) || '默认星座'}</h1>;
 };
 const Main = ({ isShare, id }) => {
   const isRedpacket = getIsRedpacket(id);

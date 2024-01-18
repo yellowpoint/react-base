@@ -6,7 +6,7 @@ import { Btn, Mask, Prize } from '@/components';
 
 import styles from './index.module.less';
 
-const Top = ({ num = 11 }) => {
+const Top = ({ num = 0 }) => {
   const [open, setOpen] = useState(false);
   const [showRed, setShowRed] = useState(false);
   const limitedNum = num > 12 ? 12 : num;

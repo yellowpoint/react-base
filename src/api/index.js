@@ -1,23 +1,3 @@
-import axios from './axios';
+import * as API from './all';
 
-export * from './auth';
-
-// 保存会员session信息(api/member/session/save)
-export const sessionSave = (params) =>
-  axios.post(`/member/session/save`, params);
-
-// 会员信息(api/member/info)
-export const memberInfo = (params) => axios.post(`/member/info`, params);
-
-// 召唤首页(api/summon/index)
-export const summonIndex = (params) => axios.post(`/summon/index`, params);
-
-// 召唤(api/summons)
-export const summon = (params) => axios.post(`/summon`, params);
-
-// 传入openId，更新token
-export const updateCookies = (params) =>
-  axios.get(
-    `https://weixin.mama100.cn/mama100-wechat/cookie/mama100wechat/updateCookies`,
-    params,
-  );
+export default API;

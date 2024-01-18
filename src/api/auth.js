@@ -23,3 +23,10 @@ export const getAuthUrl = () => {
   const authUrl = `${authEndpoint}?bindingRequired=${bindingRequired}&redirectUrl=${redirectUrl}`;
   return authUrl;
 };
+
+// 传入openId，更新token
+export const updateCookies = (params) =>
+  axios.get(
+    `https://weixin.mama100.cn/mama100-wechat/cookie/mama100wechat/updateCookies`,
+    params,
+  );

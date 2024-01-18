@@ -2,9 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 import Cookies from 'js-cookie';
 
-import * as API from '@/api';
-
-const COOKIE_KEY = 'userInfo_nft_2024'; // 防止和其他页面搞混
+import API from '@/api';
+import { COOKIE_KEY } from '@/components/const';
 
 // 创建上下文
 const UserContext = createContext();
