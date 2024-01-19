@@ -37,10 +37,18 @@ const Detail = () => {
               cfx_accounts();
             }}
           >
+            <img src="/imgs/detail/icon1.png" />
             转移资产
           </div>
-          <div>更新元数据</div>
-          <div>链上存证</div>
+
+          <div>
+            <img src="/imgs/detail/icon2.png" />
+            更新元数据
+          </div>
+          <div>
+            <img src="/imgs/detail/icon3.png" />
+            链上存证
+          </div>
         </div>
         <div className={styles.text}>
           <h1>十二星座藏品-{getCardName(id)}</h1>

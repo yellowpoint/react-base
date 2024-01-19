@@ -21,31 +21,35 @@ const List = ({ list, redPacketList, setOpen }) => {
           <span onClick={() => setOpen(true)}>{`查看已获得红包 >`}</span>
         )}
       </div>
-
-      <div className={styles.cards}>
-        <Swiper
-          slideSize={list?.length === 1 ? 0 : 60}
-          trackOffset={20}
-          indicator={() => null}
-        >
-          {list.map((i, index) => (
-            <Swiper.Item key={index}>
-              <div
-                className={styles.card}
-                onClick={() => {
-                  navigate('/detail/' + i.card_id + '?nft_code=' + i.nft_code);
-                }}
-              >
-                <NftCard id={i.card_id} shadow />
-              </div>
-            </Swiper.Item>
-          ))}
-        </Swiper>
-      </div>
+      {!!list.length && (
+        <div className={styles.cards}>
+          <Swiper
+            slideSize={list?.length === 1 ? 0 : 60}
+            trackOffset={20}
+            indicator={() => null}
+          >
+            {list.map((i, index) => (
+              <Swiper.Item key={index}>
+                <div
+                  className={styles.card}
+                  onClick={() => {
+                    navigate(
+                      '/detail/' + i.card_id + '?nft_code=' + i.nft_code,
+                    );
+                  }}
+                >
+                  <NftCard id={i.card_id} shadow />
+                </div>
+              </Swiper.Item>
+            ))}
+          </Swiper>
+        </div>
+      )}
     </div>
   );
 };
 const RedPacketList = ({ list }) => {
+  if (!list.length) return null;
   return (
     <div className={styles.redPacketBox}>
       <Swiper slideSize={list?.length === 1 ? 100 : 60} indicator={() => null}>
