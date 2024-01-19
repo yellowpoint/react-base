@@ -6,7 +6,9 @@ import { COOKIE_KEY } from '@/components/const';
 import { reLogin } from '@/components/UserContext';
 import { VconsoleCom } from '@/utils';
 
-const isDev = location.host === 'localhost:8888';
+const isDev = ['localhost:8888', 'hd.weixin.mama100.cn'].includes(
+  location.host,
+);
 const api = axios.create({
   // baseURL: '//120.46.191.217:8000/api',
   baseURL: isDev ? '/api' : '//120.46.191.217:8000/api',

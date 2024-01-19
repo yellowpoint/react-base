@@ -25,6 +25,9 @@ const My = () => {
     <div className={styles.page}>
       <Top myData={myData} />
       <Main myData={myData} />
+      <div className={styles.bottom}>
+        <img src="/imgs/my/bg_bottom.png" />
+      </div>
     </div>
   );
 };

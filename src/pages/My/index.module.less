@@ -1,6 +1,7 @@
 .page {
   position: relative;
   min-height: 100%;
+  padding-bottom: 250px;
   background: url("/imgs/my/bg.png") no-repeat;
   background-color: #fff;
   background-size: 100% auto;
@@ -84,10 +85,36 @@
   background: #fff;
   border-radius: 48px 48px 0 0;
 
-  p {
+  .title {
+    display: flex;
+    align-items: center;
     padding: 80px 60px 55px;
-    font-size: 37px;
-    color: #595757;
+    font-size: 43px;
+    font-weight: bold;
+    color: #1b4893;
+
+    b {
+      font-size: 48px;
+      color: #000;
+    }
+
+    span {
+      position: relative;
+      margin-left: auto;
+      font-size: 32px;
+      font-weight: 400;
+      color: #595757;
+
+      &::after {
+        position: absolute;
+        right: 24px;
+        bottom: -8px;
+        left: 0;
+        height: 2px;
+        content: "";
+        background-color: #000;
+      }
+    }
   }
 
   .cards {
@@ -109,6 +136,41 @@
     justify-content: center;
     width: 660px;
     user-select: none;
-    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+
+  .redPacketBox {
+    width: 100%;
+
+    :global {
+      .adm-swiper-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .redPacket {
+      width: 500px;
+    }
+
+    .getRedPacket {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      height: 60px;
+      margin: 40px auto 0;
+      font-size: 30px;
+      color: #fff;
+      background: #fa5050;
+      border-radius: 10px;
+    }
+  }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
