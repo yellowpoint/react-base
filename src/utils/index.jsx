@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import VConsole from 'vconsole';
 // localStorage
 export const storage = {
   get: (key) => {
@@ -29,16 +28,19 @@ export const getParam = (key) => {
 
 export const VconsoleCom = ({ children, times = 4 }) => {
   const [clickCount, setClickCount] = useState(0);
-
+  const loadVconsole = () => {
+    import('vconsole').then((vconsole) => {
+      try {
+        new vconsole.default();
+      } catch (error) {
+        console.log('vconsole', error);
+      }
+    });
+  };
   useEffect(() => {
     // 点击一定次数加载 VConsole
     if (clickCount === times) {
-      new VConsole();
-      // vite 异步有问题
-      // import('/js/vconsole.min.js?url').then((aa) => {
-      //   console.log('aa',aa);
-      //   new window.VConsole();
-      // });
+      loadVconsole();
     }
   }, [clickCount, times]);
 
