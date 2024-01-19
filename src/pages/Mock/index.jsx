@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { Button } from 'antd-mobile';
 import Cookies from 'js-cookie';
 
 const MockAuth = () => {
@@ -22,7 +23,9 @@ const MockAuth = () => {
   };
   return (
     <div>
-      <button onClick={handleRedirectClick}>模拟登录</button>
+      <Button color="primary" fill="solid" onClick={handleRedirectClick}>
+        模拟登录
+      </Button>
     </div>
   );
 };

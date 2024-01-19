@@ -5,7 +5,7 @@ import styles from './index.module.less';
 const NftCard = ({ id, shadow }) => {
   const isRedpacket = getIsRedpacket(id);
   if (isRedpacket) {
-    return <img src={`/public/imgs/cards/${id}.jpg`} alt="红包封面" />;
+    return <img src={`/imgs/cards/${id}.jpg`} alt="红包封面" />;
   }
   return (
     <div className={`${styles.cardBox} ${shadow ? styles.shadow : ''}`}>

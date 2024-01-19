@@ -23,7 +23,7 @@ const Top = ({ myData }) => {
   const TopBtn = () => {
     // 已合成，但没领取红包，提示去领取红包
     if (is_one_key) {
-      if (isGetRed) {
+      if (!isGetRed) {
         return (
           <Btn
             onClick={() => {

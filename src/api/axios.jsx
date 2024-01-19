@@ -4,10 +4,12 @@ import Cookies from 'js-cookie';
 
 import { COOKIE_KEY } from '@/components/const';
 import { reLogin } from '@/components/UserContext';
+import { VconsoleCom } from '@/utils';
 
+const isDev = location.host === 'localhost:8888';
 const api = axios.create({
   // baseURL: '//120.46.191.217:8000/api',
-  baseURL: '/api',
+  baseURL: isDev ? '/api' : '//120.46.191.217:8000/api',
   // 其他 Axios 配置选项
 });
 
@@ -59,7 +61,11 @@ api.interceptors.response.use(
     if (responseData.code !== 0) {
       Toast.show({
         icon: 'fail',
-        content: responseData.message,
+        content: (
+          <VconsoleCom>
+            {responseData.message || '错误码：' + responseData.code}
+          </VconsoleCom>
+        ),
       });
       return Promise.reject(responseData.code);
     }

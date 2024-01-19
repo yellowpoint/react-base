@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 import html2canvas from 'html2canvas';
+import QRCode from 'qrcode.react';
 
 import { NftCard } from '@/components';
 
@@ -47,7 +48,13 @@ const PosterComponent = ({ id }) => {
             <br />
             加人丁丁12星座藏品之旅
           </p>
-          <img src="/imgs/cards/1.jpg" alt="二维码" />
+          <div className={styles.img}>
+            <QRCode
+              value={location.href.replace('/summon', '/')} // 生成二维码的内容，活动首页
+              size={300} // 二维码的大小
+              fgColor="#000000" // 二维码的颜色
+            />
+          </div>
         </div>
       </div>
     </div>

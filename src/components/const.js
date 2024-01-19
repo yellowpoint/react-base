@@ -39,6 +39,3 @@ export const getIsRedpacket = (id) => [201, 202].includes(id);
 export const getHasLong = (list) => list.find((i) => [101].includes(i.card_id));
 
 export const getCardName = (id) => idMap[id]?.name;
-
-// 直接兑换所需积分
-export const EXPEND = 399;

@@ -39,6 +39,18 @@ const SummonBtn = ({ inMask }) => {
   };
   const handleSummon = () => {
     if (!userInfo) return login();
+    if (userInfo.is_all_card_collected === 1) {
+      Dialog.alert({
+        content: (
+          <div>
+            恭喜你，已经完成了丁丁12星座藏品之旅！
+            <br />
+            丁丁12星座的保护力陪伴着你成长！
+          </div>
+        ),
+      });
+      return;
+    }
     Dialog.show({
       content: `是否确认消耗${getTips()}进行抽取`,
       closeOnAction: true,

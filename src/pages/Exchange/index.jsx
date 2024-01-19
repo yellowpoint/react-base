@@ -4,7 +4,6 @@ import { Dialog } from 'antd-mobile';
 
 import API from '@/api';
 import { Mask, Prize } from '@/components';
-import { EXPEND } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
 import styles from './index.module.less';
@@ -14,7 +13,7 @@ const UserPoints = () => {
   if (!userInfo) return null;
   return (
     <>
-      <div className={styles.expend}>消耗{EXPEND}积分</div>
+      <div className={styles.expend}>消耗{userInfo.direct_cost_score}积分</div>
       <div className={styles.surplus}>
         当前剩余积分：{userInfo.score} <span>如何获取积分</span>
       </div>
@@ -28,7 +27,7 @@ const Exchange = () => {
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
-      content: `是否确认消耗${EXPEND}积分召唤`,
+      content: `是否确认消耗${userInfo.direct_cost_score}积分召唤`,
       closeOnAction: true,
       actions: [
         [

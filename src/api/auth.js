@@ -2,7 +2,7 @@ import axios from './axios';
 
 const isPro = location.host === 'www.mama100.com'; // todo 可否用域名来判断开发环境？
 
-const isDev = location.host === 'localhost:8888';
+const isDev = !location.host.includes('mama100');
 const mock = location.origin + '/mock';
 
 // 默认为测试环境

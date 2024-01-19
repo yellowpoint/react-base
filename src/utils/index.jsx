@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+
+import VConsole from 'vconsole';
 // localStorage
 export const storage = {
   get: (key) => {
@@ -22,4 +25,26 @@ export const isPhoneNumber = (value) => /^1\d{10}$/.test(value);
 export const getParam = (key) => {
   const params = new URLSearchParams(window.location.search);
   return params.get(key);
+};
+
+export const VconsoleCom = ({ children, times = 4 }) => {
+  const [clickCount, setClickCount] = useState(0);
+
+  useEffect(() => {
+    // 点击一定次数加载 VConsole
+    if (clickCount === times) {
+      new VConsole();
+      // vite 异步有问题
+      // import('/js/vconsole.min.js?url').then((aa) => {
+      //   console.log('aa',aa);
+      //   new window.VConsole();
+      // });
+    }
+  }, [clickCount, times]);
+
+  const handleClick = () => {
+    // 每次点击将点击次数递增
+    setClickCount((prevCount) => prevCount + 1);
+  };
+  return <div onClick={handleClick}>{children}</div>;
 };

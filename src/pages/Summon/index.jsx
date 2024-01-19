@@ -47,7 +47,8 @@ const SummonCom = () => {
   const fromMember = getParam('fromMember');
   const isMember = userInfo?.level > 0;
   const disabled = !isMember && fromMember;
-
+  // 能买隐藏款，是会员且没有隐藏款
+  const canBy = isMember && summonData?.have_dragon_card !== 1;
   useEffect(() => {
     if (!userInfo) return;
     if (disabled) {
@@ -72,7 +73,7 @@ const SummonCom = () => {
         summonData={summonData}
       />
       <List />
-      {!!isMember && (
+      {canBy && (
         <div className={styles.exchange} onClick={() => navigate('/exchange')}>
           {`直抽隐藏款>>`}
         </div>
