@@ -21,9 +21,28 @@
     justify-content: center;
     height: 215px;
 
+    :global {
+      .adm-progress-circle-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+    }
+
     .tips {
+      position: relative;
+      top: -10%;
+      left: 0;
       font-size: 30px;
       color: #163d88;
+    }
+
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
     }
   }
 

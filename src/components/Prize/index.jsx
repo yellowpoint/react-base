@@ -68,7 +68,7 @@ const Prize = ({ isShare, id, isMerge, children }) => {
           <Btn
             className={styles.btn}
             onClick={() => {
-              console.log('红包封面地址：', idMap[i]?.url);
+              console.log('红包封面地址：', idMap[id]?.url);
             }}
             fill
           >

@@ -13,7 +13,7 @@ const My = () => {
   const navigate = useNavigate();
 
   const [myData, setMyData] = useState([]);
-  const hasLong = getHasLong(myData);
+
   useEffect(() => {
     const init = async () => {
       const data = await API.collectDetail();
@@ -23,7 +23,7 @@ const My = () => {
   }, []);
   return (
     <div className={styles.page}>
-      <Top num={myData.length} hasLong={hasLong} />
+      <Top myData={myData} />
       <Main myData={myData} />
     </div>
   );

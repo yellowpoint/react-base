@@ -35,7 +35,7 @@ const List = ({ list, name }) => {
                   navigate('/detail/' + card_id + '?nft_code=' + i.nft_code);
                 }}
               >
-                <NftCard id={i.card_id} />
+                <NftCard id={i.card_id} shadow />
               </div>
             </Swiper.Item>
           ))}
@@ -46,8 +46,11 @@ const List = ({ list, name }) => {
 };
 
 const Main = ({ myData }) => {
-  const cardList = myData.filter((item) => !getIsRedpacket(item.card_id));
-  const redPacketList = myData.filter((item) => getIsRedpacket(item.card_id));
+  const { card_list = [] } = myData;
+  const cardList = card_list.filter((item) => !getIsRedpacket(item.card_id));
+  const redPacketList = card_list.filter((item) =>
+    getIsRedpacket(item.card_id),
+  );
   return (
     <div className={styles.main}>
       <List list={cardList} name="卡片" />

@@ -4,18 +4,45 @@ import { ProgressCircle, Dialog } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
+import { idMap } from '@/components/const';
 
 import styles from './index.module.less';
 
-const Top = ({ num = 0, hasLong }) => {
+const Top = ({ myData }) => {
   const [open, setOpen] = useState(false);
   const [showRed, setShowRed] = useState(false);
+  const { card_list = [] } = myData;
+  const num = card_list?.length || 0;
+  // 是否已经合成
+  const is_one_key = myData?.is_one_key === 1;
   const limitedNum = num > 12 ? 12 : num;
 
-  const getBtnText = () => {
-    // todo 需要接口返回是否已经合成，抽到龙卡无法判断
-    if (hasLong) return '已合成';
-    return '一键合成';
+  // 是否领取龙年红包
+  const isGetRed = card_list.find((i) => i.card_id === 202);
+
+  const TopBtn = () => {
+    // 已合成，但没领取红包，提示去领取红包
+    if (is_one_key) {
+      if (isGetRed) {
+        return (
+          <Btn
+            onClick={() => {
+              setShowRed(true);
+              setOpen(true);
+            }}
+          >
+            领取{idMap[202].name}
+          </Btn>
+        );
+      }
+      return <Btn disabled>已合成</Btn>;
+    }
+
+    return (
+      <Btn disabled={limitedNum < 12} onClick={handleClick}>
+        一键合成
+      </Btn>
+    );
   };
   const handleClick = () => {
     Dialog.show({
@@ -47,13 +74,14 @@ const Top = ({ num = 0, hasLong }) => {
         <ProgressCircle
           percent={(limitedNum / 12) * 100}
           style={{
-            '--size': '80px',
-            '--track-width': '16px',
+            '--size': '100px',
+            '--track-width': '12px',
             '--track-color': '#fff',
-            '--fill-color': '#3383e3',
+            '--fill-color': '#3687d1',
           }}
         >
-          <span className={styles.tips}>{limitedNum}/12</span>
+          <div className={styles.tips}>{limitedNum}/12</div>
+          <img className={styles.img} src="/imgs/my/progress.png" />
         </ProgressCircle>
       </div>
       <div className={styles.textContainer}>
@@ -62,9 +90,7 @@ const Top = ({ num = 0, hasLong }) => {
         <div>限定前100名合成保护力的用户获得封面红包</div>
       </div>
       <div className={styles.btn}>
-        <Btn disabled={num < 12 || hasLong} onClick={handleClick}>
-          {getBtnText()}
-        </Btn>
+        <TopBtn />
       </div>
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (

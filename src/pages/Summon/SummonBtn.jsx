@@ -82,7 +82,9 @@ const SummonBtn = ({ inMask }) => {
           console.log('afterShow');
         }}
       >
-        <Prize isShare id={3} />
+        {summonData?.card_id !== undefined && (
+          <Prize isShare id={summonData.card_id} />
+        )}
       </Mask>
     </div>
   );
