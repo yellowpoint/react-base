@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button, Space } from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 
 import API from '@/api';
-import { cfx_accounts } from '@/assets/anyweb.js';
+import { cfx_accounts, anyweb_home } from '@/assets/anyweb.js';
 import { idMap, getIsRedpacket, getCardName } from '@/components/const';
+import { useUser } from '@/components/UserContext';
 import { getParam } from '@/utils';
 
 import styles from './index.module.less';
@@ -13,6 +14,7 @@ import styles from './index.module.less';
 const Detail = () => {
   const { id } = useParams();
   const nft_code = getParam('nft_code');
+  const { userInfo, login } = useUser();
 
   const navigate = useNavigate();
 
@@ -23,6 +25,18 @@ const Detail = () => {
     };
     init();
   }, []);
+  const goAnyweb = () => {
+    Toast.show({
+      icon: 'loading',
+      content: '加载中…',
+      duration: 5000,
+      maskClickable: false,
+    });
+    if (userInfo?.is_bind_address === 1) {
+      return anyweb_home();
+    }
+    cfx_accounts();
+  };
   return (
     <div className={styles.page}>
       <div className={styles.imgBox}>
@@ -32,20 +46,15 @@ const Detail = () => {
       </div>
       <div className={styles.main}>
         <div className={styles.btns}>
-          <div
-            onClick={() => {
-              cfx_accounts();
-            }}
-          >
+          <div onClick={goAnyweb}>
             <img src="/imgs/detail/icon1.png" />
             转移资产
           </div>
-
-          <div>
+          <div onClick={goAnyweb}>
             <img src="/imgs/detail/icon2.png" />
             更新元数据
           </div>
-          <div>
+          <div onClick={goAnyweb}>
             <img src="/imgs/detail/icon3.png" />
             链上存证
           </div>

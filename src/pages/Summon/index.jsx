@@ -63,6 +63,9 @@ const SummonCom = () => {
 
   return (
     <div className={styles.page}>
+      <div className={styles.boxTable}>
+        <img className={styles.table} src="/imgs/summon/table.png" />
+      </div>
       <TopBtns black />
       <BoxSwiper />
       <div className={styles.tips}>这是一个充满魅力的星座</div>

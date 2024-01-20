@@ -39,3 +39,8 @@ export const getIsRedpacket = (id) => [201, 202].includes(id);
 export const getHasLong = (list) => list.find((i) => [101].includes(i.card_id));
 
 export const getCardName = (id) => idMap[id]?.name;
+
+export const memberLevelUrl = 'xx';
+
+// 海报是否用阴影版
+export const posterShadow = true;

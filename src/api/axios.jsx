@@ -18,9 +18,15 @@ const api = axios.create({
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
+    Toast.show({
+      icon: 'loading',
+      content: '加载中…',
+      duration: 0,
+      maskClickable: false,
+    });
     // 在发送请求之前做一些事情
     // 添加openid参数到请求中
-    const openid = Cookies.getJSON(COOKIE_KEY)?.openid;
+    const openid = Cookies.getJSON(COOKIE_KEY)?.openid || Cookies.get('openId');
     if (config.method === 'get') {
       config.params = {
         openid,
@@ -46,7 +52,7 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     const responseData = response.data;
-
+    Toast.clear();
     // 601 token过期
     if (responseData.code === 601) {
       Toast.show({

@@ -8,15 +8,22 @@ import styles from './index.module.less';
 const TopBtns = ({ black = false }) => {
   const navigate = useNavigate();
 
-  const { userInfo } = useUser();
+  const { userInfo, login } = useUser();
 
   return (
     <div className={`${styles.top} ${black ? styles.black : ''}`}>
-      {!!userInfo && (
-        <div className={styles.toMy} onClick={() => navigate('/my')}>
-          我的藏品
-        </div>
-      )}
+      <div
+        className={styles.toMy}
+        onClick={() => {
+          if (userInfo) {
+            return navigate('/my');
+          }
+          login();
+        }}
+      >
+        我的藏品
+      </div>
+
       <Rule />
     </div>
   );

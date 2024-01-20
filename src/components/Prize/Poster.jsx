@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 
+import { Toast } from 'antd-mobile';
 import html2canvas from 'html2canvas';
 import QRCode from 'qrcode.react';
 
 import { NftCard } from '@/components';
+import { posterShadow } from '@/components/const';
 
 import styles from './index.module.less';
 
@@ -14,9 +16,17 @@ const PosterComponent = ({ id }) => {
     if (!posterRef.current) return;
 
     try {
+      Toast.show({
+        icon: 'loading',
+        content: '海报生成中....',
+        duration: 0,
+        maskClickable: false,
+      });
       const canvas = await html2canvas(posterRef.current, {
         backgroundColor: null,
+        scale: 2,
       });
+
       // 获取图像的data URL
       const dataUrl = canvas.toDataURL();
       // 创建一个新的图片元素
@@ -27,22 +37,24 @@ const PosterComponent = ({ id }) => {
         imageContainerRef.current.innerHTML = '';
         imageContainerRef.current.appendChild(image);
       }
+      Toast.clear();
     } catch (error) {
       console.error('Error creating poster image:', error);
     }
   };
 
   useEffect(() => {
-    // todo 测试是否会由于动画导致dom还没出现就执行了，还要判断内部星座图片加载完了
     setTimeout(() => {
       generatePoster();
-    }, 100);
+    }, 0);
   }, []);
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>
       <div ref={posterRef} className={styles.poster}>
-        <NftCard id={id} />
-        <div className={styles.qrCode}>
+        <NftCard id={id} shadow={posterShadow} />
+        <div
+          className={`${styles.qrCode} ${posterShadow ? styles.shadow : ''}`}
+        >
           <p>
             扫码查看详情
             <br />

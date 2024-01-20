@@ -145,6 +145,8 @@
 .posterBox {
   .poster {
     .qrCode {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -154,6 +156,10 @@
       color: #595757;
       background: #fff;
       border-radius: 48px;
+
+      &.shadow {
+        margin: -56px 26px 0;
+      }
 
       p {
         line-height: 1.5;

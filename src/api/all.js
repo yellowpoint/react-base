@@ -31,3 +31,6 @@ export const red_paccket = (params) =>
 
 // 直接积分兑换(api/exchange/score)
 export const score = (params) => axios.post(`/exchange/score`, params);
+
+// nft上报钱包地址(api/nft/address/upload)
+export const nftAddress = (params) => axios.post(`/nft/address/upload`, params);

@@ -71,6 +71,7 @@ const SummonBtn = ({ inMask }) => {
         if (action.key !== 'ok') return;
         // 0,不免费;1,免费;默认;
         const data = await API.summon({ is_free: hasFree ? 1 : 0 });
+        // const data = { card_id: 1 };
         setSummonData(data);
         setOpen(true);
       },
@@ -87,13 +88,7 @@ const SummonBtn = ({ inMask }) => {
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
       <UserPoints summonData={summonData} hasFree={hasFree} />
-      <Mask
-        open={open}
-        afterClose={() => setOpen(false)}
-        afterShow={() => {
-          console.log('afterShow');
-        }}
-      >
+      <Mask open={open} afterClose={() => setOpen(false)}>
         {summonData?.card_id !== undefined && (
           <Prize isShare id={summonData.card_id} />
         )}

@@ -59,7 +59,11 @@ const Rule = () => {
                 </tr>
               </tbody>
             </table>
-
+            <a
+              href="http://"
+              target="_blank"
+              rel="noreferrer"
+            >{`查看会员等级成长说明>>>>`}</a>
             <h1>如何获取丁丁龙年隐藏款</h1>
             <p>可通过两种方式获取丁丁龙年隐藏款</p>
             <p>
