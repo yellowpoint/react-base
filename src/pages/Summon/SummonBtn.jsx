@@ -5,6 +5,7 @@ import { Dialog } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
+import { memberLevelUrl } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
 import { useSummonContext } from './SummonContext';
@@ -22,7 +23,12 @@ const UserPoints = ({ hasFree }) => {
     <>
       <div className={styles.expend}>消耗{summonData.cost_score}积分</div>
       <div className={styles.surplus}>
-        当前剩余积分：{summonData.left_score} <span>如何获取积分</span>
+        当前剩余积分：{summonData.left_score}
+        <a
+          href={memberLevelUrl}
+          target="_blank"
+          rel="noreferrer"
+        >{`如何获取积分`}</a>
       </div>
     </>
   );

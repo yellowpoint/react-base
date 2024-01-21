@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { memberLevelUrl } from '@/components/const';
 import Mask from '@/components/Mask';
 
 import styles from './index.module.less';
@@ -60,7 +61,7 @@ const Rule = () => {
               </tbody>
             </table>
             <a
-              href="http://"
+              href={memberLevelUrl}
               target="_blank"
               rel="noreferrer"
             >{`查看会员等级成长说明>>>>`}</a>

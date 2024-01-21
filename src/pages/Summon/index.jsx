@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import API from '@/api';
+import { memberLevelUrl } from '@/components/const';
 import TopBtns from '@/components/TopBtns';
 import { useUser } from '@/components/UserContext';
 import { getParam } from '@/utils';
@@ -35,7 +36,11 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
       <div className={styles.sorry}>
         抱歉，您的等级尚未达标，
         <br />
-        <span>{`点击查看如何升级>>`}</span>
+        <a
+          href={memberLevelUrl}
+          target="_blank"
+          rel="noreferrer"
+        >{`点击查看如何升级>>`}</a>
       </div>
     );
   }

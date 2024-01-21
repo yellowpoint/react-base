@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Toast } from 'antd-mobile';
@@ -16,12 +16,13 @@ const Detail = () => {
   const nft_code = getParam('nft_code');
   const { userInfo, login } = useUser();
 
+  const [detailData, setDetailData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     const init = async () => {
       const data = await API.collectCardDetail({ nft_code });
-      // setMyData(data);
+      setDetailData(data);
     };
     init();
   }, []);
@@ -60,18 +61,14 @@ const Detail = () => {
           </div>
         </div>
         <div className={styles.text}>
-          <h1>十二星座藏品-{getCardName(id)}</h1>
+          <h1>十二星座藏品-{detailData.name}</h1>
           <div className={styles.row}>
             <p>编号:</p>
-            <p>{id}</p>
+            <p>{nft_code}</p>
           </div>
           <div className={styles.row}>
             <span>描述:</span>
-            <p>
-              这枚徽章是 一
-              个象征着奔跑的图案，上面一只小鸟在飞翔，它代表着勇敢。提醒我们，要勇敢追求梦想，不断前行，不要放弃，要坚持到
-              最后。
-            </p>
+            <p>{detailData.desc}</p>
           </div>
         </div>
       </div>

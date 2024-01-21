@@ -40,7 +40,6 @@ export const getHasLong = (list) => list.find((i) => [101].includes(i.card_id));
 
 export const getCardName = (id) => idMap[id]?.name;
 
-export const memberLevelUrl = 'xx';
-
-// 海报是否用阴影版
-export const posterShadow = true;
+// 会员等级介绍页面
+export const memberLevelUrl =
+  'https://www.mama100.com/wmall/activityDemo/shoppingGuideNew/index.html?_campaign=20240120222950_24824';

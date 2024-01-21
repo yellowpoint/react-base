@@ -5,7 +5,6 @@ import html2canvas from 'html2canvas';
 import QRCode from 'qrcode.react';
 
 import { NftCard } from '@/components';
-import { posterShadow } from '@/components/const';
 
 import styles from './index.module.less';
 
@@ -51,10 +50,10 @@ const PosterComponent = ({ id }) => {
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>
       <div ref={posterRef} className={styles.poster}>
-        <NftCard id={id} shadow={posterShadow} />
-        <div
-          className={`${styles.qrCode} ${posterShadow ? styles.shadow : ''}`}
-        >
+        <div className={styles.posterImg}>
+          <img src={`/imgs/cards/${id}.jpg`} alt="卡片" />
+        </div>
+        <div className={`${styles.qrCode}`}>
           <p>
             扫码查看详情
             <br />

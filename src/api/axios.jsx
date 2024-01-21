@@ -11,7 +11,7 @@ const isDev = ['localhost:8888', 'hd.weixin.mama100.cn'].includes(
 );
 const api = axios.create({
   // baseURL: '//120.46.191.217:8000/api',
-  baseURL: isDev ? '/api' : '//120.46.191.217:8000/api',
+  baseURL: isDev ? '/api' : 'http://120.46.191.217:8000/api',
   // 其他 Axios 配置选项
 });
 
