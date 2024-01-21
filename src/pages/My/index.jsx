@@ -13,17 +13,16 @@ const My = () => {
   const navigate = useNavigate();
 
   const [myData, setMyData] = useState([]);
-
+  const init = async () => {
+    const data = await API.collectDetail();
+    setMyData(data);
+  };
   useEffect(() => {
-    const init = async () => {
-      const data = await API.collectDetail();
-      setMyData(data);
-    };
     init();
   }, []);
   return (
     <div className={styles.page}>
-      <Top myData={myData} />
+      <Top myData={myData} init={init} />
       <Main myData={myData} />
       <div className={styles.bottom}>
         <img src="/imgs/my/bg_bottom.png" />

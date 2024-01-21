@@ -38,6 +38,7 @@ const SummonBtn = ({ inMask }) => {
   const { userInfo, login } = useUser();
   const { summonData, setSummonData } = useSummonContext();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const hasFree = summonData.free_times > 0;
   const getTips = () => {
     if (hasFree) return '一次免费次数';
@@ -54,6 +55,13 @@ const SummonBtn = ({ inMask }) => {
             丁丁12星座的保护力陪伴着你成长！
           </div>
         ),
+      });
+      return;
+    }
+    // 没有免费次数且积分不够下一次抽奖
+    if (!hasFree && summonData.cost_score > summonData.left_score) {
+      Dialog.alert({
+        content: '积分不够哟~',
       });
       return;
     }
@@ -78,6 +86,23 @@ const SummonBtn = ({ inMask }) => {
         // 0,不免费;1,免费;默认;
         const data = await API.summon({ is_free: hasFree ? 1 : 0 });
         // const data = { card_id: 1 };
+        if (data === 12) {
+          Dialog.show({
+            content: `已抽得所有卡片，快去合成隐藏款吧~`,
+            closeOnAction: true,
+            actions: [
+              [
+                { key: 'cancel', text: '取消' },
+                { key: 'ok', text: '确认', danger: true },
+              ],
+            ],
+            onAction: async (action) => {
+              if (action.key !== 'ok') return;
+              navigate('/my');
+            },
+          });
+          return;
+        }
         setSummonData(data);
         setOpen(true);
       },

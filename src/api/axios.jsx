@@ -64,7 +64,10 @@ api.interceptors.response.use(
       });
       return Promise.reject(responseData.code);
     }
-
+    // 12星座卡与1红包已得到，还未合成隐藏款
+    if (responseData.code === 12) {
+      return responseData.code;
+    }
     // 检查 code 是否为 0
     if (responseData.code !== 0) {
       Toast.show({
@@ -83,7 +86,10 @@ api.interceptors.response.use(
   },
   (error) => {
     // 处理响应错误
-    console.error('发生错误:', error.message);
+    Toast.show({
+      icon: 'fail',
+      content: <VconsoleCom>{error.message}</VconsoleCom>,
+    });
     return Promise.reject(error);
   },
 );

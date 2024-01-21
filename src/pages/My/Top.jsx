@@ -8,7 +8,7 @@ import { idMap } from '@/components/const';
 
 import styles from './index.module.less';
 
-const Top = ({ myData }) => {
+const Top = ({ myData, init }) => {
   const [open, setOpen] = useState(false);
   const [showRed, setShowRed] = useState(false);
   const { card_list = [] } = myData;
@@ -19,21 +19,17 @@ const Top = ({ myData }) => {
 
   // 是否领取龙年红包
   const isGetRed = card_list.find((i) => i.card_id === 202);
-
+  const getRedPacket202 = async () => {
+    await API.red_packet({ card_id: 202 });
+    setShowRed(true);
+    setOpen(true);
+    init();
+  };
   const TopBtn = () => {
     // 已合成，但没领取红包，提示去领取红包
     if (is_one_key) {
       if (!isGetRed) {
-        return (
-          <Btn
-            onClick={() => {
-              setShowRed(true);
-              setOpen(true);
-            }}
-          >
-            领取{idMap[202].name}
-          </Btn>
-        );
+        return <Btn onClick={getRedPacket202}>领取{idMap[202].name}</Btn>;
       }
       return <Btn disabled>已合成</Btn>;
     }
@@ -65,6 +61,7 @@ const Top = ({ myData }) => {
         if (action.key !== 'ok') return;
         await API.one_key();
         setOpen(true);
+        init();
       },
     });
   };
@@ -74,7 +71,7 @@ const Top = ({ myData }) => {
         <ProgressCircle
           percent={(limitedNum / 12) * 100}
           style={{
-            '--size': '100px',
+            '--size': '80px',
             '--track-width': '12px',
             '--track-color': '#fff',
             '--fill-color': '#3687d1',
@@ -95,12 +92,7 @@ const Top = ({ myData }) => {
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (
           <Prize id={101}>
-            <Btn
-              onClick={() => {
-                setShowRed(true);
-              }}
-              fill
-            >
+            <Btn className={styles.redBtn} onClick={getRedPacket202} fill>
               解锁龙年丁丁红包封面
             </Btn>
           </Prize>

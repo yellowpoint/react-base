@@ -25,9 +25,9 @@ export const collectCardDetail = (params) =>
 // 一键合成(api/exchange/one_key)
 export const one_key = (params) => axios.post(`/exchange/one_key`, params);
 
-// 领取红包(api/exchange/red_paccket)
-export const red_paccket = (params) =>
-  axios.post(`/exchange/red_paccket`, params);
+// 领取红包(api/exchange/red_packet)
+export const red_packet = (params) =>
+  axios.post(`/exchange/red_packet`, params);
 
 // 直接积分兑换(api/exchange/score)
 export const score = (params) => axios.post(`/exchange/score`, params);

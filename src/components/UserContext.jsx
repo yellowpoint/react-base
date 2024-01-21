@@ -52,7 +52,9 @@ export const UserProvider = ({ children }) => {
     init();
   }, []);
   return (
-    <UserContext.Provider value={{ userInfo, setUser, login }}>
+    <UserContext.Provider
+      value={{ userInfo, setUser, login, updateUserInfo: getUserInfo }}
+    >
       {isReady && children}
     </UserContext.Provider>
   );
