@@ -57,7 +57,7 @@ const PosterComponent = ({ id }) => {
           <p>
             扫码查看详情
             <br />
-            加人丁丁12星座藏品之旅
+            加入丁丁12星座藏品之旅
           </p>
           <div className={styles.img}>
             <QRCode

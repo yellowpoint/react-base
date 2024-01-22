@@ -31,7 +31,7 @@ const Main = ({ isShare, id }) => {
         <div className={styles.share}>
           长按上方保存图片
           <br />
-          快和你的好友分享吧!
+          快和您的好友分享吧!
         </div>
       </>
     );

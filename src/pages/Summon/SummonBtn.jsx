@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Dialog } from 'antd-mobile';
+import { Dialog, Button, Space } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
@@ -44,19 +44,49 @@ const SummonBtn = ({ inMask }) => {
     if (hasFree) return '一次免费次数';
     return `${summonData.cost_score}积分`;
   };
+  // 抽完没合成龙卡
+  const handleOverNotlong = () => {
+    Dialog.show({
+      content: (
+        <div style={{ textAlign: 'center' }}>
+          恭喜您！
+          <br />
+          抽得所有星座
+          <br />
+          快去合成隐藏款吧~
+        </div>
+      ),
+      closeOnAction: true,
+      actions: [
+        [
+          { key: 'cancel', text: '取消' },
+          { key: 'ok', text: '确认', danger: true },
+        ],
+      ],
+      onAction: async (action) => {
+        if (action.key !== 'ok') return;
+        navigate('/my');
+      },
+    });
+  };
+  // 所以都集齐了
+  const handleAllOver = () => {
+    Dialog.alert({
+      content: (
+        <div style={{ textAlign: 'center' }}>
+          恭喜您！
+          <br />
+          已经完成了丁丁12星座藏品之旅！
+          <br />
+          丁丁12星座的保护力陪伴着您成长！
+        </div>
+      ),
+    });
+  };
   const handleSummon = () => {
     if (!userInfo) return login();
     if (userInfo.is_all_card_collected === 1) {
-      Dialog.alert({
-        content: (
-          <div>
-            恭喜你，已经完成了丁丁12星座藏品之旅！
-            <br />
-            丁丁12星座的保护力陪伴着你成长！
-          </div>
-        ),
-      });
-      return;
+      return handleAllOver();
     }
     // 没有免费次数且积分不够下一次抽奖
     if (!hasFree && summonData.cost_score > summonData.left_score) {
@@ -87,28 +117,23 @@ const SummonBtn = ({ inMask }) => {
         const data = await API.summon({ is_free: hasFree ? 1 : 0 });
         // const data = { card_id: 1 };
         if (data === 12) {
-          Dialog.show({
-            content: `已抽得所有卡片，快去合成隐藏款吧~`,
-            closeOnAction: true,
-            actions: [
-              [
-                { key: 'cancel', text: '取消' },
-                { key: 'ok', text: '确认', danger: true },
-              ],
-            ],
-            onAction: async (action) => {
-              if (action.key !== 'ok') return;
-              navigate('/my');
-            },
-          });
-          return;
+          return handleOverNotlong();
         }
         setSummonData(data);
         setOpen(true);
       },
     });
   };
-
+  const mockSummon = (card_id) => {
+    if (card_id === -1) {
+      return handleAllOver();
+    }
+    if (card_id === -2) {
+      return handleOverNotlong();
+    }
+    setSummonData({ ...summonData, card_id });
+    setOpen(true);
+  };
   return (
     <div className={`${styles.bottom} ${inMask && styles.mask}`}>
       <Btn
@@ -118,6 +143,27 @@ const SummonBtn = ({ inMask }) => {
       >
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
+      <Space wrap>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(0)}>
+          模拟抽中星座1
+        </Button>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(1)}>
+          模拟抽中星座2
+        </Button>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(201)}>
+          模拟抽中红包
+        </Button>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(101)}>
+          模拟抽中隐藏款
+        </Button>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(-2)}>
+          模拟抽完未合成
+        </Button>
+        <Button color="primary" fill="solid" onClick={() => mockSummon(-1)}>
+          模拟完成旅途
+        </Button>
+      </Space>
+
       <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask open={open} afterClose={() => setOpen(false)}>
         {summonData?.card_id !== undefined && (

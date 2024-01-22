@@ -45,6 +45,7 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
     );
   }
 };
+
 const SummonCom = () => {
   const navigate = useNavigate();
   const { userInfo, login } = useUser();
@@ -73,7 +74,6 @@ const SummonCom = () => {
       </div>
       <TopBtns black />
       <BoxSwiper />
-      <div className={styles.tips}>这是一个充满魅力的星座</div>
       <MemberInfo
         fromMember={fromMember}
         userInfo={userInfo}

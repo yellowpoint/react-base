@@ -26,6 +26,23 @@ const Detail = () => {
     };
     init();
   }, []);
+
+  useEffect(() => {
+    // anyweb以iframe在body下，页面返回不会清除，故手动清除
+    const handlePageBack = (event) => {
+      if (!document.querySelector('#anyweb-iframe-mask')) return;
+      // 还改变了body的默认行为和样式，直接刷新页面吧
+      location.reload();
+    };
+    // 监听页面变化
+    window.addEventListener('popstate', handlePageBack);
+    return () => {
+      setTimeout(() => {
+        window.removeEventListener('popstate', handlePageBack);
+      }, 300);
+    };
+  }, []);
+
   const goAnyweb = () => {
     Toast.show({
       icon: 'loading',
