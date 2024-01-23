@@ -29,7 +29,7 @@ const Cards = ({ index }) => {
         fade: false,
       },
     });
-    bs.scrollToElement(liRefList.current[index], 2000);
+    bs.scrollToElement(liRefList.current[index], 2000, true, true);
   }, []);
 
   return (
@@ -49,7 +49,6 @@ const Cards = ({ index }) => {
           <div className={styles.indicator}></div>
         </div>
       </div>
-      <SummonBtn inMask />
     </div>
   );
 };

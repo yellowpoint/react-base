@@ -18,7 +18,7 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
   if (!userInfo) return null;
 
   // 会员不管是否来自会员入口，都显示
-  if (isMember) {
+  if (isMember || summonData.free_times > 0) {
     return (
       <div className={styles.member}>
         <div className={styles.memberLevel}>
@@ -51,7 +51,7 @@ const SummonCom = () => {
   const { userInfo, login } = useUser();
   const { summonData, setSummonData } = useSummonContext();
   const fromMember = getParam('fromMember');
-  const isMember = userInfo?.level > 0;
+  const isMember = userInfo?.level > 1;
   const disabled = !isMember && fromMember;
   // 能买隐藏款，是会员且没有隐藏款
   const canBy = isMember && summonData?.have_dragon_card !== 1;

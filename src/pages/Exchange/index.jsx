@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Dialog } from 'antd-mobile';
 
 import API from '@/api';
-import { Mask, Prize } from '@/components';
+import { NftCard, Mask, Prize } from '@/components';
 import { memberLevelUrl } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
@@ -57,6 +57,9 @@ const Exchange = () => {
   };
   return (
     <div className={styles.page}>
+      <div className={styles.card}>
+        <NftCard id={101} />
+      </div>
       <div className={styles.bottom}>
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />

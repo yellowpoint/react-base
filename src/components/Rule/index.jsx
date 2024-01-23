@@ -24,6 +24,7 @@ const Rule = () => {
         }}
       >
         <div className={styles.ruleBox}>
+          <img src="/imgs/home/rule.png" />
           <div className={styles.ruleMain}>
             <h1>如何召唤丁丁12星座NFT</h1>
             <p>满足等级条件的相应会员</p>
@@ -32,40 +33,24 @@ const Rule = () => {
             <table>
               <thead>
                 <tr>
-                  <th>
-                    会员
-                    <br />
-                    等级
-                  </th>
+                  <th>会员等级</th>
                   <th>免费召唤丁丁12星座NFT（次数）</th>
                   <th>召唤丁丁12星座NFT（积分）</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    金卡
-                    <br />
-                    会员
-                  </td>
+                  <td>金卡会员</td>
                   <td>1</td>
                   <td>30积分/次</td>
                 </tr>
                 <tr>
-                  <td>
-                    白金卡
-                    <br />
-                    会员
-                  </td>
+                  <td>白金卡会员</td>
                   <td>2</td>
                   <td>20积分/次</td>
                 </tr>
                 <tr>
-                  <td>
-                    黑金卡
-                    <br />
-                    会员
-                  </td>
+                  <td>黑金卡会员</td>
                   <td>3</td>
                   <td>10积分/次</td>
                 </tr>
@@ -73,9 +58,7 @@ const Rule = () => {
                   <td>
                     星耀卡/
                     <br />
-                    星新卡
-                    <br />
-                    会员
+                    星新卡会员
                   </td>
                   <td>3</td>
                   <td>10积分/次</td>

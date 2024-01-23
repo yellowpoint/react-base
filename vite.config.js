@@ -22,7 +22,8 @@ export default defineConfig(({ mode, command }) => {
             rootValue: 108,
             exclude: /node_modules/i, // 过滤掉node_modules 文件夹下面的样式
             propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
-            selectorBlackList: [], // 过滤掉norem-开头的class，不进行rem转换，这个内容可以不写
+            selectorBlackList: ['.norem'], // 过滤掉norem-开头的class，不进行rem转换，这个内容可以不写
+            minPixelValue: 2, // 设置要替换的最小像素值。
           }),
         ],
       },

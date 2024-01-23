@@ -1,9 +1,21 @@
 .page {
   position: relative;
   min-height: 2000px;
-  background: url("/imgs/exchange/bg.png") no-repeat;
+  background: url("/imgs/exchange/bg.jpg") no-repeat;
   background-color: #cdedeb;
   background-size: 100% auto;
+}
+
+.card {
+  position: absolute;
+  top: 19%;
+  left: 21%;
+  width: 612px;
+  animation: animation-box infinite 2s ease-in-out;
+}
+
+@keyframes animation-box {
+  50% { transform: translateY(30px); }
 }
 
 .bottom {
