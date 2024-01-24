@@ -22,7 +22,7 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
     return (
       <div className={styles.member}>
         <div className={styles.memberLevel}>
-          {userInfo.level_name || '默认会员'}
+          <img src={`/imgs/summon/member/${userInfo.level}.png`} alt="会员" />
         </div>
         <div className={styles.memberFree}>
           剩余：<span>{summonData.free_times}</span>次免费次数

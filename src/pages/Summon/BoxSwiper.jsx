@@ -12,8 +12,8 @@ const TipsSwiper = ({ index }) => {
   const [id, setId] = useState(-1);
 
   useEffect(() => {
-    // 在 index 变化时更新 id，从 0 到 11 循环
-    setId((prevId) => (prevId + 1) % 12);
+    // 在 index 变化时更新 id，
+    setId((prevId) => (prevId + 1) % 8);
   }, [index]);
   return (
     <div className={styles.tips}>

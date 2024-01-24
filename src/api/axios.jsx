@@ -6,13 +6,12 @@ import { COOKIE_KEY } from '@/components/const';
 import { reLogin } from '@/components/UserContext';
 import { VconsoleCom } from '@/utils';
 
-const isDev = ['localhost:8888', 'hd.weixin.mama100.cn'].includes(
-  location.host,
-);
+const isDev = import.meta.env.DEV;
+const isText = ['120.46.191.217'].includes(location.hostname); // 测试指定端口
+let baseURL = '/api';
+if (isText) baseURL = 'http://120.46.191.217:8000/api';
 const api = axios.create({
-  // baseURL: '//120.46.191.217:8000/api',
-  baseURL: isDev ? '/api' : 'http://120.46.191.217:8000/api',
-  // 其他 Axios 配置选项
+  baseURL,
 });
 
 // 请求拦截器

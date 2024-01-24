@@ -12,7 +12,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "rsync":"rsync -av --progress  dist/ www@120.46.191.217:/var/www/html/mother_100/html",
+    "scp":"scp -r dist/* www@120.46.191.217:/var/www/html/mother_100/html"
   },
   "dependencies": {
     "@better-scroll/core": "^2.5.1",
@@ -46,6 +48,7 @@
     "postcss-less": "^6.0.0",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^3.1.1",
+    "rsync": "^0.6.1",
     "stylelint": "^14.9.1",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard": "^26.0.0",

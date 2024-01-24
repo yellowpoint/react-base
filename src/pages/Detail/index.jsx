@@ -18,7 +18,7 @@ const Detail = () => {
 
   const [detailData, setDetailData] = useState({});
   const navigate = useNavigate();
-
+  const { desc, detailName, name } = idMap[id] || {};
   useEffect(() => {
     const init = async () => {
       const data = await API.collectCardDetail({ nft_code });
@@ -78,14 +78,18 @@ const Detail = () => {
           </div>
         </div>
         <div className={styles.text}>
-          <h1>十二星座藏品-{detailData.name}</h1>
+          <h1>丁丁-{detailName || name}</h1>
           <div className={styles.row}>
             <p>编号:</p>
             <p>{nft_code}</p>
           </div>
           <div className={styles.row}>
             <span>描述:</span>
-            <p>{detailData.desc}</p>
+            <p>{desc}</p>
+          </div>
+          <div className={styles.row}>
+            <span>发行方:</span>
+            <p>合生元Mama100</p>
           </div>
         </div>
       </div>
