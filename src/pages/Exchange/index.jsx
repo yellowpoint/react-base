@@ -30,6 +30,8 @@ const UserPoints = () => {
 const Exchange = () => {
   const [open, setOpen] = useState(false);
   const { userInfo, login } = useUser();
+
+  const [exchangeData, setExchangeData] = useState({});
   const handleSummon = () => {
     if (!userInfo) return login();
     Dialog.show({
@@ -50,7 +52,8 @@ const Exchange = () => {
       ],
       onAction: async (action) => {
         if (action.key !== 'ok') return;
-        await API.score();
+        const data = await API.score();
+        setExchangeData(data);
         setOpen(true);
       },
     });
@@ -64,7 +67,7 @@ const Exchange = () => {
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
         <Mask open={open} noClose afterClose={() => setOpen(false)}>
-          <Prize id={101} />
+          <Prize id={101} nftCode={exchangeData.nft_code} />
         </Mask>
       </div>
     </div>

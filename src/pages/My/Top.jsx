@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { ProgressCircle, Dialog } from 'antd-mobile';
+import { Dialog } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
 import { idMap } from '@/components/const';
+
+import MyProgress from './MyProgress';
 
 import styles from './index.module.less';
 
 const Top = ({ myData, init }) => {
   const [open, setOpen] = useState(false);
   const [showRed, setShowRed] = useState(false);
+
+  const [oneKeyData, setOneKeyData] = useState({});
   const { card_list = [] } = myData;
   const num = card_list?.length || 0;
   // 是否已经合成
@@ -59,7 +63,8 @@ const Top = ({ myData, init }) => {
       ],
       onAction: async (action) => {
         if (action.key !== 'ok') return;
-        await API.one_key();
+        const data = await API.one_key();
+        setOneKeyData(data);
         setOpen(true);
         init();
       },
@@ -67,21 +72,11 @@ const Top = ({ myData, init }) => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.progressBar}>
-        <ProgressCircle
-          percent={(limitedNum / 12) * 100}
-          style={{
-            '--size': '80px',
-            '--track-width': '12px',
-            '--track-color': '#fff',
-            '--fill-color': '#3687d1',
-          }}
-        >
-          <div className={styles.tips}>{limitedNum}/12</div>
-          <img className={styles.img} src="/imgs/my/progress.png" />
-        </ProgressCircle>
+      <div className={styles.progressBox}>
+        <MyProgress limitedNum={limitedNum} />
       </div>
-      <div className={styles.textContainer}>
+
+      <div className={styles.textBox}>
         <p>抽满12星座就能合成保护力</p>
         <p>解锁第13个隐藏款NFT龙年限定丁丁</p>
         <div>限定前100名合成保护力的用户获得封面红包</div>
@@ -91,7 +86,7 @@ const Top = ({ myData, init }) => {
       </div>
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (
-          <Prize id={101}>
+          <Prize id={101} nftCode={oneKeyData.nft_code}>
             <Btn className={styles.redBtn} onClick={getRedPacket202} fill>
               解锁龙年丁丁红包封面
             </Btn>

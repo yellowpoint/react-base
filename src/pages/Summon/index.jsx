@@ -19,10 +19,16 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
 
   // 会员不管是否来自会员入口，都显示
   if (isMember || summonData.free_times > 0) {
+    // 2到6有图片
+    const isLevelInRange = userInfo && userInfo.level > 1 && userInfo.level < 7;
     return (
       <div className={styles.member}>
         <div className={styles.memberLevel}>
-          <img src={`/imgs/summon/member/${userInfo.level}.png`} alt="会员" />
+          {isLevelInRange ? (
+            <img src={`/imgs/summon/member/${userInfo.level}.png`} alt="会员" />
+          ) : (
+            userInfo.level_name || '默认会员'
+          )}
         </div>
         <div className={styles.memberFree}>
           剩余：<span>{summonData.free_times}</span>次免费次数
