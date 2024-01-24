@@ -8,7 +8,7 @@ import { NftCard } from '@/components';
 
 import styles from './index.module.less';
 
-const PosterComponent = ({ id }) => {
+const PosterComponent = ({ id, nftCode }) => {
   const posterRef = useRef(null);
   const imageContainerRef = useRef(null);
   const generatePoster = async () => {
@@ -23,7 +23,7 @@ const PosterComponent = ({ id }) => {
       });
       const canvas = await html2canvas(posterRef.current, {
         backgroundColor: null,
-        scale: 2,
+        // scale: 2,
       });
 
       // 获取图像的data URL
@@ -50,9 +50,11 @@ const PosterComponent = ({ id }) => {
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>
       <div ref={posterRef} className={styles.poster}>
+        <img src="/imgs/cardBgShare.png" />
         <div className={styles.posterImg}>
           <img src={`/imgs/cards/${id}.jpg`} alt="卡片" />
         </div>
+        <div className={styles.posterCode}>{nftCode}</div>
         <div className={`${styles.qrCode}`}>
           <p>
             扫码查看详情

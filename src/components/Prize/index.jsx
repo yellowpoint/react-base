@@ -21,13 +21,13 @@ const Title = ({ id }) => {
   }
   return <h1>恭喜获得{getCardName(id) || '默认星座'}</h1>;
 };
-const Main = ({ isShare, id }) => {
+const Main = ({ isShare, id, nftCode }) => {
   const isRedpacket = getIsRedpacket(id);
 
   if (isShare && !isRedpacket) {
     return (
       <>
-        <Poster id={id} />
+        <Poster id={id} nftCode={nftCode} />
         <div className={styles.share}>
           长按上方保存图片
           <br />
@@ -37,7 +37,7 @@ const Main = ({ isShare, id }) => {
     );
   }
 
-  return <NftCard id={id} />;
+  return <NftCard id={id} nftCode={nftCode} />;
 };
 const Animation = () => {
   return (
@@ -52,7 +52,7 @@ const Animation = () => {
     </div>
   );
 };
-const Prize = ({ isShare, id, isMerge, children }) => {
+const Prize = ({ isShare, id, isMerge, children, nftCode }) => {
   const navigate = useNavigate();
   const isRedpacket = getIsRedpacket(id);
 
@@ -62,7 +62,7 @@ const Prize = ({ isShare, id, isMerge, children }) => {
       <div className={styles.main}>
         <Title id={id} />
 
-        <Main isShare={isShare} id={id} />
+        <Main isShare={isShare} id={id} nftCode={nftCode} />
 
         {isRedpacket && (
           <Btn

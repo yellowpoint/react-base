@@ -131,7 +131,7 @@ const SummonBtn = ({ inMask }) => {
     if (card_id === -2) {
       return handleOverNotlong();
     }
-    setSummonData({ ...summonData, card_id });
+    setSummonData({ ...summonData, card_id, nft_code: '1365033310' });
     setOpen(true);
   };
   return (
@@ -167,7 +167,11 @@ const SummonBtn = ({ inMask }) => {
       <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask open={open} afterClose={() => setOpen(false)}>
         {summonData?.card_id !== undefined && (
-          <Prize isShare id={summonData.card_id} />
+          <Prize
+            isShare
+            id={summonData.card_id}
+            nftCode={summonData.nft_code}
+          />
         )}
       </Mask>
     </div>

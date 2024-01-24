@@ -38,7 +38,7 @@ const List = ({ list, redPacketList, setOpen }) => {
                     );
                   }}
                 >
-                  <NftCard id={i.card_id} shadow />
+                  <NftCard id={i.card_id} nftCode={i.nft_code} />
                 </div>
               </Swiper.Item>
             ))}
@@ -66,7 +66,7 @@ const RedPacketList = ({ list }) => {
                 navigate('/detail/' + card_id + '?nft_code=' + i.nft_code);
               }}
             >
-              <NftCard id={i.card_id} shadow />
+              <NftCard id={i.card_id} nftCode={i.nft_code} />
               <div className={styles.getRedPacket}>领取封面</div>
             </div>
           </Swiper.Item>
