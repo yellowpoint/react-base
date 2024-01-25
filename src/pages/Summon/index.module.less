@@ -8,13 +8,25 @@
 }
 
 .boxTable {
-  position: absolute;
-  z-index: 1;
   width: 100%;
 
   .table {
     position: absolute;
+    top: 750px;
+    left: 0;
     z-index: 1;
+    width: 100%;
+  }
+
+  .light {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    pointer-events: none;
+    will-change: auto;
+    animation: fadeInOut 2s ease-in-out infinite;
   }
 }
 
@@ -51,6 +63,7 @@
     width: 708px;
     height: 690px;
     margin: 0 auto 30px;
+    will-change: auto;
     animation: animation-box infinite 2s ease-in-out;
   }
 }
@@ -239,4 +252,10 @@
   font-weight: bold;
   line-height: 1.5;
   text-align: center;
+}
+
+@keyframes fadeInOut {
+  50% {
+    opacity: 0.2;
+  }
 }

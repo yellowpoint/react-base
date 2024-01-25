@@ -77,6 +77,7 @@ const SummonCom = () => {
     <div className={styles.page}>
       <div className={styles.boxTable}>
         <img className={styles.table} src="/imgs/summon/table.png" />
+        <img className={styles.light} src="/imgs/summon/light.png" />
       </div>
       <TopBtns black />
       <BoxSwiper />
