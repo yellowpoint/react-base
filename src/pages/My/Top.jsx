@@ -4,7 +4,7 @@ import { Dialog } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
-import { idMap } from '@/components/const';
+import { idMap, getOnly12Card } from '@/components/const';
 
 import MyProgress from './MyProgress';
 
@@ -16,13 +16,15 @@ const Top = ({ myData, init }) => {
 
   const [oneKeyData, setOneKeyData] = useState({});
   const { card_list = [] } = myData;
-  const num = card_list?.length || 0;
   // 是否已经合成
   const is_one_key = myData?.is_one_key === 1;
+  const only12Card = getOnly12Card(card_list);
+  const num = only12Card?.length || 0;
   const limitedNum = num > 12 ? 12 : num;
 
   // 是否领取龙年红包
   const isGetRed = card_list.find((i) => i.card_id === 202);
+
   const getRedPacket202 = async () => {
     await API.red_packet({ card_id: 202 });
     setShowRed(true);

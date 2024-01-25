@@ -89,6 +89,17 @@ export const getHasLong = (list) => list.find((i) => [101].includes(i.card_id));
 
 export const getCardName = (id) => idMap[id]?.name;
 
+// 根据 card_id 属性去重
+export const uniqueArray = (arr) =>
+  arr.filter(
+    (item, index, self) =>
+      index === self.findIndex((i) => i.card_id === item.card_id),
+  );
+
+// 获取仅12星座卡片
+export const getOnly12Card = (list) =>
+  uniqueArray(list.filter((i) => i.card_id >= 0 && i.card_id <= 11));
+
 // 会员等级介绍页面
 export const memberLevelUrl =
   'https://www.mama100.com/wmall/activityDemo/shoppingGuideNew/index.html?_campaign=20240120222950_24824';

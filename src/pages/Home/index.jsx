@@ -11,6 +11,8 @@ const Home = () => {
     <div className={styles.page}>
       <TopBtns />
       <img className={styles.title} src="/imgs/home/title.gif" alt="标题" />
+      <img className={styles.icon1} src="/imgs/home/icon1.png" />
+      <img className={styles.icon2} src="/imgs/home/icon2.png" />
       <div className={styles.dingBox}>
         <img className={styles.ding} src="/imgs/home/dingding.png" alt="丁丁" />
         <img className={styles.carpet} src="/imgs/home/carpet.gif" alt="飞毯" />

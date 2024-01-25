@@ -27,6 +27,7 @@ const List = ({ list, redPacketList, setOpen }) => {
             slideSize={list?.length === 1 ? 0 : 60}
             trackOffset={20}
             indicator={() => null}
+            defaultIndex={list?.length >= 2 ? 1 : undefined}
           >
             {list.map((i, index) => (
               <Swiper.Item key={index}>

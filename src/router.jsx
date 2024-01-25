@@ -17,7 +17,7 @@ const routerList = [
   },
   {
     path: '/summon',
-    title: '十二星座限量数字藏品',
+    title: '丁丁数字藏品',
     notNeedLogin: true,
     component: lazyLoad('Summon'),
   },

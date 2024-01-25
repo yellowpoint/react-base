@@ -60,6 +60,7 @@ const Exchange = () => {
   };
   return (
     <div className={styles.page}>
+      <div className={styles.tips}>2024年最具吉祥力量的本命守护神 </div>
       <div className={styles.card}>
         <NftCard id={101} />
       </div>
