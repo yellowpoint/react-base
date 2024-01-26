@@ -6,6 +6,7 @@ import { Toast } from 'antd-mobile';
 import API from '@/api';
 import { cfx_accounts, anyweb_home } from '@/assets/anyweb.js';
 import { idMap, getIsRedpacket, getCardName } from '@/components/const';
+import RuleNft from '@/components/Rule/RuleNft';
 import { useUser } from '@/components/UserContext';
 import { getParam } from '@/utils';
 
@@ -64,17 +65,20 @@ const Detail = () => {
       </div>
       <div className={styles.main}>
         <div className={styles.btns}>
-          <div onClick={goAnyweb}>
-            <img src="/imgs/detail/icon1.png" />
-            转移资产
+          <div>
+            <RuleNft>
+              <img className={styles.icon} src="/imgs/detail/icon2.png" />
+              <span>NFT说明</span>
+            </RuleNft>
           </div>
           <div onClick={goAnyweb}>
-            <img src="/imgs/detail/icon2.png" />
-            更新元数据
+            <img className={styles.icon} src="/imgs/detail/icon1.png" />
+            <span>转移资产</span>
           </div>
+
           <div onClick={goAnyweb}>
-            <img src="/imgs/detail/icon3.png" />
-            链上存证
+            <img className={styles.icon} src="/imgs/detail/icon3.png" />
+            <span>链上存证</span>
           </div>
         </div>
         <div className={styles.text}>

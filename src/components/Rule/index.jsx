@@ -24,6 +24,8 @@ const Rule = () => {
         }}
       >
         <div className={styles.ruleBox}>
+          <div className={styles.title}>活动规则</div>
+
           <img src="/imgs/home/rule.png" />
           <div className={styles.ruleMain}>
             <h1>如何召唤丁丁12星座NFT</h1>
