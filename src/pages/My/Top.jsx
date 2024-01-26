@@ -15,6 +15,7 @@ const Top = ({ myData, init }) => {
   const [showRed, setShowRed] = useState(false);
 
   const [oneKeyData, setOneKeyData] = useState({});
+  const [redPacketData, setRedPacketData] = useState({});
   const { card_list = [] } = myData;
   // 是否已经合成
   const is_one_key = myData?.is_one_key === 1;
@@ -26,7 +27,8 @@ const Top = ({ myData, init }) => {
   const isGetRed = card_list.find((i) => i.card_id === 202);
 
   const getRedPacket202 = async () => {
-    await API.red_packet({ card_id: 202 });
+    const data = await API.red_packet({ card_id: 202 });
+    setRedPacketData(data);
     setShowRed(true);
     setOpen(true);
     init();
@@ -88,13 +90,13 @@ const Top = ({ myData, init }) => {
       </div>
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (
-          <Prize id={101} nftCode={oneKeyData.nft_code}>
+          <Prize id={101} item={oneKeyData}>
             <Btn className={styles.redBtn} onClick={getRedPacket202} fill>
               解锁龙年丁丁红包封面
             </Btn>
           </Prize>
         ) : (
-          <Prize id={202} />
+          <Prize id={202} item={redPacketData} />
         )}
       </Mask>
     </div>

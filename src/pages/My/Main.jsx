@@ -61,7 +61,7 @@ const RedPacketList = ({ list }) => {
               onClick={() => {
                 const card_id = i.card_id;
                 if (getIsRedpacket(card_id)) {
-                  // todo 跳转红包
+                  window.open(i?.url);
                   return;
                 }
                 navigate('/detail/' + card_id + '?nft_code=' + i.nft_code);

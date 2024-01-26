@@ -68,7 +68,7 @@ const Exchange = () => {
         <div className={styles.btn} onClick={handleSummon}></div>
         <UserPoints />
         <Mask open={open} noClose afterClose={() => setOpen(false)}>
-          <Prize id={101} nftCode={exchangeData.nft_code} />
+          <Prize id={101} item={exchangeData} />
         </Mask>
       </div>
     </div>

@@ -53,10 +53,10 @@ const Animation = () => {
     </div>
   );
 };
-const Prize = ({ isShare, id, isMerge, children, nftCode }) => {
+const Prize = ({ isShare, id, isMerge, children, item }) => {
   const navigate = useNavigate();
   const isRedpacket = getIsRedpacket(id);
-
+  const nftCode = item?.nft_code;
   return (
     <div className={styles.prize}>
       <Animation />
@@ -69,7 +69,7 @@ const Prize = ({ isShare, id, isMerge, children, nftCode }) => {
           <Btn
             className={styles.btn}
             onClick={() => {
-              console.log('红包封面地址：', idMap[id]?.url);
+              location.href = item?.url;
             }}
             fill
           >
@@ -77,7 +77,13 @@ const Prize = ({ isShare, id, isMerge, children, nftCode }) => {
           </Btn>
         )}
         {isMerge && (
-          <Btn className={styles.btn} onClick={() => {}} fill>
+          <Btn
+            className={styles.btn}
+            onClick={() => {
+              window.open(item?.url);
+            }}
+            fill
+          >
             解锁龙年丁丁红包封面
           </Btn>
         )}
