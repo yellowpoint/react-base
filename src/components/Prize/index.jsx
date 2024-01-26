@@ -43,6 +43,7 @@ const Animation = () => {
   return (
     <div className={styles.animation}>
       <img className={styles.bg} src="/imgs/prize/bg.png" />
+      <img className={styles.light} src="/imgs/prize/light.png" />
       <div>
         <img className={styles.star} src="/imgs/prize/star.png" alt="星星" />
         <img className={styles.star} src="/imgs/prize/star.png" alt="星星" />

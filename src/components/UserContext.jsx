@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
     setUserInfo(newUserInfo);
   };
 
-  const getUserInfo = async (openid) => {
+  const getUserInfo = async (openid = userInfo?.openid) => {
     const data = await API.memberInfo({ openid });
     const newData = { ...data, openid };
 
