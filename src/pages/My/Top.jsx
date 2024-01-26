@@ -34,6 +34,9 @@ const Top = ({ myData, init }) => {
     init();
   };
   const TopBtn = () => {
+    // 没数据先不显示
+    if (myData?.is_one_key === undefined) return null;
+
     // 已合成，但没领取红包，提示去领取红包
     if (is_one_key) {
       if (!isGetRed) {

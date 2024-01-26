@@ -12,7 +12,7 @@ const routerList = [
   },
   {
     path: '/my',
-    title: '我的星座保护力',
+    title: '我的保护力藏品',
     component: lazyLoad('My'),
   },
   {

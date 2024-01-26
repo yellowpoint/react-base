@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { NftCard, Btn } from '@/components';
 import { idMap, getIsRedpacket, getCardName } from '@/components/const';
@@ -54,9 +54,12 @@ const Animation = () => {
   );
 };
 const Prize = ({ isShare, id, isMerge, children, item }) => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const isRedpacket = getIsRedpacket(id);
   const nftCode = item?.nft_code;
+  // 是否是my路由页面
+  const isMyPage = pathname === '/my';
   return (
     <div className={styles.prize}>
       <Animation />
@@ -69,7 +72,7 @@ const Prize = ({ isShare, id, isMerge, children, item }) => {
           <Btn
             className={styles.btn}
             onClick={() => {
-              location.href = item?.url;
+              window.open(item?.url);
             }}
             fill
           >
@@ -88,9 +91,11 @@ const Prize = ({ isShare, id, isMerge, children, item }) => {
           </Btn>
         )}
         {children}
-        <Btn className={styles.btn} onClick={() => navigate('/my')} fill>
-          我的保护力藏品
-        </Btn>
+        {!isMyPage && (
+          <Btn className={styles.btn} onClick={() => navigate('/my')} fill>
+            我的保护力藏品
+          </Btn>
+        )}
       </div>
     </div>
   );
