@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import TopBtns from '@/components/TopBtns';
@@ -7,10 +8,29 @@ import styles from './index.module.less';
 const Home = () => {
   const navigate = useNavigate();
 
+  const [isTitleGifLoad, setIsTitleGifLoad] = useState(false);
+  const handleTitleGifLoad = () => {
+    console.log('22222');
+    setIsTitleGifLoad(true);
+  };
   return (
     <div className={styles.page}>
       <TopBtns />
-      <img className={styles.title} src="/imgs/home/title.gif" alt="标题" />
+      <img
+        className={styles.title}
+        src="/imgs/home/title.gif"
+        alt="标题"
+        style={{ display: isTitleGifLoad ? 'block' : 'none' }}
+      />
+
+      <img
+        className={styles.titlePng}
+        src="/imgs/home/title.png"
+        alt="标题"
+        style={{ display: isTitleGifLoad ? 'none' : 'block' }}
+        onLoad={handleTitleGifLoad}
+      />
+
       <img className={styles.icon1} src="/imgs/home/icon1.png" />
       <img className={styles.icon2} src="/imgs/home/icon2.png" />
       <div className={styles.dingBox}>
