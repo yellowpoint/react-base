@@ -42,7 +42,7 @@ const Top = ({ myData, init }) => {
       if (!isGetRed) {
         return <Btn onClick={getRedPacket202}>领取{idMap[202].name}</Btn>;
       }
-      return <Btn disabled>已合成</Btn>;
+      return <Btn>已合成</Btn>;
     }
 
     return (

@@ -6,6 +6,8 @@ import { Swiper } from 'antd-mobile';
 import { idMap } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
+import { useSummonContext } from './SummonContext';
+
 import styles from './index.module.less';
 
 const TipsSwiper = ({ index }) => {
@@ -23,9 +25,11 @@ const TipsSwiper = ({ index }) => {
 };
 const BoxSwiper = () => {
   const ref = useRef(null);
+  const { summonData, setSummonData } = useSummonContext();
   const [index, setIndex] = useState(0);
   const onIndexChange = (index) => {
     setIndex(index);
+    setSummonData({ ...summonData, swiperIndex: index });
   };
   return (
     <>

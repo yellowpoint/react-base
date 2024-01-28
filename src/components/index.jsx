@@ -41,3 +41,4 @@ export const Btn = ({
 export { default as Mask } from './Mask';
 export { default as NftCard } from './NftCard';
 export { default as Prize } from './Prize';
+export { default as Filp } from './Filp';

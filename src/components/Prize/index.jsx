@@ -60,6 +60,7 @@ const Prize = ({ isShare, id, isMerge, children, item }) => {
   const nftCode = item?.nft_code;
   // 是否是my路由页面
   const isMyPage = pathname === '/my';
+  if (id === undefined) return null;
   return (
     <div className={styles.prize}>
       <Animation />

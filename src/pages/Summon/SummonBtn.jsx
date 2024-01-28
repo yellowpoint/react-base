@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Dialog, Button, Space } from 'antd-mobile';
 
 import API from '@/api';
-import { Btn, Mask, Prize } from '@/components';
+import { Btn, Mask, Prize, Filp } from '@/components';
 import { memberLevelUrl } from '@/components/const';
 import { useUser } from '@/components/UserContext';
 
@@ -166,9 +166,19 @@ const SummonBtn = ({ inMask }) => {
 
       <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask open={open} afterClose={() => setOpen(false)}>
-        {summonData?.card_id !== undefined && (
-          <Prize isShare id={summonData.card_id} item={summonData} />
-        )}
+        <Filp
+          back={<Prize isShare id={summonData.card_id} item={summonData} />}
+          front={
+            <div className={styles.boxFront}>
+              <img
+                src={`/imgs/summon/box${
+                  (summonData?.swiperIndex || 0) + 1
+                }.png`}
+                alt="盲盒"
+              />
+            </div>
+          }
+        />
       </Mask>
     </div>
   );
