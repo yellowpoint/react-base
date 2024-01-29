@@ -11,16 +11,22 @@ import styles from './index.module.less';
 const PosterComponent = ({ id, nftCode }) => {
   const posterRef = useRef(null);
   const imageContainerRef = useRef(null);
+  const readyRef = useRef(false);
   const generatePoster = async () => {
     if (!posterRef.current) return;
 
     try {
-      Toast.show({
-        icon: 'loading',
-        content: '海报生成中....',
-        duration: 0,
-        maskClickable: false,
-      });
+      setTimeout(() => {
+        // 合成超过1s才出现提示
+        if (readyRef.current) return;
+        Toast.show({
+          icon: 'loading',
+          content: '海报生成中....',
+          duration: 0,
+          maskClickable: false,
+        });
+      }, 1000);
+
       const canvas = await html2canvas(posterRef.current, {
         backgroundColor: null,
         // scale: 2,
@@ -36,6 +42,7 @@ const PosterComponent = ({ id, nftCode }) => {
         imageContainerRef.current.innerHTML = '';
         imageContainerRef.current.appendChild(image);
       }
+      readyRef.current = true;
       Toast.clear();
     } catch (error) {
       console.error('Error creating poster image:', error);
