@@ -1,4 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+import { motion } from 'framer-motion';
 
 import { NftCard, Btn } from '@/components';
 import { idMap, getIsRedpacket, getCardName } from '@/components/const';
@@ -53,17 +56,33 @@ const Animation = () => {
     </div>
   );
 };
-const Prize = ({ isShare, id, isMerge, children, item }) => {
+const Prize = ({ isShare, id, isMerge, children, item, filp = false }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isRedpacket = getIsRedpacket(id);
   const nftCode = item?.nft_code;
+
+  // 翻转状态下，动画稍后再显示
+  const [showAnimation, setShowAnimation] = useState(!filp);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAnimation(true);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
   // 是否是my路由页面
   const isMyPage = pathname === '/my';
   if (id === undefined) return null;
   return (
     <div className={styles.prize}>
-      <Animation />
+      <motion.div
+        initial={{ opacity: 0 }} // 初始状态
+        animate={{ opacity: showAnimation ? 1 : 0 }} // 动画状态
+        transition={{ duration: 0.5 }} // 过渡动画时间
+      >
+        <Animation />
+      </motion.div>
+
       <div className={styles.main}>
         <Title id={id} />
 

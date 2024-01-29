@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Dialog, Button, Space } from 'antd-mobile';
+import { motion } from 'framer-motion';
 
 import API from '@/api';
 import { Btn, Mask, Prize, Filp } from '@/components';
@@ -167,15 +168,27 @@ const SummonBtn = ({ inMask }) => {
       <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask open={open} afterClose={() => setOpen(false)}>
         <Filp
-          back={<Prize isShare id={summonData.card_id} item={summonData} />}
+          back={
+            <Prize isShare id={summonData.card_id} item={summonData} filp />
+          }
           front={
             <div className={styles.boxFront}>
-              <img
-                src={`/imgs/summon/box${
-                  (summonData?.swiperIndex || 0) + 1
-                }.png`}
-                alt="盲盒"
-              />
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 260,
+                  damping: 20,
+                }}
+              >
+                <img
+                  src={`/imgs/summon/box${
+                    (summonData?.swiperIndex || 0) + 1
+                  }.png`}
+                  alt="盲盒"
+                />
+              </motion.div>
             </div>
           }
         />

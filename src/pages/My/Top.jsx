@@ -77,6 +77,10 @@ const Top = ({ myData, init }) => {
       },
     });
   };
+  const handleTest = () => {
+    setOneKeyData({ nft_code: 321321321 });
+    setOpen(true);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.progressBox}>
@@ -91,6 +95,18 @@ const Top = ({ myData, init }) => {
       <div className={styles.btn}>
         <TopBtn />
       </div>
+      <button
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: 9999,
+        }}
+        onClick={() => handleTest()}
+      >
+        测试合成
+      </button>
+
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (
           <Prize id={101} item={oneKeyData}>
