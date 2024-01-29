@@ -17,7 +17,7 @@ const routerList = [
   },
   {
     path: '/summon',
-    title: '丁丁数字藏品',
+    title: 'Mama100丁丁12星座',
     notNeedLogin: true,
     component: lazyLoad('Summon'),
   },

@@ -5,11 +5,14 @@ import react from '@vitejs/plugin-react';
 import postCssPxToRem from 'postcss-pxtorem';
 import { defineConfig } from 'vite';
 
+import { baseHtmlPath } from './src/env.js';
+
 export default defineConfig(({ mode, command }) => {
   const isBuild = command === 'build'; // 是否是打包环境的判断
   const plugins = [react()];
   isBuild && plugins.push(legacy()); //  是打包环境，就把legacy()加入到plugins中
   return {
+    base: isBuild ? baseHtmlPath + '/' : '/',
     plugins,
     css: {
       modules: {

@@ -9,6 +9,7 @@ import './assets/index.css';
 import { PageLoading } from '@/components';
 import { UserProvider, useUser } from '@/components/UserContext';
 
+import { baseHtmlPath } from './env.js';
 import RoutesComport from './router'; // 路由组件
 
 // 修改title
@@ -22,12 +23,13 @@ const DomTitle = ({ item }) => {
   document.title = item.title;
   return <item.component />;
 };
-
+const isDev = import.meta.env.DEV;
+const basename = isDev ? '/' : baseHtmlPath;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // StrictMode在开发时useEffect执行两次
   // <React.StrictMode>
-  <BrowserRouter>
+  <BrowserRouter basename={basename}>
     <Suspense fallback={<PageLoading />}>
       <UserProvider>
         <Routes>

@@ -6,9 +6,11 @@ import { COOKIE_KEY } from '@/components/const';
 import { reLogin } from '@/components/UserContext';
 import { VconsoleCom } from '@/utils';
 
+import { baseApiPath } from '../env.js';
+
 const isDev = import.meta.env.DEV;
 const isText = ['120.46.191.217'].includes(location.hostname); // 测试指定端口
-let baseURL = '/api';
+let baseURL = isDev ? '/api' : baseApiPath;
 if (isText) baseURL = 'http://120.46.191.217:8000/api';
 const api = axios.create({
   baseURL,

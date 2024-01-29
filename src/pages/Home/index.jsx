@@ -27,10 +27,10 @@ const Home = () => {
           className={styles.toMember}
           onClick={() => navigate('/summon?fromMember=true')}
         ></div>
-        <div
+        {/* <div
           className={styles.toSummon}
           onClick={() => navigate('/summon')}
-        ></div>
+        ></div> */}
       </div>
     </div>
   );

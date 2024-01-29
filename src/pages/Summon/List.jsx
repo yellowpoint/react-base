@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { nameList } from '@/components/const';
+import { nameList, idMap } from '@/components/const';
 import Mask from '@/components/Mask';
 
 import Cards from './Cards';
@@ -31,6 +31,7 @@ const List = () => {
               onClick={() => handleClick(index)}
             >
               <img src={`/imgs/dolls/${index}.png`} alt={nameList[index]} />
+              <p>{idMap[index]?.date || ''}</p>
               <p>{nameList[index]}</p>
             </div>
           ))}

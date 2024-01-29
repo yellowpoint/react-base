@@ -72,14 +72,18 @@ const SummonBtn = ({ inMask }) => {
   };
   // 所以都集齐了
   const handleAllOver = () => {
-    Dialog.alert({
+    const handler = Dialog.show({
+      closeOnMaskClick: true,
       content: (
         <div style={{ textAlign: 'center' }}>
           恭喜您！
           <br />
           已经完成了丁丁12星座藏品之旅！
-          <br />
-          丁丁12星座的保护力陪伴着您成长！
+          <img
+            className={styles.dialogClose}
+            onClick={() => handler.close()}
+            src="/imgs/home/x.png"
+          />
         </div>
       ),
     });

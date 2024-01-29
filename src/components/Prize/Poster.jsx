@@ -17,7 +17,7 @@ const PosterComponent = ({ id, nftCode }) => {
 
     try {
       setTimeout(() => {
-        // 合成超过1s才出现提示
+        // 合成超过2s才出现提示
         if (readyRef.current) return;
         Toast.show({
           icon: 'loading',
@@ -25,7 +25,7 @@ const PosterComponent = ({ id, nftCode }) => {
           duration: 0,
           maskClickable: false,
         });
-      }, 1000);
+      }, 2000);
 
       const canvas = await html2canvas(posterRef.current, {
         backgroundColor: null,
@@ -52,7 +52,7 @@ const PosterComponent = ({ id, nftCode }) => {
   useEffect(() => {
     setTimeout(() => {
       generatePoster();
-    }, 0);
+    }, 200);
   }, []);
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>

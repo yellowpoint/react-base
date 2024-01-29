@@ -20,12 +20,14 @@
     h1 {
       margin-bottom: 30px;
       font-size: 96px;
+      pointer-events: none;
     }
 
     h2 {
       margin-bottom: 30px;
       font-size: 67px;
       font-weight: normal;
+      pointer-events: none;
     }
 
     .btn {
@@ -155,6 +157,14 @@
 }
 
 .posterBox {
+  min-height: 1400px;
+
+  .imgBox {
+    position: relative;
+    z-index: 33;
+    width: 100%;
+  }
+
   .poster {
     position: relative;
     width: 100%;
