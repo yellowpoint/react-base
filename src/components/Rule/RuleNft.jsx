@@ -4,7 +4,7 @@ import Mask from '@/components/Mask';
 
 import styles from './index.module.less';
 
-const RuleNft = ({ children }) => {
+const RuleNft = ({ children, goAnyweb }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -38,7 +38,12 @@ const RuleNft = ({ children }) => {
             <h1>关于AnyWeb加密货币钱包说明</h1>
             <p>
               请登录官方
-              <a href="https://www.anyweb.cc/" target="_blank" rel="noreferrer">
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  goAnyweb();
+                }}
+              >
                 AnyWeb网站
               </a>
               ，根据提示注册，创建个人账户，根据自己的需求管理您的数字资产。

@@ -9,17 +9,16 @@
 
 .container {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
   height: 723px;
-  padding-top: 50px;
   overflow: hidden;
 
   .progressBox {
+    position: absolute;
+    top: 50px;
+    left: 40px;
     display: flex;
     flex: 1;
     align-items: center;
-    justify-content: center;
     height: 215px;
   }
 
@@ -47,13 +46,19 @@
 
   .btn {
     position: absolute;
-    bottom: 30%;
+    bottom: 130px;
+    left: 0;
     z-index: 30;
     display: flex;
-    flex-basis: 100%;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    p {
+      margin-top: 20px;
+      color: #297cdf;
+    }
   }
 }
 

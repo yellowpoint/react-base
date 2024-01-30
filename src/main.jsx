@@ -8,6 +8,7 @@ import './assets/index.css';
 
 import { PageLoading } from '@/components';
 import { UserProvider, useUser } from '@/components/UserContext';
+import { urlDebug } from '@/utils';
 
 import { baseHtmlPath } from './env.js';
 import RoutesComport from './router'; // 路由组件
@@ -23,6 +24,9 @@ const DomTitle = ({ item }) => {
   document.title = item.title;
   return <item.component />;
 };
+
+urlDebug();
+
 const isDev = import.meta.env.DEV;
 const basename = isDev ? '/' : baseHtmlPath;
 const root = ReactDOM.createRoot(document.getElementById('root'));

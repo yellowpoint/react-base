@@ -13,8 +13,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "rsync": "rsync -av --progress  dist/ www@120.46.191.217:/var/www/html/mother_100/html",
-    "scp": "scp -r dist/* www@120.46.191.217:/var/www/html/mother_100/html"
+    "rsync": "rsync -av --progress  dist/ www@120.46.191.217:/var/www/html/mother_100/html/member-nft-h5",
+    "scp": "scp -r dist/* www@120.46.191.217:/var/www/html/mother_100/html/member-nft-h5"
   },
   "dependencies": {
     "@better-scroll/core": "^2.5.1",

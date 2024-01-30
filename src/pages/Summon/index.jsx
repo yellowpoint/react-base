@@ -100,7 +100,13 @@ const SummonCom = () => {
       />
       <List />
       {canBy && (
-        <div className={styles.exchange} onClick={() => navigate('/exchange')}>
+        <div
+          className={styles.exchange}
+          onClick={() => {
+            window?._hmt?.push?.(['_trackEvent', '点击直抽隐藏款', 'click']);
+            navigate('/exchange');
+          }}
+        >
           {`直抽隐藏款>>`}
         </div>
       )}

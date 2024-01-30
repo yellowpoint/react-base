@@ -47,11 +47,12 @@ const Top = ({ myData, init }) => {
 
     return (
       <Btn disabled={limitedNum < 12} onClick={handleClick}>
-        一键合成
+        {`一 键 合 成`}
       </Btn>
     );
   };
   const handleClick = () => {
+    window?._hmt?.push?.(['_trackEvent', '点击立即合成', 'click']);
     Dialog.show({
       content: `是否确认合成?`,
       closeOnAction: true,
@@ -87,13 +88,9 @@ const Top = ({ myData, init }) => {
         <MyProgress limitedNum={limitedNum} />
       </div>
 
-      <div className={styles.textBox}>
-        <p>抽满12星座就能合成保护力</p>
-        <p>解锁第13个隐藏款NFT龙年限定丁丁</p>
-        <div>限定前100名合成保护力的用户获得封面红包</div>
-      </div>
       <div className={styles.btn}>
         <TopBtn />
+        <p>限定前100名合成保护力的用户获得封面红包</p>
       </div>
 
       {/* <button

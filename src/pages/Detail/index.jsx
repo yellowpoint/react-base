@@ -25,7 +25,8 @@ const Detail = () => {
       const data = await API.collectCardDetail({ nft_code });
       setDetailData(data);
     };
-    init();
+    // 暂未用到接口数据
+    // init();
   }, []);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const Detail = () => {
       <div className={styles.main}>
         <div className={styles.btns}>
           <div>
-            <RuleNft>
+            <RuleNft goAnyweb={goAnyweb}>
               <img
                 className={styles.icon}
                 src={`${import.meta.env.BASE_URL}imgs/detail/icon2.png`}

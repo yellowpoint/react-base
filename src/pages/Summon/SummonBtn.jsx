@@ -100,6 +100,8 @@ const SummonBtn = ({ inMask }) => {
       });
       return;
     }
+    window?._hmt?.push?.(['_trackEvent', '点击立即召唤', 'click']);
+
     Dialog.show({
       content: `是否确认消耗${getTips()}进行抽取`,
       closeOnAction: true,

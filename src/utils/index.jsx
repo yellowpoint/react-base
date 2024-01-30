@@ -25,18 +25,18 @@ export const getParam = (key) => {
   const params = new URLSearchParams(window.location.search);
   return params.get(key);
 };
-
+export const loadVconsole = () => {
+  import('vconsole').then((vconsole) => {
+    try {
+      new vconsole.default();
+    } catch (error) {
+      console.log('vconsole', error);
+    }
+  });
+};
 export const VconsoleCom = ({ children, times = 4 }) => {
   const [clickCount, setClickCount] = useState(0);
-  const loadVconsole = () => {
-    import('vconsole').then((vconsole) => {
-      try {
-        new vconsole.default();
-      } catch (error) {
-        console.log('vconsole', error);
-      }
-    });
-  };
+
   useEffect(() => {
     // 点击一定次数加载 VConsole
     if (clickCount === times) {
@@ -49,4 +49,8 @@ export const VconsoleCom = ({ children, times = 4 }) => {
     setClickCount((prevCount) => prevCount + 1);
   };
   return <div onClick={handleClick}>{children}</div>;
+};
+
+export const urlDebug = () => {
+  if (getParam('debug') === 'true') loadVconsole();
 };
