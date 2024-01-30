@@ -62,24 +62,33 @@ const Detail = () => {
     <div className={styles.page}>
       <div className={styles.imgBox}>
         <div className={styles.img}>
-          <img src={`/imgs/cards/${id}.jpg`} />
+          <img src={`${import.meta.env.BASE_URL}imgs/cards/${id}.jpg`} />
         </div>
       </div>
       <div className={styles.main}>
         <div className={styles.btns}>
           <div>
             <RuleNft>
-              <img className={styles.icon} src="/imgs/detail/icon2.png" />
+              <img
+                className={styles.icon}
+                src={`${import.meta.env.BASE_URL}imgs/detail/icon2.png`}
+              />
               <span>NFT说明</span>
             </RuleNft>
           </div>
           <div onClick={goAnyweb}>
-            <img className={styles.icon} src="/imgs/detail/icon1.png" />
+            <img
+              className={styles.icon}
+              src={`${import.meta.env.BASE_URL}imgs/detail/icon1.png`}
+            />
             <span>转移资产</span>
           </div>
 
           <div onClick={goAnyweb}>
-            <img className={styles.icon} src="/imgs/detail/icon3.png" />
+            <img
+              className={styles.icon}
+              src={`${import.meta.env.BASE_URL}imgs/detail/icon3.png`}
+            />
             <span>链上存证</span>
           </div>
         </div>

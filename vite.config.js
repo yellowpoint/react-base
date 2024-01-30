@@ -6,6 +6,7 @@ import postCssPxToRem from 'postcss-pxtorem';
 import { defineConfig } from 'vite';
 
 import { baseHtmlPath } from './src/env.js';
+import modifyImgSrcPlugin from './src/utils/vite-plugin-modify-img-src';
 
 export default defineConfig(({ mode, command }) => {
   const isBuild = command === 'build'; // 是否是打包环境的判断

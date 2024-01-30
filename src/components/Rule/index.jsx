@@ -26,7 +26,7 @@ const Rule = () => {
         <div className={styles.ruleBox}>
           <div className={styles.title}>活动规则</div>
 
-          <img src="/imgs/home/rule.png" />
+          <img src={`${import.meta.env.BASE_URL}imgs/home/rule.png`} />
           <div className={styles.ruleMain}>
             <h1>如何召唤丁丁12星座NFT</h1>
             <p>满足等级条件的相应会员</p>

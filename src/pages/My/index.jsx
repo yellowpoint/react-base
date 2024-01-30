@@ -30,7 +30,7 @@ const My = () => {
       <Top myData={myData} init={init} />
       <Main myData={myData} />
       <div className={styles.bottom}>
-        <img src="/imgs/my/bg_bottom.png" />
+        <img src={`${import.meta.env.BASE_URL}imgs/my/bg_bottom.png`} />
       </div>
     </div>
   );

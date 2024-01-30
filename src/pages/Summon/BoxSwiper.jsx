@@ -55,17 +55,26 @@ const BoxSwiper = () => {
         >
           <Swiper.Item key={1}>
             <div className={styles.box}>
-              <img src="/imgs/summon/box1.png" alt="盲盒" />
+              <img
+                src={`${import.meta.env.BASE_URL}imgs/summon/box1.png`}
+                alt="盲盒"
+              />
             </div>
           </Swiper.Item>
           <Swiper.Item key={2}>
             <div className={styles.box}>
-              <img src="/imgs/summon/box2.png" alt="盲盒" />
+              <img
+                src={`${import.meta.env.BASE_URL}imgs/summon/box2.png`}
+                alt="盲盒"
+              />
             </div>
           </Swiper.Item>
           <Swiper.Item key={3}>
             <div className={styles.box}>
-              <img src="/imgs/summon/box3.png" alt="盲盒" />
+              <img
+                src={`${import.meta.env.BASE_URL}imgs/summon/box3.png`}
+                alt="盲盒"
+              />
             </div>
           </Swiper.Item>
         </Swiper>

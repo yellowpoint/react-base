@@ -57,9 +57,12 @@ const PosterComponent = ({ id, nftCode }) => {
   return (
     <div className={styles.posterBox} ref={imageContainerRef}>
       <div ref={posterRef} className={styles.poster}>
-        <img src="/imgs/cardBgShare.png" />
+        <img src={`${import.meta.env.BASE_URL}imgs/cardBgShare.png`} />
         <div className={styles.posterImg}>
-          <img src={`/imgs/cards/${id}.jpg`} alt="卡片" />
+          <img
+            src={`${import.meta.env.BASE_URL}imgs/cards/${id}.jpg`}
+            alt="卡片"
+          />
         </div>
         <div className={styles.posterCode}>{nftCode}</div>
         <div className={`${styles.qrCode}`}>

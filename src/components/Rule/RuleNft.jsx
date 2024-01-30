@@ -24,7 +24,10 @@ const RuleNft = ({ children }) => {
         <div className={styles.ruleBox}>
           <div className={styles.title}>NFT说明</div>
 
-          <img className={styles.bg} src="/imgs/home/rule.png" />
+          <img
+            className={styles.bg}
+            src={`${import.meta.env.BASE_URL}imgs/home/rule.png`}
+          />
           <div className={styles.ruleMain}>
             <h1>NFT数字藏品链接说明</h1>
             <p>{`NFT("非同质化代币"的简称)是您拥有的数字商品。`}</p>

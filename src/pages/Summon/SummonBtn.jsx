@@ -82,7 +82,7 @@ const SummonBtn = ({ inMask }) => {
           <img
             className={styles.dialogClose}
             onClick={() => handler.close()}
-            src="/imgs/home/x.png"
+            src={`${import.meta.env.BASE_URL}imgs/home/x.png`}
           />
         </div>
       ),
@@ -187,7 +187,7 @@ const SummonBtn = ({ inMask }) => {
                 }}
               >
                 <img
-                  src={`/imgs/summon/box${
+                  src={`${import.meta.env.BASE_URL}imgs/summon/box${
                     (summonData?.swiperIndex || 0) + 1
                   }.png`}
                   alt="盲盒"

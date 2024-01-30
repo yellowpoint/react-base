@@ -31,12 +31,18 @@ const MyProgress = ({ limitedNum }) => {
       >
         <img
           className={`${styles.progress100}`}
-          src="/imgs/my/progress100.png"
+          src={`${import.meta.env.BASE_URL}imgs/my/progress100.png`}
         />
       </div>
-      <img className={styles.progress0} src="/imgs/my/progress0_2.png" />
+      <img
+        className={styles.progress0}
+        src={`${import.meta.env.BASE_URL}imgs/my/progress0_2.png`}
+      />
       <div className={styles.tips}>{limitedNum}/12</div>
-      <img className={styles.icon} src="/imgs/my/progress.png" />
+      <img
+        className={styles.icon}
+        src={`${import.meta.env.BASE_URL}imgs/my/progress.png`}
+      />
     </div>
   );
 };

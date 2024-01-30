@@ -30,7 +30,10 @@ const List = () => {
               key={index}
               onClick={() => handleClick(index)}
             >
-              <img src={`/imgs/dolls/${index}.png`} alt={nameList[index]} />
+              <img
+                src={`${import.meta.env.BASE_URL}imgs/dolls/${index}.png`}
+                alt={nameList[index]}
+              />
               <p>{idMap[index]?.date || ''}</p>
               <p>{nameList[index]}</p>
             </div>

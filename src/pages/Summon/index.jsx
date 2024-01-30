@@ -25,7 +25,12 @@ const MemberInfo = ({ isMember, userInfo, summonData, fromMember }) => {
       <div className={styles.member}>
         <div className={styles.memberLevel}>
           {isLevelInRange ? (
-            <img src={`/imgs/summon/member/${userInfo.level}.png`} alt="会员" />
+            <img
+              src={`${import.meta.env.BASE_URL}imgs/summon/member/${
+                userInfo.level
+              }.png`}
+              alt="会员"
+            />
           ) : (
             userInfo.level_name || '默认会员'
           )}
@@ -76,8 +81,14 @@ const SummonCom = () => {
   return (
     <div className={styles.page}>
       <div className={styles.boxTable}>
-        <img className={styles.table} src="/imgs/summon/table.png" />
-        <img className={styles.light} src="/imgs/summon/light.png" />
+        <img
+          className={styles.table}
+          src={`${import.meta.env.BASE_URL}imgs/summon/table.png`}
+        />
+        <img
+          className={styles.light}
+          src={`${import.meta.env.BASE_URL}imgs/summon/light.png`}
+        />
       </div>
       <TopBtns black />
       <BoxSwiper />
