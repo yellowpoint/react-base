@@ -90,7 +90,7 @@ const Top = ({ myData, init }) => {
 
       <div className={styles.btn}>
         <TopBtn />
-        <p>限定前100名合成保护力的用户获得封面红包</p>
+        <p>前100名还可额外获得龙年限定丁丁红包封面</p>
       </div>
 
       {/* <button
