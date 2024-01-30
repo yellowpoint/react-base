@@ -13,7 +13,7 @@ const init = () => {
         logger: null, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
         appId: 'a8c9201d-6e6e-4b11-9550-b74c3ffef84b',
       },
-      appUrl,
+      // appUrl,
     );
 
     provider.on('ready', () => {

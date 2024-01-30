@@ -95,7 +95,8 @@ const Top = ({ myData, init }) => {
       <div className={styles.btn}>
         <TopBtn />
       </div>
-      <button
+
+      {/* <button
         style={{
           position: 'fixed',
           top: 0,
@@ -105,7 +106,7 @@ const Top = ({ myData, init }) => {
         onClick={() => handleTest()}
       >
         测试合成
-      </button>
+      </button> */}
 
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (

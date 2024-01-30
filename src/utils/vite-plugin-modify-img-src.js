@@ -4,10 +4,12 @@ export default function modifyImgSrcPlugin(isBuild) {
   return {
     name: 'modify-img-src',
     transform(code, id) {
-      if (!isBuild && id.endsWith('.jsx')) {
+      if (id.endsWith('.jsx')) {
+        console.log('code', code);
+
         // 使用正则表达式替换所有的 img src 属性
         code = code.replace(
-          /(jsxDEV\("img",\s*\{\s*src:\s*")(.*?)(?="\s*\},)/g,
+          /(jsxDEV\("img",\s*\{\s*src:\s*)(.*?)(?="\s*\},)/g,
           (match, p1, p2) => {
             // 这里可以根据需要修改图片路径 p2
             const newSrc = modifyImagePath(p2);

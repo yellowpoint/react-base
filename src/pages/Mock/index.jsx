@@ -9,11 +9,11 @@ const MockAuth = () => {
   const redirectUrl = urlParams.get('redirectUrl');
   // 添加点击事件监听器
   const handleRedirectClick = () => {
-    Cookies.set('hhId', '1080669374');
-    Cookies.set('token', '26d385a82a85cc591cae0e26c83118e5');
+    Cookies.set('hhId', '1088896517');
+    Cookies.set('token', 'ae8ef7c6ba6fff24c6129d8df3cb26c6');
     Cookies.set('customerId', '80669374');
-    Cookies.set('unionId', 'oZyc1uLjhxoP2m-jt-vtjAAje3X0');
-    Cookies.set('openId', 'o-3qn0aotYbf05zXXC82pLM2bYBk');
+    Cookies.set('unionId', 'oyF4kw4b2nda6itIYFgqpCH1Kti4');
+    Cookies.set('openId', 'osFJ4jk4lMIiwna6bGLf1rZyKL9w');
 
     if (redirectUrl) {
       window.location.href = redirectUrl;

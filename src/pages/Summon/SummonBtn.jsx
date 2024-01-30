@@ -148,7 +148,8 @@ const SummonBtn = ({ inMask }) => {
       >
         {inMask ? '就你了' : '立即召唤'}
       </Btn>
-      <Space wrap>
+
+      {/* <Space wrap>
         <Button color="primary" fill="solid" onClick={() => mockSummon(0)}>
           模拟抽中星座1
         </Button>
@@ -167,7 +168,7 @@ const SummonBtn = ({ inMask }) => {
         <Button color="primary" fill="solid" onClick={() => mockSummon(-1)}>
           模拟完成旅途
         </Button>
-      </Space>
+      </Space> */}
 
       <UserPoints summonData={summonData} hasFree={hasFree} />
       <Mask open={open} afterClose={() => setOpen(false)}>
