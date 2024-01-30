@@ -15,7 +15,7 @@ import styles from './index.module.less';
 const Detail = () => {
   const { id } = useParams();
   const nft_code = getParam('nft_code');
-  const { userInfo, login } = useUser();
+  const { userInfo, login, updateUserInfo } = useUser();
 
   const [detailData, setDetailData] = useState({});
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Detail = () => {
     };
   }, []);
 
-  const goAnyweb = () => {
+  const goAnyweb = async () => {
     Toast.show({
       icon: 'loading',
       content: '加载中…',
@@ -54,7 +54,9 @@ const Detail = () => {
     if (userInfo?.is_bind_address === 1) {
       return anyweb_home();
     }
-    cfx_accounts();
+    await cfx_accounts();
+    updateUserInfo();
+    anyweb_home();
   };
   return (
     <div className={styles.page}>

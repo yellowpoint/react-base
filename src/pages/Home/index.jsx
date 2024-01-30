@@ -6,7 +6,7 @@ import styles from './index.module.less';
 
 const Home = () => {
   const navigate = useNavigate();
-
+  console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL);
   return (
     <div className={styles.page}>
       <TopBtns />
@@ -26,11 +26,9 @@ const Home = () => {
         <div
           className={styles.toMember}
           onClick={() => navigate('/summon?fromMember=true')}
-        ></div>
-        {/* <div
-          className={styles.toSummon}
-          onClick={() => navigate('/summon')}
-        ></div> */}
+        >
+          <img src="/imgs/home/member.png" />
+        </div>
       </div>
     </div>
   );

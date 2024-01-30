@@ -3,13 +3,18 @@ import { Provider } from '@idealight-labs/anyweb-js-sdk';
 import API from '@/api';
 
 let providerObj = undefined;
+// 需在小程序访问，添加反向代理
+const appUrl = 'https://www.mama100.com/member-nft-h5/anyweb';
 const init = () => {
   return new Promise((resolve) => {
-    const provider = new Provider({
-      // logger: console, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
-      logger: null, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
-      appId: '38870951-9968-465f-b15d-80b088824705', // todo 上线前更换
-    });
+    const provider = new Provider(
+      {
+        // logger: console, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
+        logger: null, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
+        appId: 'a8c9201d-6e6e-4b11-9550-b74c3ffef84b',
+      },
+      appUrl,
+    );
 
     provider.on('ready', () => {
       resolve(provider);
@@ -22,7 +27,7 @@ export const cfx_accounts = async () => {
   if (!providerObj) {
     await init();
   }
-  providerObj
+  return providerObj
     .request({
       method: 'cfx_accounts',
       params: [
@@ -32,9 +37,9 @@ export const cfx_accounts = async () => {
         },
       ],
     })
-    .then((data) => {
+    .then(async (data) => {
       const { chainId, networkId, address, code } = data;
-      API.nftAddress({ address: address?.[0] });
+      await API.nftAddress({ address: address?.[0] });
     })
     .catch((e) => {
       console.error('调用失败', e);
@@ -46,7 +51,7 @@ export const anyweb_home = async () => {
     await init();
   }
 
-  providerObj
+  return providerObj
     .request({
       method: 'anyweb_home',
     })
