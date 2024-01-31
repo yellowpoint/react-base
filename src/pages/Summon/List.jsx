@@ -34,7 +34,7 @@ const List = () => {
                 src={`${import.meta.env.BASE_URL}imgs/dolls/${index}.png`}
                 alt={nameList[index]}
               />
-              <p>{idMap[index]?.date || ''}</p>
+              <p className={styles.cardDate}>{idMap[index]?.date || ''}</p>
               <p>{nameList[index]}</p>
             </div>
           ))}
