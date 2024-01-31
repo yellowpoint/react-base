@@ -1,4 +1,5 @@
 import { Provider } from '@idealight-labs/anyweb-js-sdk';
+import { Toast } from 'antd-mobile';
 
 import API from '@/api';
 
@@ -39,10 +40,19 @@ export const cfx_accounts = async () => {
     })
     .then(async (data) => {
       const { chainId, networkId, address, code } = data;
-      await API.nftAddress({ address: address?.[0] });
+      // 判断 address 是否存在
+      const address0 = address?.[0];
+      if (!address0) {
+        return Promise.reject('address 不存在');
+      }
+      await API.nftAddress({ address: address0 });
     })
     .catch((e) => {
-      console.error('调用失败', e);
+      Toast.show({
+        icon: 'fail',
+        content: '钱包地址获取失败',
+      });
+      return Promise.reject('钱包地址获取失败', e);
     });
 };
 

@@ -90,7 +90,7 @@ const Top = ({ myData, init }) => {
 
       <div className={styles.btn}>
         <TopBtn />
-        <p>前100名还可额外获得龙年限定丁丁红包封面</p>
+        <p>前500名还可额外获得龙年限定丁丁红包封面</p>
       </div>
 
       {/* <button
