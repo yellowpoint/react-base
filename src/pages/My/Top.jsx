@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Dialog } from 'antd-mobile';
+import { Dialog, Toast } from 'antd-mobile';
 
 import API from '@/api';
 import { Btn, Mask, Prize } from '@/components';
@@ -45,13 +45,16 @@ const Top = ({ myData, init }) => {
       return <Btn>已合成</Btn>;
     }
 
-    return (
-      <Btn disabled={limitedNum < 12} onClick={handleClick}>
-        {`一 键 合 成`}
-      </Btn>
-    );
+    return <Btn onClick={handleClick}>{`一 键 合 成`}</Btn>;
   };
   const handleClick = () => {
+    if (limitedNum < 12) {
+      Toast.show({
+        position: 'top',
+        content: '集齐12张才能合成哦~',
+      });
+      return;
+    }
     window?._hmt?.push?.(['_trackEvent', '点击立即合成', 'click']);
     Dialog.show({
       content: `是否确认合成?`,
