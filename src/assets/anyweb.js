@@ -4,7 +4,7 @@ import API from '@/api';
 
 let providerObj = undefined;
 // 需在小程序访问，添加反向代理
-const appUrl = 'https://www.mama100.com/member-nft-h5/anyweb';
+const appUrl = 'https://www.mama100.com/member-nft-h5/anyweb/html#/';
 const init = () => {
   return new Promise((resolve) => {
     const provider = new Provider(
@@ -13,7 +13,7 @@ const init = () => {
         logger: null, // SDK 的 logger, 设置为 null 可关闭 SDK 的日志
         appId: 'a8c9201d-6e6e-4b11-9550-b74c3ffef84b',
       },
-      // appUrl,
+      appUrl,
     );
 
     provider.on('ready', () => {
