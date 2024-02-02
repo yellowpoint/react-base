@@ -15,7 +15,7 @@ if (isText) baseURL = 'http://120.46.191.217:8000/api';
 const api = axios.create({
   baseURL,
 });
-
+const openid = Cookies.getJSON(COOKIE_KEY)?.openid || Cookies.get('openId');
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
@@ -27,7 +27,7 @@ api.interceptors.request.use(
     });
     // 在发送请求之前做一些事情
     // 添加openid参数到请求中
-    const openid = Cookies.getJSON(COOKIE_KEY)?.openid || Cookies.get('openId');
+
     if (config.method === 'get') {
       config.params = {
         openid,
@@ -76,6 +76,7 @@ api.interceptors.response.use(
         content: (
           <VconsoleCom>
             {responseData.message || '错误码：' + responseData.code}
+            <div>账号为：{openid}</div>
           </VconsoleCom>
         ),
       });

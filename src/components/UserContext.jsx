@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+import { Toast } from 'antd-mobile';
 import Cookies from 'js-cookie';
 
 import API from '@/api';
@@ -10,6 +11,18 @@ const UserContext = createContext();
 const login = () => {
   location.href = API.getAuthUrl();
 };
+export const reLogin = () => {
+  try {
+    const openid = Cookies.getJSON(COOKIE_KEY)?.openid || Cookies.get('openId');
+    if (openid) API.updateCookies({ openId: openid });
+  } catch (error) {}
+
+  Cookies.remove(COOKIE_KEY);
+  Cookies.remove('token');
+  Cookies.remove('openId');
+  login();
+};
+
 // 提供者组件
 export const UserProvider = ({ children }) => {
   const defaultUser = Cookies.getJSON(COOKIE_KEY);
@@ -35,6 +48,16 @@ export const UserProvider = ({ children }) => {
     // 没有该项目的用户信息，且有mama100的token时调用内部登录
     if (!defaultUser && Cookies.get('token')) {
       const openid = Cookies.get('openId');
+      if (!openid) {
+        Toast.show({
+          icon: 'loading',
+          content: '未获取到openid，正在为您重新登录',
+          afterClose: () => {
+            reLogin();
+          },
+        });
+        return;
+      }
       await API.sessionSave({
         openid,
         token: Cookies.get('token'),
@@ -67,11 +90,4 @@ export const useUser = () => {
     throw new Error('useUser 必须在 UserProvider 内使用');
   }
   return context;
-};
-
-export const reLogin = () => {
-  API.updateCookies();
-  Cookies.remove(COOKIE_KEY);
-  Cookies.remove('token');
-  login();
 };
