@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Toast } from 'antd-mobile';
+import { Toast, Modal } from 'antd-mobile';
 
 import API from '@/api';
 import { cfx_accounts, anyweb_home } from '@/assets/anyweb.js';
@@ -56,8 +56,13 @@ const Detail = () => {
       return anyweb_home();
     }
     await cfx_accounts();
-    updateUserInfo();
-    anyweb_home();
+    await updateUserInfo();
+    Modal.show({
+      title: '钱包绑定成功',
+      content:
+        '首次绑定钱包，NFT转账需一定时间，若钱包内未更新，请稍后再查看。',
+      showCloseButton: true,
+    });
   };
   return (
     <div className={styles.page}>

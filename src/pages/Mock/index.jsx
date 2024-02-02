@@ -10,7 +10,7 @@ const MockAuth = () => {
   // 添加点击事件监听器
   const handleRedirectClick = () => {
     Cookies.set('hhId', '1088896517');
-    Cookies.set('token', '7ef6f4c66aae549fec50957c6c20368a');
+    Cookies.set('token', 'bf32a7fffae5ceea8ffb17a315597ee9');
     Cookies.set('customerId', '80669374');
     Cookies.set('unionId', 'oyF4kw4b2nda6itIYFgqpCH1Kti4');
     Cookies.set('openId', 'osFJ4jk4lMIiwna6bGLf1rZyKL9w');
