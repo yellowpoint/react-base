@@ -93,7 +93,6 @@ const Top = ({ myData, init }) => {
 
       <div className={styles.btn}>
         <TopBtn />
-        <p>前500名还可额外获得龙年限定丁丁红包封面</p>
       </div>
 
       {/* <button
@@ -111,9 +110,9 @@ const Top = ({ myData, init }) => {
       <Mask open={open} afterClose={() => setOpen(false)}>
         {!showRed ? (
           <Prize id={101} item={oneKeyData}>
-            <Btn className={styles.redBtn} onClick={getRedPacket202} fill>
+            {/* <Btn className={styles.redBtn} onClick={getRedPacket202} fill>
               解锁龙年丁丁红包封面
-            </Btn>
+            </Btn> */}
           </Prize>
         ) : (
           <Prize id={202} item={redPacketData} />

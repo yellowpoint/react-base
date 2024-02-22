@@ -17,9 +17,9 @@ const List = ({ list, redPacketList, setOpen }) => {
         <p>
           已收集藏品: <b>{list.length}</b>
         </p>
-        {!!redPacketList.length && (
+        {/* {!!redPacketList.length && (
           <span onClick={() => setOpen(true)}>{`查看已获得红包 >`}</span>
-        )}
+        )} */}
       </div>
       {!!list.length && (
         <div className={styles.cards}>

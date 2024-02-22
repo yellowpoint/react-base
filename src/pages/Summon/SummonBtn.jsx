@@ -20,6 +20,8 @@ const UserPoints = ({ hasFree }) => {
   if (!userInfo) return null;
   if (summonData.disabled) return null;
   if (hasFree) return null;
+  if (summonData?.left_score === undefined) return null;
+
   return (
     <>
       <div className={styles.expend}>消耗{summonData.cost_score}积分</div>
@@ -43,7 +45,7 @@ const SummonBtn = ({ inMask }) => {
   const hasFree = summonData.free_times > 0;
   const getTips = () => {
     if (hasFree) return '一次免费次数';
-    return `${summonData.cost_score}积分`;
+    return `${summonData?.cost_score || ''}积分`;
   };
   // 抽完没合成龙卡
   const handleOverNotlong = () => {
