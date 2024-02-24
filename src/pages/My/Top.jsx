@@ -39,9 +39,9 @@ const Top = ({ myData, init }) => {
 
     // 已合成，但没领取红包，提示去领取红包
     if (is_one_key) {
-      if (!isGetRed) {
-        return <Btn onClick={getRedPacket202}>领取{idMap[202].name}</Btn>;
-      }
+      // if (!isGetRed) {
+      //   return <Btn onClick={getRedPacket202}>领取{idMap[202].name}</Btn>;
+      // }
       return <Btn>已合成</Btn>;
     }
 
