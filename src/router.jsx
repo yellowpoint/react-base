@@ -16,28 +16,6 @@ const routerList = [
     component: lazyLoad('My'),
   },
   {
-    path: '/summon',
-    title: 'Mama100丁丁12星座',
-    notNeedLogin: true,
-    component: lazyLoad('Summon'),
-  },
-  {
-    path: '/detail/:id',
-    title: '藏品详情',
-    component: lazyLoad('Detail'),
-  },
-  {
-    path: '/exchange',
-    title: '会员尊享',
-    component: lazyLoad('Exchange'),
-  },
-  {
-    path: '/mock',
-    title: '模拟登录',
-    notNeedLogin: true,
-    component: lazyLoad('Mock'),
-  },
-  {
     path: '*',
     title: '404',
     notNeedLogin: true,
