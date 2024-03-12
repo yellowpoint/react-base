@@ -1,7 +1,3 @@
-import axios from 'axios';
-export const prefix = '/api/v2/scrm';
+import * as API from './all';
 
-// export * from './common';
-
-export const queryTagGroupDetail = (params) =>
-  axios.post(`${prefix}/tag_create_group/task/detail}`, params);
+export default API;

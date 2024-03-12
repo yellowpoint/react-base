@@ -18,5 +18,6 @@ module.exports = {
     'selector-class-pattern': null,
     'alpha-value-notation': null,
     'color-function-notation': 'legacy',
+    'keyframes-name-pattern': null,
   },
 };

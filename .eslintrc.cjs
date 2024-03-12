@@ -27,6 +27,14 @@ module.exports = {
   },
   plugins: ['import', 'react', 'react-hooks'],
   rules: {
+    'react/self-closing-comp': [
+      //自闭合标签
+      'error',
+      {
+        component: true,
+        html: false,
+      },
+    ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'prettier/prettier': [
@@ -45,11 +53,34 @@ module.exports = {
           'builtin',
           'external',
           'internal',
-          ['parent', 'sibling', 'index'],
+          'sibling',
+          'parent',
+          'index',
+          'unknown',
+        ],
+        pathGroups: [
+          {
+            pattern: 'react*',
+            group: 'builtin',
+            position: 'before',
+          },
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: './index.module.less',
+            group: 'unknown',
+            position: 'after',
+          },
         ],
         'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: [],
         alphabetize: { order: 'asc', caseInsensitive: true },
+        // warnOnUnassignedImports: false,
       },
     ],
+    'import/no-duplicates': 'error',
   },
 };

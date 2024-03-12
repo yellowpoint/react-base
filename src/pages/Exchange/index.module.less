@@ -1,0 +1,67 @@
+.page {
+  position: relative;
+  min-height: 2000px;
+  background: url("/imgs/exchange/bg.jpg") no-repeat;
+  background-color: #cdedeb;
+  background-size: 100% auto;
+}
+
+.tips {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+}
+
+.card {
+  position: absolute;
+  top: 19%;
+  left: 21%;
+  width: 612px;
+  animation: animation-box infinite 2s ease-in-out;
+  will-change: auto;
+}
+
+@keyframes animation-box {
+  50% { transform: translateY(30px); }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .btn {
+    width: 469px;
+    height: 104px;
+    margin: 0 auto;
+    background: url("/imgs/exchange/btn.png") no-repeat;
+    background-size: 100% auto;
+  }
+
+  .expend {
+    height: 37px;
+    margin-top: 17px;
+    font-size: 37px;
+    color: #387d57;
+  }
+
+  .surplus {
+    height: 32px;
+    margin-top: 35px;
+    font-size: 32px;
+    color: #595757;
+
+    a {
+      margin-left: 36px;
+      color: #387d57;
+      text-decoration: none;
+    }
+  }
+}

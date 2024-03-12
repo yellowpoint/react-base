@@ -1,0 +1,36 @@
+.btn {
+  width: 935px;
+
+  &.fill {
+    width: 100%;
+  }
+
+  .btnEle {
+    position: relative;
+    width: 100%;
+    padding-top: 12.72%;
+    font-size: 56px;
+    font-weight: bold;
+    color: #fff;
+    background: url("/imgs/btnBg.png") no-repeat;
+    background-size: 100% auto;
+  }
+
+  .btnText {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 10%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.disabled {
+    .btnEle {
+      cursor: not-allowed;
+      background-image: url("/imgs/btnBg_disabled.png");
+    }
+  }
+}

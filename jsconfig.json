@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+          "@/*": ["src/*"] // 处理vscode 配置alias后无法跳转
+      }
+  },
+  "exclude": ["node_modules", "dist"]
+}

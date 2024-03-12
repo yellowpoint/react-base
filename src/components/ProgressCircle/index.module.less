@@ -1,0 +1,43 @@
+.norem-progress-circle {
+  --percent: 35;  /* 百分数 */
+  --size: 80px;  /* 尺寸大小 */
+  --border-width: 13px;  /* 环宽（粗细） */
+  --gap-degree: 43;  /* 缺口夹角 */
+  --color: #3687d1;  /* 主色 */
+  --inactive-color: #fff;  /* 辅助色 */
+
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transform: rotate(50deg);
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    transform:
+      rotate(
+        calc((var(--gap-degree) + (180 - var(--gap-degree)) / 2) * 1deg)
+      );
+  }
+
+  /* 进度条圆环 */
+  circle {
+    --r: calc((var(--size) - var(--border-width)) / 2);
+    --active-degree: calc(360 - var(--gap-degree));
+
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: var(--border-width);
+    cx: calc(var(--size) / 2);
+    cy: calc(var(--size) / 2);
+    r: var(--r);
+  }
+
+  /* SVG 容器 */
+
+  .progress-value {
+    opacity: var(--percent);
+    transition: stroke-dasharray 0.4s linear, stroke 0.3s;
+  }
+}
