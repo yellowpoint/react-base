@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import ReactDOM from 'react-dom/client';
 
-import './assets/flexible.js';
+// import './assets/flexible.js';
 import './assets/index.css';
 
 import { PageLoading } from '@/components';

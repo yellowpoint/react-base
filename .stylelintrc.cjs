@@ -19,5 +19,11 @@ module.exports = {
     'alpha-value-notation': null,
     'color-function-notation': 'legacy',
     'keyframes-name-pattern': null,
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['tailwind'],
+      },
+    ],
   },
 };
