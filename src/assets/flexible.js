@@ -14,7 +14,14 @@
 
   // set 1rem = viewWidth / 10
   function setRemUnit() {
-    var rem = docEl.clientWidth / 10;
+    // 大于1440不再放大，1440到768 pc图缩小，小于768移动端图缩放
+    var width = docEl.clientWidth;
+    width = width > 1440 ? 1440 : width;
+    if (width <= 768) {
+      // 转换为移动端的设计图比例
+      width = width * 1440 / 750
+    }
+    var rem = width / 10;
     docEl.style.fontSize = rem + 'px';
   }
 

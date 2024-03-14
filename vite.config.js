@@ -4,7 +4,7 @@ import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import postCssPxToRem from 'postcss-pxtorem';
 import { defineConfig } from 'vite';
-
+import tailwindcss from 'tailwindcss'
 import { baseHtmlPath } from './src/env.js';
 
 export default defineConfig(({ mode, command }) => {
@@ -20,14 +20,15 @@ export default defineConfig(({ mode, command }) => {
       },
       postcss: {
         plugins: [
-          // postCssPxToRem({
-          //   // 自适应，px>rem转换
-          //   rootValue: 108,
-          //   exclude: /node_modules/i, // 过滤掉node_modules 文件夹下面的样式
-          //   propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
-          //   selectorBlackList: ['.norem'], // 过滤掉norem-开头的class，不进行rem转换，这个内容可以不写
-          //   minPixelValue: 2, // 设置要替换的最小像素值。
-          // }),
+          tailwindcss(),
+          postCssPxToRem({
+            // 自适应，px>rem转换
+            rootValue: 144,
+            exclude: /node_modules/i, // 过滤掉node_modules 文件夹下面的样式
+            propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+            selectorBlackList: ['.norem'], // 过滤掉norem-开头的class，不进行rem转换，这个内容可以不写
+            minPixelValue: 2, // 设置要替换的最小像素值。
+          }),
         ],
       },
       preprocessorOptions: {
