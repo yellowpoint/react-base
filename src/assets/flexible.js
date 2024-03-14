@@ -14,7 +14,11 @@
 
   // set 1rem = viewWidth / 10
   function setRemUnit() {
-    var rem = docEl.clientWidth / 10;
+    var width = docEl.clientWidth;
+    console.log('width', width, dpr);
+    // width最大1440
+    width = width > 1440 ? 1440 : width;
+    var rem = width / 10;
     docEl.style.fontSize = rem + 'px';
   }
 

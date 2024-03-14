@@ -36,3 +36,10 @@ img {
   height: 100%;
   font-size: 32px;
 }
+
+@media (max-width: 768px) {
+  #root {
+    height: 100%;
+    font-size: 64px;
+  }
+}

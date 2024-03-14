@@ -11,11 +11,6 @@ const routerList = [
     component: lazyLoad('Home'),
   },
   {
-    path: '/my',
-    title: '我的保护力藏品',
-    component: lazyLoad('My'),
-  },
-  {
     path: '*',
     title: '404',
     notNeedLogin: true,
