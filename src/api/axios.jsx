@@ -1,4 +1,4 @@
-import { Toast } from 'antd-mobile';
+import { message } from 'antd';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -19,8 +19,7 @@ const openid = Cookies.getJSON(COOKIE_KEY)?.openid || Cookies.get('openId');
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
-    Toast.show({
-      icon: 'loading',
+    message.loading({
       content: '加载中…',
       duration: 0,
       maskClickable: false,
@@ -53,26 +52,21 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     const responseData = response.data;
-    Toast.clear();
+    message.destroy();
     // 601 token过期
     if (responseData.code === 601) {
-      Toast.show({
-        icon: 'loading',
+      message.loading({
         content: '登录过期，正在为您重新登录',
-        afterClose: () => {
+        onClose: () => {
           reLogin();
         },
       });
       return Promise.reject(responseData.code);
     }
-    // 12星座卡与1红包已得到，还未合成隐藏款
-    if (responseData.code === 12) {
-      return responseData.code;
-    }
+
     // 检查 code 是否为 0
     if (responseData.code !== 0) {
-      Toast.show({
-        icon: 'fail',
+      message.error({
         content: (
           <VconsoleCom>
             {responseData.message || '错误码：' + responseData.code}
@@ -88,8 +82,7 @@ api.interceptors.response.use(
   },
   (error) => {
     // 处理响应错误
-    Toast.show({
-      icon: 'fail',
+    message.error({
       content: <VconsoleCom>{error.message}</VconsoleCom>,
     });
     return Promise.reject(error);

@@ -15,7 +15,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd-mobile": "^5.33.1",
+    "antd": "^5.15.3",
     "axios": "^1.6.5",
     "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.21",

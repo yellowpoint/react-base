@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-import { Toast } from 'antd-mobile';
+import { message } from 'antd';
 import Cookies from 'js-cookie';
 
 import API from '@/api';
@@ -49,10 +49,9 @@ export const UserProvider = ({ children }) => {
     if (!defaultUser && Cookies.get('token')) {
       const openid = Cookies.get('openId');
       if (!openid) {
-        Toast.show({
-          icon: 'loading',
+        message.loading({
           content: '未获取到openid，正在为您重新登录',
-          afterClose: () => {
+          onClose: () => {
             reLogin();
           },
         });

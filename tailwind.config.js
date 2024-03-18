@@ -8,10 +8,10 @@ export default {
       return map;
     }, {}),
     fontSize: ({ theme }) => ({
-      ...theme("spacing"),
+      ...theme('spacing'),
     }),
     screens: {
-      'md': {'max': '768px'},
+      md: { max: '768px' },
       // => @media (max-width: 768px) { ... }
     },
     // 不覆盖原始值
@@ -19,7 +19,7 @@ export default {
     // },
   },
   plugins: [
-    function({ addUtilities }) {
+    function ({ addUtilities }) {
       const fontSm = {
         '.text-sm': {
           fontSize: '24px',

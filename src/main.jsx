@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+import { StyleProvider } from '@ant-design/cssinjs';
 import ReactDOM from 'react-dom/client';
 
 import './assets/flexible.js';
@@ -36,18 +37,21 @@ root.render(
   <BrowserRouter basename={basename}>
     <Suspense fallback={<PageLoading />}>
       <UserProvider>
-        <Routes>
-          {RoutesComport.map((item, index) => {
-            return (
-              <Route
-                key={`routers${index}`}
-                exact
-                path={item.path}
-                element={<DomTitle item={item} />}
-              />
-            );
-          })}
-        </Routes>
+        {/* antd 兼容 tailwind */}
+        <StyleProvider hashPriority="high">
+          <Routes>
+            {RoutesComport.map((item, index) => {
+              return (
+                <Route
+                  key={`routers${index}`}
+                  exact
+                  path={item.path}
+                  element={<DomTitle item={item} />}
+                />
+              );
+            })}
+          </Routes>
+        </StyleProvider>
       </UserProvider>
     </Suspense>
   </BrowserRouter>,

@@ -1,16 +1,11 @@
-import { SpinLoading } from 'antd-mobile';
+import { Spin } from 'antd';
 
 import styles from './index.module.less';
 
 export const PageLoading = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <SpinLoading />
+    <div className="flex h-screen items-center justify-center">
+      <Spin />
     </div>
   );
 };

@@ -27,6 +27,15 @@ module.exports = {
   },
   plugins: ['import', 'react', 'react-hooks'],
   rules: {
+    // prettier.config可以加到这里
+    'prettier/prettier': [
+      'error',
+      {
+        plugins: ['prettier-plugin-tailwindcss'], // Tailwind 类名排序
+        singleQuote: true, // 使用单引号
+        endOfLine: 'auto',
+      },
+    ],
     'react/self-closing-comp': [
       //自闭合标签
       'error',
@@ -37,13 +46,6 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true, // 使用单引号
-        endOfLine: 'auto',
-      },
-    ],
     'react/prop-types': 'off',
     'import/newline-after-import': ['error', { count: 1 }],
     'import/order': [
